@@ -1,0 +1,72 @@
+<pre class='metadata'>
+Title: HDR10+ AV1 Metadata Handling Specification
+Status: LS-COMMIT
+URL: https://AOMediaCodec.github.io/av1-hdr10plus
+Shortname: av1-hdr10plus
+Editor: TDB
+Abstract: TBD.
+Date: 2021-04-21
+Repository: AOMediaCodec/av1-hdr10plus
+Inline Github Issues: full
+Boilerplate: property-index no, issues-index no, copyright yes
+Markup Shorthands: css on
+Group: AOM
+Warning: Custom
+Custom Warning Title: Warning
+Custom Warning Text: This specification is a draft of a potential new version of this specification and should not be referenced other than as a working draft.
+</pre>
+
+<pre class='biblio'>
+{
+    "AV1": {
+  "href": "https://aomediacodec.github.io/av1-spec/av1-spec.pdf",
+  "id": "AV1",
+  "title": "AV1 Bitstream & Decoding Process Specification",
+  "status": "LS",
+  "publisher": "AOM"
+    },
+
+    "AV1-ISOBMFF": {
+  "href": "https://aomediacodec.github.io/av1-isobmff/",
+  "id": "AV1-ISOBMFF",
+  "title": "AV1 Codec ISO Media File Format Binding",
+  "status": "LS",
+  "publisher": "AOM"
+    },
+
+    "HDR10+": {
+  "href": "",
+  "id": "HDR10+",
+  "title": "HDR10+",
+  "status": "LS",
+  "publisher": "Somebody"
+    }
+}
+</pre>
+
+<div boilerplate='copyright'>
+<p>Copyright 2021, The Alliance for Open Media</p>
+
+<p>Licensing information is available at http://aomedia.org/license/</p>
+
+<p>The MATERIALS ARE PROVIDED “AS IS.” The Alliance for Open Media, its members, and its contributors
+expressly disclaim any warranties (express, implied, or otherwise), including implied warranties of
+merchantability, non-infringement, fitness for a particular purpose, or title, related to the materials.
+The entire risk as to implementing or otherwise using the materials is assumed by the implementer and user.
+IN NO EVENT WILL THE ALLIANCE FOR OPEN MEDIA, ITS MEMBERS, OR CONTRIBUTORS BE LIABLE TO ANY OTHER PARTY
+FOR LOST PROFITS OR ANY FORM OF INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER
+FROM ANY CAUSES OF ACTION OF ANY KIND WITH RESPECT TO THIS DELIVERABLE OR ITS GOVERNING AGREEMENT,
+WHETHER BASED ON BREACH OF CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE, AND WHETHER OR NOT
+THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</p>
+</div>
+
+<!-- Terms defined in other specifications -->
+<pre class="anchors">
+</pre>
+
+<h2 id="scope">Scope</h2>
+
+This document specifies how to use [[!AV1]] with [[!HDR10+]], in particular when carried in [[!AV1-ISOBMFF]].
+
+TBD
