@@ -3,9 +3,9 @@ Title: HDR10+ AV1 Metadata Handling Specification
 Status: LS-COMMIT
 URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
-Editor: TDB
-Abstract: TBD.
-Date: 2021-04-21
+Editor: Paul Hearty, Samsung
+Abstract: This document specifies how to use HDR10+ metadata with [[!AV1]] including when supporting [[!CMAF]].
+Date: 2021-05-26
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
@@ -16,31 +16,40 @@ Custom Warning Title: Warning
 Custom Warning Text: This specification is a draft of a potential new version of this specification and should not be referenced other than as a working draft.
 </pre>
 
-<pre class='biblio'>
+<pre class='biblio' >
 {
-    "AV1": {
+  "AV1": {
   "href": "https://aomediacodec.github.io/av1-spec/av1-spec.pdf",
   "id": "AV1",
   "title": "AV1 Bitstream & Decoding Process Specification",
-  "status": "LS",
+  "status": "Standard",
   "publisher": "AOM"
     },
 
-    "AV1-ISOBMFF": {
-  "href": "https://aomediacodec.github.io/av1-isobmff/",
-  "id": "AV1-ISOBMFF",
-  "title": "AV1 Codec ISO Media File Format Binding",
-  "status": "LS",
-  "publisher": "AOM"
+  "CTA-861": {
+  "href":  "https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h",
+  "id": "CTA-861",
+  "title": "ANSI-CTA-861-H",
+  "status": "Standard",
+  "publisher": "CTA"
     },
-
-    "HDR10+": {
-  "href": "",
-  "id": "HDR10+",
-  "title": "HDR10+",
-  "status": "LS",
-  "publisher": "Somebody"
+    
+  "CMAF": {
+  "href": "https://shop.cta.tech/products/web-application-video-ecosystem-content-specification",
+  "id": "CMAF",
+  "title": "ANSI-CTA-5001-C",
+  "status": "Standard",
+  "publisher": "CTA"
+    },
+    
+  "2094-40": {
+  "href": "https://ieeexplore.ieee.org/document/9095450",
+  "id": "2094-40",
+  "title": "SMPTE 2094-40:2020",
+  "status": "Standard",
+  "publisher": "SMPTE"
     }
+        
 }
 </pre>
 
@@ -65,8 +74,144 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <pre class="anchors">
 </pre>
 
-<h2 id="scope">Scope</h2>
+Introduction
+============
 
-This document specifies how to use [[!AV1]] with [[!HDR10+]], in particular when carried in [[!AV1-ISOBMFF]].
+Scope
+-----
 
+This document specifies how to use HDR10+ metadata with [[!AV1]] including when supporting [[!CMAF]].
+
+Various tools, services and devices support creation and use of HDR10+ dynamic metadata which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35 support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
+
+### Relevant HDR10+ Documentation
+
+<p>HDR10+ is documented in several standards and there is an option to certify player and displays provided through a logo program which is operated by the HDR10+ Technologies LLC</p>
+
+* HDR10+ metadata parameters are specified in [[2094-40]]
+* HDR10+ metadata syntax is defined in [[!CTA-861]]
+* HDR10+ CMAF Binding is defined in [[!CMAF]]
+* HDR10+ Certification and Logo program is found at <a href="http://hdr10plus.org">HDR10Plus</a>
+
+
+Acronyms
+--------
+
+For the purpose of this specification, the following acronyms apply:
+
+* <b>CMAF</b>:  MPEG Common Media Application Format
+* <b>DTM</b>:  Dynamic Tone Mapping
+* <b>LLC</b>:  Light Level Content
+* <b>MDCV</b>:  Mastering Display Color Volume
+* <b>MAXCLL</b>: Static HDR10 metadata items MaxCLL and MaxFALL
+* <b>OBU</b>:  Open Bitstream Units
+* <b>STM</b>:  Static Tone Mapping 
+* <b>TU</b>:  Temporal Unit
+
+Definitions and Notation
+------------------------
+
+<p>For the purpose of this specification, the following definitions and notations apply:</p>
+
+<b>Temporal unit</b>
+<p>A Temporal unit consists of all Open Bitstream Units (OBUs) that are associated with a specific, distinct time instant. It consists of a temporal delimiter OBU, as well as the OBUs that follow, up to but not including the next temporal delimiter.</p>
+
+<b>OBU</b>
+
+<p>All structures are packetized in OBUs. Each OBU has a header, which provides identifying information for the contained data (payload).</p>
+
+Constraints on OBU placement
+============================
+
+In AOM AV1, a coded video sequence <b>shall</b> consist of one or more temporal units. A temporal unit consists of a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs.
+
+<center><img src="./OBU_Frame_Structure.jpg"></center>
+<center><b>Figure 1</b>&nbspOBU_Frame Structure:  Sample OBU frame consisting of a frame header OBU and a tile group OBU (Reference: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf#page=39">OBU</a>)</center>
+
+
+Storage and Transport
+=====================
+
+MP4 Files
+---------
+
+<p>Notes:</p>
+1.	The HDR10+ metadata should be delivered before the associated video frame.
+2.	The HDR10+ metadata should be delivered every frame and each one should be treated as independent one.
+3.	Only one HDR10+ metadata should be delivered per frame.
+4.	The HDR10+ metadata should be delivered with HDR10 static metadata because the HDR10+ is standing on HDR10 scheme.
+
+<p>Regarding the reference implementation from SAMSUNG with libaom.
+For the <a "https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MAXCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a> OBU is already defined in AV1 syntax, but HDR10+ metadata is abstracted with generalized OBU of the <b>METADATA_TYPE_ITUT_T35 as shown in Figure 2</b></p>
+
+<center><img src="./T35.png"></center>
+<center><b>Figure 2</b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
+
+
+<p>An OBU_FRAME or OBU_FRAME_HEADER with show_frame = 1 shall be set with one METADATA_TYPE_ITUT_T35 which shall contains the Dynamic Color Metadata.</p>
+* A show_frame value of 1 specifies that the frame should be output immediately once decoded.
+* A show_frame value of 0 specifies that the frame need not be output immediately. The frame may be output later if a subsequent uncompressed header has a show_existing_frame value of 1.
+
+
+
+MPEG-2 Transport
+----------------
 TBD
+
+RTP
+---
+TBD
+
+
+CMAF Branding
+=============
+
+<p>CMAF defines structural constraints on ISOBMFF files additional to ISOBMFF for the purpose of, for example, adaptive streaming or for protected files. Conformance to these structural constraints is signaled by the presence of the brand ‘cmfc’ in the <b>FileTypeBox</b>.</p>
+
+<p>If a CMAF Video Track uses the brand ‘av01’, it is called a CMAF AV1 Track and the following constraints, defining the CMAF Media Profile for AV1, apply:</p>
+* It <b>shall</b> use an <a href="https://aomediacodec.github.io/av1-isobmff/#av1sampleentry-section"><b><i>AV1SampleEntry</i></b></a>.
+* It <b>may</b> use multiple sample entries, and in that case the following values <b>shall</b> not change in the track:
+    * seq_profile
+    * still_picture
+    * The first value of seq_level_idx
+    * The first value of seq_tier
+    * color_config
+    * initial_presentation_delay_minus_one
+
+<p>When protected, CMAF AV1 Tracks <b>shall</b> use the signaling defined in CMAF, which in turn relies on CENC, with the provisions specified in Common Encryption.</p>
+
+Common Encryption
+-----------------
+
+<p>CMAF AV1 Tracks and non-segmented AV1 files <b>may</b> be protected. If protected, they <b>shall</b> conform to CENC. Files <b>should</b> be protected using the ‘cbcs’ protection scheme and <b>may</b> be protected using the ‘cenc’ protection scheme.</p>
+<p>When the protected scheme ‘cenc' is used, samples <b>shall</b> be protected using subsample encryption and <b>shall not</b> use pattern encryption.</p>
+<p>When the protected scheme ‘cbcs’ is used, samples <b>shall</b> be protected using subsample encryption and <b>shall</b> use pattern encryption. CENC recommends that the Block Pattern length be 10, i.e. crypt_byte_block + skip_byte_block = 10, where a Block is of size 16-bytes. In this specification, the combination of crypt_byte_block and skip_byte_block <b>shall</b> be one of the following, with the first one being recommended:</p>
+
+* crypt_byte_block = 1 and skip_byte_block = 9,
+* crypt_byte_block = 5 and skip_byte_block = 5,
+* crypt_byte_block = 10 and skip_byte_block = 0.
+
+<p>(Reference: <a href="https://aomediacodec.github.io/av1-isobmff/">AV1-ISOBMFF</a>)</p>
+
+
+CMAF Signalling
+---------------
+
+This section defines how to package and encode HDR10+ Media Profile information in the CMAF recognized (Video) Media Profile HDR10 (i.e. the CMAF file brand 'av01' is contained in the CMAF filetype box "ftyp") as specified in [[!CMAF]], Annex B.
+
+### Signalling of @codecs
+
+The values of the codecs parameter in HDR10 streams containing HDR10+ information <b>shall</b> remain unchanged when HDR10+ is included.
+
+### HDR10+ Compatible Brand
+
+Content providers <b>shall</b> include 'av01' (HDR10) in the list of compatible brands in the 'ftyp' box along with the HDR10+ compatible brand 'cdm4'.
+
+### HDR10+ Compatible Manifests
+
+Content providers <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.
+
+
+
+
+
