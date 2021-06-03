@@ -5,7 +5,7 @@ URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
 Editor: Paul Hearty, Samsung
 Abstract: This document specifies how to use HDR10+ metadata with [[!AV1]] including when supporting [[!CMAF]].
-Date: 2021-05-26
+Date: 2021-06-04
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
@@ -163,6 +163,7 @@ HDR10 static metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadat
 
 MP4 Files (example)
 -------------------
+To be discussed
 
 MPEG-2 Transport
 ----------------
@@ -191,7 +192,7 @@ Common Encryption (CENC)
 CMAF Signalling
 ---------------
 
-This section defines how to package and encode HDR10+ Media Profile information in the CMAF recognized (Video) Media Profile HDR10 (i.e. the CMAF file brand 'av01' is contained in the CMAF filetype box "ftyp") as specified in [[!CMAF]], Annex B.
+This section defines how to package and encode HDR10+ Media Profile information in the CMAF recognized (Video) Media Profile HDR10 (i.e. the CMAF file brand 'av01' is contained in the CMAF filetype box "ftyp") as specified in [[!CTA-5001]], Annex B.
 
 ### Signalling of @codecs
 
