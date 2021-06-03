@@ -124,10 +124,10 @@ Definitions and Notation
 
 <p>For the purpose of this specification, the following definitions and notations apply:</p>
 
-<b>Temporal unit</b>
+<b><a href="https://aomediacodec.github.io/av1-spec/#terms-and-definitions">Temporal unit</a></b>
 <p>A Temporal unit consists of all Open Bitstream Units (OBUs) that are associated with a specific, distinct time instant. It consists of a temporal delimiter OBU, as well as the OBUs that follow, up to but not including the next temporal delimiter.</p>
 
-<b>OBU</b>
+<b><a href="https://aomediacodec.github.io/av1-spec/#terms-and-definitions">OBU</a></b>
 
 <p>All structures are packetized in OBUs. Each OBU has a header, which provides identifying information for the contained data (payload).</p>
 
@@ -143,28 +143,26 @@ As shown in Figure 1 an AOM AV1 coded video sequence <b> shall </b> consist of o
 Storage and Transport
 =====================
 
-MP4 Files
----------
+Storage
+-------
 
-The HDR10+ metadata<b> shall </b>be delivered before the associated video frame.
+The HDR10+ metadata<b> shall </b>be delivered with the associated video frame before the video data.
 
-The HDR10+ metadata<b> shall </b>be delivered every frame and each one should be treated as independent one.
+One, and only one, HDR10+ metadata OBU<b> shall </b>be delivered per frame; each HDR10+ OBU <b> shall </b> be treated independently of other such OBUs.
 
-Only one HDR10+ metadata<b> shall </b>be delivered per frame.
-
-The HDR10+ metadata<b> shall </b>be delivered with HDR10 static metadata because the HDR10+ is standing on HDR10 scheme.
-
-<p>For the <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MAXCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a> OBU is already defined in AV1 syntax, but HDR10+ metadata is abstracted with generalized OBU of the <b>METADATA_TYPE_ITUT_T35 as shown in Figure 2</b></p>
+HDR10 static metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MAXCLL</a>)<b> shall </b>be present. HDR10+ dynamic metadata uses the generalized OBU of the <b>metadata_type_itut_t35()</b>, as shown in Figure 2.
 
 <center><img src="./T35.png"></center>
 <center><b>Figure 2. </b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
 
 
-<p>An OBU_FRAME or OBU_FRAME_HEADER with show_frame = 1<b> shall </b>be set with one METADATA_TYPE_ITUT_T35 which<b> shall </b>contains the Dynamic Color Metadata.</p>
+<p>An OBU_FRAME or OBU_FRAME_HEADER with show_frame = 1<b> shall </b>be set with one METADATA_TYPE_ITUT_T35 which<b> shall </b>contains the dynamic metadata.</p>
 * A show_frame value of 1 specifies that the frame should be output immediately once decoded.
 * A show_frame value of 0 specifies that the frame need not be output immediately. The frame may be output later if a subsequent uncompressed header has a show_existing_frame value of 1.
 
 
+MP4 Files (example)
+-------------------
 
 MPEG-2 Transport
 ----------------
@@ -178,32 +176,16 @@ To be discussed
 CMAF Branding
 =============
 
-<p>CMAF defines structural constraints on ISOBMFF files. Conformance to these structural constraints is signaled by the presence of the brand ‘cmfc’ in the ISOBMFF <b>FileTypeBox</b>.</p>
+<a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">The CMAF AV1 track format addresses structural constraints on ISOBMFF files defined by CMAF.</a>
 
-<p>If a CMAF Video Track uses the brand ‘av01’ the following constraints apply:</p>
-* It <b> shall </b>use an <a href="https://aomediacodec.github.io/av1-isobmff/#av1sampleentry-section"><b><i>AV1SampleEntry</i></b></a>.
-* It <b>may</b> use multiple sample entries, and in that case the following values <b> shall </b> not change in the track:
-    * seq_profile
-    * still_picture
-    * The first value of seq_level_idx
-    * The first value of seq_tier
-    * color_config
-    * initial_presentation_delay_minus_one
-
-<p>When protected, CMAF AV1 Tracks <b> shall </b> use the signaling defined in CMAF, which in turn relies on CENC, with the provisions specified in Common Encryption.</p>
+When protected, CMAF AV1 Tracks <b> shall </b> use the signaling defined in CMAF, which in turn relies on CENC, with the provisions specified in Common Encryption.
 
 Common Encryption (CENC)
 ------------------------
 
-<p>CMAF AV1 Tracks and non-segmented AV1 files <b>may</b> be protected. If protected, they <b> shall </b> conform to CENC. Files <b>should</b> be protected using the ‘cbcs’ protection scheme and <b>may</b> be protected using the ‘cenc’ protection scheme.</p>
-<p>When the protected scheme ‘cenc' is used, samples <b> shall </b> be protected using subsample encryption and <b>shall not</b> use pattern encryption.</p>
-<p>When the protected scheme ‘cbcs’ is used, samples <b> shall </b> be protected using subsample encryption and <b> shall </b> use pattern encryption. CENC recommends that the Block Pattern length be 10, i.e. crypt_byte_block + skip_byte_block = 10, where a Block is of size 16-bytes. In this specification, the combination of crypt_byte_block and skip_byte_block <b> shall </b> be one of the following, with the first one being recommended:</p>
+<a href="https://aomediacodec.github.io/av1-isobmff/#CommonEncryption">CMAF AV1 Tracks and non-segmented AV1 files <b>may</b> be protected.</a>
 
-* crypt_byte_block = 1 and skip_byte_block = 9,
-* crypt_byte_block = 5 and skip_byte_block = 5,
-* crypt_byte_block = 10 and skip_byte_block = 0.
-
-<p>(Reference: <a href="https://aomediacodec.github.io/av1-isobmff/">AV1-ISOBMFF</a>)</p>
+(note to WG:  Lets discuss the content at this link regarding use of 'cenc' term)
 
 
 CMAF Signalling
