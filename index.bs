@@ -5,7 +5,7 @@ URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
 Editor: Paul Hearty, Samsung
 Abstract: This document specifies how to use HDR10+ metadata with [[!AV1]] including when supporting [[!CMAF]].
-Date: 2021-06-15
+Date: 2021-06-21
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
@@ -54,7 +54,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
    "SCTE-215-1-1": {
   "href": "https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf",
   "id": "SCTE-215-1-1",
-  "title": "SCTE-215-1-1 2020",
+  "title": "ANSI/SCTE-215-1-1 2020",
   "status": "Standard",
   "publisher": "CTA"
     },   
@@ -130,16 +130,16 @@ Acronyms
 For the purpose of this specification, the following acronyms apply:
 
 * <b>CMAF</b>:  MPEG Common Media Application Format
-* <b>MDCV</b>:  Mastering Display Color Volume [[2086]]
-* <b>MaxCLL</b>: Static HDR10 metadata item Maximum Content Light Level [[CTA-861]]
-* <b>MaxFALL</b>: Static HDR10 metadata item Maximum Frame Average Light Level [[CTA-861]]
+* <b>MDCV</b>:  Mastering Display Color Volume SMPTE ST 2086 [[2086]]
+* <b>MaxCLL</b>: HDR10 Static Metadata item Maximum Content Light Level [[CTA-861]]
+* <b>MaxFALL</b>: HDR10 Static Metadata item Maximum Frame Average Light Level [[CTA-861]]
 * <b>OBU</b>:  Open Bitstream Units [[!AV1]]
 * <b>TU</b>:  Temporal Unit [[!AV1]]
 
 Definitions and Notation
 ------------------------
 
-<p>Following definitions from the AV1 specification:</p>
+<p>Following definitions are taken from the AV1 specification:</p>
 
 <b><a href="https://aomediacodec.github.io/av1-spec/#terms-and-definitions">Temporal unit</a></b>
 <p>A Temporal unit consists of all Open Bitstream Units (OBUs) that are associated with a specific, distinct time instant. It consists of a temporal delimiter OBU, as well as the OBUs that follow, up to but not including the next temporal delimiter.</p>
@@ -162,7 +162,7 @@ In this specification, HDR10+ Metadata is defined as data with the semantics def
 
 For each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved).
 
-HDR10 static metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MAXCLL</a>)<b> may </b>be present.
+HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MAXCLL</a>)<b> may </b>be present.
 
 Note: AV1 <a href="https://aomediacodec.github.io/av1-spec/#general-metadata-obu-syntax">defines</a> the general metadata OBU syntax for HDR10 Static Metadata and ITU-T T.35 Metadata.
 
@@ -170,7 +170,7 @@ Note: AV1 <a href="https://aomediacodec.github.io/av1-spec/#general-metadata-obu
 Constraints on OBU placement
 ----------------------------
 
-As defined in [[!AV1]] and shown in Figure 1 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs.
+As defined in [[!AV1]] and shown in Figure 1 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.
 
 <center><img src="./OBU_Frame_Structure.jpg"></center>
 <center><b>Figure 1.</b>&nbspOBU_Frame Structure:  Sample OBU frame consisting of a frame header OBU and a tile group OBU (Reference: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf#page=39">OBU</a>)</center>
@@ -195,9 +195,12 @@ CMAF Branding
 
 When protected, CMAF AV1 Tracks use the signaling defined in CMAF, which in turn relies on CENC, with the provisions specified in Common Encryption.
 
-* HDR10+ CMAF Media Profile is defined in [[!CTA-5001]]
-* HDR10+ HEVC CMAF Binding is defined in [[SCTE-215-1-1]]
-* This document contains the AV1 HDR10+ CMAF Binding
+* An HDR10+ HEVC CMAF Media Profile and the associated brand are defined in [[!CTA-5001]]
+* Constraints for HDR10+ HEVC elementary streams and CMAF tracks are defined in [[SCTE-215-1-1]]
+
+Although the referenced documents refer to HEVC, the same information and constraints apply in AV1 with the same semantics and the syntax carried in OBU's, rather than SEIs.
+
+The current document contains the AV1 HDR10+ information.
 
 Common Encryption (CENC)
 ------------------------
