@@ -1487,7 +1487,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 21183bac3, updated Tue Jun 15 10:19:19 2021 -0700" name="generator">
+  <meta content="Bikeshed version 3d6a6fcbb, updated Wed Jun 16 16:19:39 2021 -0700" name="generator">
   <link href="https://AOMediaCodec.github.io/av1-hdr10plus" rel="canonical">
 <style>/* style-autolinks */
 
@@ -1910,7 +1910,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This document specifies how to use HDR10+ metadata with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> including when supporting <span>[CMAF]</span>.</p>
+   <p>This document specifies how to use HDR10+ metadata with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> including when supporting <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a>.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
@@ -1949,7 +1949,6 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
-      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
      </ol>
    </ol>
   </nav>
@@ -1969,7 +1968,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
    <p>For the purpose of this specification, the following acronyms apply:</p>
    <ul>
     <li data-md>
-     <p><b>CMAF</b>:  MPEG Common Media Application Format</p>
+     <p><b>CMAF</b>:  MPEG Common Media Application Format <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a></p>
     <li data-md>
      <p><b>MDCV</b>:  Mastering Display Color Volume SMPTE ST 2086 <a data-link-type="biblio" href="#biblio-2086">[2086]</a></p>
     <li data-md>
@@ -1991,14 +1990,14 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
    <h3 class="heading settled" data-level="2.1" id="hdr10-obu"><span class="secno">2.1. </span><span class="content">HDR10+ OBU</span><a class="self-link" href="#hdr10-obu"></a></h3>
    <p>In this specification, HDR10+ Metadata is defined as data with the semantics defined in <a data-link-type="biblio" href="#biblio-2094-40">[2094-40]</a>, using the syntax defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a>, carried in a metadata_type_itut_t35 OBU. This is illustrated in Figure 2.</p>
    <center><img src="./T35.png"></center>
-   <center><b>Figure 2. </b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
-   <p>For each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved).</p>
-   <p>HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MAXCLL</a>)<b> may </b>be present.</p>
+   <center><b>Figure 1. </b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
+   <p>For each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved). HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0.</p>
+   <p>HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.</p>
    <p class="note" role="note"><span>Note:</span> AV1 <a href="https://aomediacodec.github.io/av1-spec/#general-metadata-obu-syntax">defines</a> the general metadata OBU syntax for HDR10 Static Metadata and ITU-T T.35 Metadata.</p>
    <h3 class="heading settled" data-level="2.2" id="constraints-on-obu-placement"><span class="secno">2.2. </span><span class="content">Constraints on OBU placement</span><a class="self-link" href="#constraints-on-obu-placement"></a></h3>
    <p>As defined in <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> and shown in Figure 1 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.</p>
    <center><img src="./OBU_Frame_Structure.jpg"></center>
-   <center><b>Figure 1.</b> OBU_Frame Structure:  Sample OBU frame consisting of a frame header OBU and a tile group OBU (Reference: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf#page=39">OBU</a>)</center>
+   <center><b>Figure 2.</b> OBU_Frame Structure:  Sample OBU frame consisting of a frame header OBU and a tile group OBU (Reference: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf#page=39">OBU</a>) The red denotes the HDR10+ Dynamic Metadata OBUs.</center>
    <h3 class="heading settled" data-level="2.3" id="mp4-files-example"><span class="secno">2.3. </span><span class="content">MP4 Files (example)</span><a class="self-link" href="#mp4-files-example"></a></h3>
     To be discussed 
    <h3 class="heading settled" data-level="2.4" id="mpeg-2-transport"><span class="secno">2.4. </span><span class="content">MPEG-2 Transport</span><a class="self-link" href="#mpeg-2-transport"></a></h3>
@@ -2006,7 +2005,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
    <h3 class="heading settled" data-level="2.5" id="rtp"><span class="secno">2.5. </span><span class="content">RTP</span><a class="self-link" href="#rtp"></a></h3>
     To be discussed 
    <h2 class="heading settled" data-level="3" id="cmaf-branding"><span class="secno">3. </span><span class="content">CMAF Branding</span><a class="self-link" href="#cmaf-branding"></a></h2>
-   <p><a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">The CMAF AV1 track format addresses structural constraints on ISOBMFF files defined by CMAF.</a></p>
+   <p>The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track format</a> addresses structural constraints on ISOBMFF files defined by CMAF.</p>
    <p>When protected, CMAF AV1 Tracks use the signaling defined in CMAF, which in turn relies on CENC, with the provisions specified in Common Encryption.</p>
    <ul>
     <li data-md>
@@ -2176,23 +2175,22 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
+   <dt id="biblio-2086">[2086]
+   <dd><a href="https://ieeexplore.ieee.org/document/8353899">SMPTE ST 2086:2018</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/8353899">https://ieeexplore.ieee.org/document/8353899</a>
    <dt id="biblio-2094-40">[2094-40]
-   <dd><a href="https://ieeexplore.ieee.org/document/9095450">SMPTE 2094-40:2020</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/9095450">https://ieeexplore.ieee.org/document/9095450</a>
+   <dd><a href="https://ieeexplore.ieee.org/document/9095450">SMPTE ST 2094-40:2020</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/9095450">https://ieeexplore.ieee.org/document/9095450</a>
    <dt id="biblio-av1">[AV1]
    <dd><a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">AV1 Bitstream &amp; Decoding Process Specification</a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">https://aomediacodec.github.io/av1-spec/av1-spec.pdf</a>
-   <dt id="biblio-cta-5001">[CTA-5001]
-   <dd><a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">ANSI-CTA-5001</a>. Standard. URL: <a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">https://shop.cta.tech/products/web-application-video-ecosystem-content-specification</a>
-   <dt id="biblio-cta-861">[CTA-861]
-   <dd><a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">ANSI-CTA-861-H</a>. Standard. URL: <a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h</a>
-   <dt id="biblio-rfc2119">[RFC2119]
-   <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
-  </dl>
-  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
-  <dl>
-   <dt id="biblio-2086">[2086]
-   <dd><a href="https://ieeexplore.ieee.org/document/8353899">SMPTE 2086:2018</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/8353899">https://ieeexplore.ieee.org/document/8353899</a>
    <dt id="biblio-av1-isobmff">[AV1-ISOBMFF]
    <dd><a href="https://aomediacodec.github.io/av1-isobmff/">AV1 Codec ISO Media File Format Binding</a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-isobmff/">https://aomediacodec.github.io/av1-isobmff/</a>
+   <dt id="biblio-cmaf">[CMAF]
+   <dd><a href="https://www.iso.org/standard/71975.html">Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.</a>. Standard. URL: <a href="https://www.iso.org/standard/71975.html">https://www.iso.org/standard/71975.html</a>
+   <dt id="biblio-cta-5001">[CTA-5001]
+   <dd><a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">CTA-5001-C</a>. Standard. URL: <a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">https://shop.cta.tech/products/web-application-video-ecosystem-content-specification</a>
+   <dt id="biblio-cta-861">[CTA-861]
+   <dd><a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">ANSI/CTA-861-H</a>. Standard. URL: <a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h</a>
+   <dt id="biblio-rfc2119">[RFC2119]
+   <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-scte-215-1-1">[SCTE-215-1-1]
    <dd><a href="https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf">ANSI/SCTE-215-1-1 2020</a>. Standard. URL: <a href="https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf">https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf</a>
    <dt id="biblio-t35">[T35]
