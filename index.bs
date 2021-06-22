@@ -4,7 +4,7 @@ Status: LS-COMMIT
 URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
 Editor: Paul Hearty, Samsung
-Abstract: This document specifies how to use HDR10+ metadata with [[!AV1]] including when supporting [[!CMAF]].
+Abstract: This document specifies how to use HDR10+ metadata, [[!2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
 Date: 2021-06-21
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
@@ -56,7 +56,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "id": "SCTE-215-1-1",
   "title": "ANSI/SCTE-215-1-1 2020",
   "status": "Standard",
-  "publisher": "CTA"
+  "publisher": "SCTE"
     },   
     
     
@@ -89,7 +89,23 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "id": "CMAF",
   "title": "Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.",
   "status": "Standard",
-  "publisher": "ITU"
+  "publisher": "ISO"
+    },
+    
+  "DASH": {
+  "href": "https://www.iso.org/home.html",
+  "id": "DASH",
+  "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH)",
+  "status": "Standard",
+  "publisher": "ISO"
+    },
+    
+  "DASH-IOP": {
+  "href": "https://dashif.org/guidelines/",
+  "id": "DASH-IOP",
+  "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.",
+  "status": "Standard",
+  "publisher": "ISO"
     }
         
 }
@@ -122,9 +138,9 @@ Introduction
 Scope
 -----
 
-This document specifies how to use HDR10+ metadata with [[!AV1]] including when supporting [[!CTA-5001]].
+This document specifies how to use HDR10+ metadata, [[!2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
 
-Various tools, services and devices support creation and use of HDR10+ dynamic metadata which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!T35]],support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
+Various tools, services and devices support creation and use of HDR10+ dynamic metadata, [[!2094-40]], which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!T35]],support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
 
 <p>HDR10+ is documented in several standards as listed below</p>
 
@@ -157,18 +173,16 @@ Definitions and Notation
 <p>All structures are packetized in OBUs. Each OBU has a header, which provides identifying information for the contained data (payload).</p>
 
 
-Use of HDR10+ with AV1 T.35 OBUs and different multiplexes:
-==========================================================
+Use of HDR10+ with AV1 T.35 OBUs:
+=================================
 
 HDR10+ OBU
 ----------
 
-In this specification, HDR10+ Metadata is defined as data with the semantics defined in [[!2094-40]], using the syntax defined in [[!CTA-861]], carried in a metadata_type_itut_t35 OBU. This is illustrated in Figure 2.
+In this specification, HDR10+ Metadata is defined as data with the semantics defined in [[!2094-40]], using the syntax defined in [[!CTA-861]], carried in a metadata_type_itut_t35 OBU. This is illustrated in Figure 1.
 
 <center><img src="./T35.png"></center>
 <center><b>Figure 1. </b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
-
-For each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved). HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0.
 
 HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.
 
@@ -178,14 +192,17 @@ Note: AV1 <a href="https://aomediacodec.github.io/av1-spec/#general-metadata-obu
 Constraints on OBU placement
 ----------------------------
 
-As defined in [[!AV1]] and shown in Figure 1 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.
+As defined in [[!AV1]] and shown in Figure 2 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs. For each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved). HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.
 
 <center><img src="./OBU_Frame_Structure.jpg"></center>
 <center><b>Figure 2.</b>&nbspOBU_Frame Structure:  Sample OBU frame consisting of a frame header OBU and a tile group OBU (Reference: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf#page=39">OBU</a>) The red denotes the HDR10+ Dynamic Metadata OBUs.</center>
 
+Additional Considerations:
+==========================
+
 MP4 Files (example)
 -------------------
-To be discussed
+To be discussed (such as any requirements on elementary stream data being cloned into containers, since HDR10+ is a video essence technology that is HDR10 there is no "shall" requirement for this. At most "may" be copied etc would be ok if that helps out player applications to indicate)
 
 MPEG-2 Transport
 ----------------
@@ -195,20 +212,23 @@ RTP
 ---
 To be discussed
 
+Film Grain Processing:
+---
+HDR10+ data is generally advised to be calculated on original content. When film grain synthesis signalling is included in the compressed video care should be taken in the display so that the reconstructed film grain is properly treated with respect to display dynamic range.
+
 
 CMAF Branding
 =============
 
 The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track format</a> addresses structural constraints on ISOBMFF files defined by CMAF.
 
-When protected, CMAF AV1 Tracks use the signaling defined in CMAF, which in turn relies on CENC, with the provisions specified in Common Encryption.
-
+Notes: (Q: does this abstract away HEVC enough?)
 * An HDR10+ HEVC CMAF Media Profile and the associated brand are defined in [[!CTA-5001]]
 * Constraints for HDR10+ HEVC elementary streams and CMAF tracks are defined in [[!SCTE-215-1-1]]
 
-Although the referenced documents refer to HEVC, the same information and constraints apply in AV1 with the same semantics and the syntax carried in OBU's, rather than SEIs.
+The "cdm4" compatible brand information applies to AV1.
 
-The current document contains the AV1 HDR10+ information.
+This document contains the AV1 HDR10+ information.
 
 Common Encryption (CENC)
 ------------------------
@@ -232,7 +252,7 @@ ISOBMFF files compliant to this specification should list both brands "av01" and
 
 ### HDR10+ Compatible Manifests
 
-Content providers <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.
+[[DASH]] Content following [[DASH-IOP]] <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.
 
 
 
