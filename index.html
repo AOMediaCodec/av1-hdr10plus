@@ -1876,7 +1876,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">HDR10+ AV1 Metadata Handling Specification</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Commit Snapshot, <time class="dt-updated" datetime="2021-06-21">21 June 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Commit Snapshot, <time class="dt-updated" datetime="2021-06-24">24 June 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1910,7 +1910,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This document specifies how to use HDR10+ metadata, <a data-link-type="biblio" href="#biblio-2094-40">[2094-40]</a>, with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> including when supporting <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a>.</p>
+   <p>This document specifies how to use HDR10+ metadata, <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> including when supporting <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a>.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
@@ -1927,7 +1927,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
      <a href="#use-of-hdr10-with-av1-t35-obus"><span class="secno">2</span> <span class="content">Use of HDR10+ with AV1 T.35 OBUs:</span></a>
      <ol class="toc">
       <li><a href="#hdr10-obu"><span class="secno">2.1</span> <span class="content">HDR10+ OBU</span></a>
-      <li><a href="#constraints-on-obu-placement"><span class="secno">2.2</span> <span class="content">Constraints on OBU placement</span></a>
+      <li><a href="#frame-structure"><span class="secno">2.2</span> <span class="content">Frame Structure</span></a>
      </ol>
     <li>
      <a href="#additional-considerations"><span class="secno">3</span> <span class="content">Additional Considerations:</span></a>
@@ -1935,20 +1935,20 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
       <li><a href="#mp4-files-example"><span class="secno">3.1</span> <span class="content">MP4 Files (example)</span></a>
       <li><a href="#mpeg-2-transport"><span class="secno">3.2</span> <span class="content">MPEG-2 Transport</span></a>
       <li><a href="#rtp"><span class="secno">3.3</span> <span class="content">RTP</span></a>
-      <li><a href="#film-grain-processing"><span class="secno">3.4</span> <span class="content">Film Grain Processing:</span></a>
      </ol>
+    <li><a href="#constraints-on-encryption"><span class="secno">4</span> <span class="content">Constraints on Encryption</span></a>
     <li>
-     <a href="#cmaf-branding"><span class="secno">4</span> <span class="content">CMAF Branding</span></a>
+     <a href="#isobmff-cmaf"><span class="secno">5</span> <span class="content">ISOBMFF/CMAF</span></a>
      <ol class="toc">
-      <li><a href="#common-encryption-cenc"><span class="secno">4.1</span> <span class="content">Common Encryption (CENC)</span></a>
       <li>
-       <a href="#cmaf-signalling"><span class="secno">4.2</span> <span class="content">CMAF Signalling</span></a>
+       <a href="#isobmff-cmaf-packaging"><span class="secno">5.1</span> <span class="content">ISOBMFF/CMAF Packaging</span></a>
        <ol class="toc">
-        <li><a href="#signalling-of-codecs"><span class="secno">4.2.1</span> <span class="content">Signalling of @codecs</span></a>
-        <li><a href="#hdr10-compatible-brand"><span class="secno">4.2.2</span> <span class="content">HDR10+ Compatible Brand</span></a>
-        <li><a href="#hdr10-compatible-manifests"><span class="secno">4.2.3</span> <span class="content">HDR10+ Compatible Manifests</span></a>
+        <li><a href="#signalling-of-codecs"><span class="secno">5.1.1</span> <span class="content">Signalling of @codecs</span></a>
+        <li><a href="#hdr10-compatible-brand"><span class="secno">5.1.2</span> <span class="content">HDR10+ Compatible Brand</span></a>
        </ol>
      </ol>
+    <li><a href="#hdr10-compatible-manifests"><span class="secno">6</span> <span class="content">HDR10+ Compatible Manifests</span></a>
+    <li><a href="#film-grain-processing"><span class="secno">7</span> <span class="content">Film Grain Processing:</span></a>
     <li><a href="#conformance"><span class="secno"></span> <span class="content"> Conformance</span></a>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
@@ -1961,12 +1961,12 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   <main>
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
    <h3 class="heading settled" data-level="1.1" id="scope"><span class="secno">1.1. </span><span class="content">Scope</span><a class="self-link" href="#scope"></a></h3>
-   <p>This document specifies how to use HDR10+ metadata, <a data-link-type="biblio" href="#biblio-2094-40">[2094-40]</a>, with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> including when supporting <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a>.</p>
-   <p>Various tools, services and devices support creation and use of HDR10+ dynamic metadata, <a data-link-type="biblio" href="#biblio-2094-40">[2094-40]</a>, which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, <a data-link-type="biblio" href="#biblio-t35">[T35]</a>,support which is defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a>. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.</p>
+   <p>This document specifies how to use HDR10+ metadata, <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a>.</p>
+   <p>Various tools, services and devices support creation and use of HDR10+ dynamic metadata, <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, <a data-link-type="biblio" href="#biblio-itu-t-t35">[ITU-T-T35]</a>, support which is defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a>. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.</p>
    <p>HDR10+ is documented in several standards as listed below</p>
    <ul>
     <li data-md>
-     <p>HDR10+ metadata parameters are specified in <a data-link-type="biblio" href="#biblio-2094-40">[2094-40]</a></p>
+     <p>HDR10+ metadata parameters are specified in <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a></p>
     <li data-md>
      <p>HDR10+ metadata syntax is defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a></p>
    </ul>
@@ -1976,7 +1976,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
     <li data-md>
      <p><b>CMAF</b>:  MPEG Common Media Application Format <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a></p>
     <li data-md>
-     <p><b>MDCV</b>:  Mastering Display Color Volume SMPTE ST 2086 <a data-link-type="biblio" href="#biblio-2086">[2086]</a></p>
+     <p><b>MDCV</b>:  Mastering Display Color Volume SMPTE ST 2086 <a data-link-type="biblio" href="#biblio-smpte-st-2086">[SMPTE-ST-2086]</a></p>
     <li data-md>
      <p><b>MaxCLL</b>: HDR10 Static Metadata item Maximum Content Light Level <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a></p>
     <li data-md>
@@ -1987,22 +1987,21 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
      <p><b>TU</b>:  Temporal Unit <a data-link-type="biblio" href="#biblio-av1">[AV1]</a></p>
    </ul>
    <h3 class="heading settled" data-level="1.3" id="definitions-and-notation"><span class="secno">1.3. </span><span class="content">Definitions and Notation</span><a class="self-link" href="#definitions-and-notation"></a></h3>
-   <p>Following definitions are taken from the AV1 specification:</p>
-   <p><b><a href="https://aomediacodec.github.io/av1-spec/#terms-and-definitions">Temporal unit</a></b></p>
-   <p>A Temporal unit consists of all Open Bitstream Units (OBUs) that are associated with a specific, distinct time instant. It consists of a temporal delimiter OBU, as well as the OBUs that follow, up to but not including the next temporal delimiter.</p>
-   <p><b><a href="https://aomediacodec.github.io/av1-spec/#terms-and-definitions">OBU</a></b></p>
-   <p>All structures are packetized in OBUs. Each OBU has a header, which provides identifying information for the contained data (payload).</p>
+   <p>note: find any missing definitions (section to be removed if none found)</p>
    <h2 class="heading settled" data-level="2" id="use-of-hdr10-with-av1-t35-obus"><span class="secno">2. </span><span class="content">Use of HDR10+ with AV1 T.35 OBUs:</span><a class="self-link" href="#use-of-hdr10-with-av1-t35-obus"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="hdr10-obu"><span class="secno">2.1. </span><span class="content">HDR10+ OBU</span><a class="self-link" href="#hdr10-obu"></a></h3>
-   <p>In this specification, HDR10+ Metadata is defined as data with the semantics defined in <a data-link-type="biblio" href="#biblio-2094-40">[2094-40]</a>, using the syntax defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a>, carried in a metadata_type_itut_t35 OBU. This is illustrated in Figure 1.</p>
+   <p>In this specification, HDR10+ Metadata is defined as data with the semantics defined in <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, using the syntax defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a>, as illustrated in Figure 1.</p>
    <center><img src="T35.png"></center>
    <center><b>Figure 1. </b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
-   <p>HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.</p>
    <p class="note" role="note"><span>Note:</span> AV1 <a href="https://aomediacodec.github.io/av1-spec/#general-metadata-obu-syntax">defines</a> the general metadata OBU syntax for HDR10 Static Metadata and ITU-T T.35 Metadata.</p>
-   <h3 class="heading settled" data-level="2.2" id="constraints-on-obu-placement"><span class="secno">2.2. </span><span class="content">Constraints on OBU placement</span><a class="self-link" href="#constraints-on-obu-placement"></a></h3>
-   <p>As defined in <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> and shown in Figure 2 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs. For each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved). HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.</p>
-   <center><img src="OBU_Frame_Structure.jpg"></center>
-   <center><b>Figure 2.</b> OBU_Frame Structure:  Sample OBU frame consisting of a frame header OBU and a tile group OBU (Reference: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf#page=39">OBU</a>) The red denotes the HDR10+ Dynamic Metadata OBUs.</center>
+   <h3 class="heading settled" data-level="2.2" id="frame-structure"><span class="secno">2.2. </span><span class="content">Frame Structure</span><a class="self-link" href="#frame-structure"></a></h3>
+   <p>As defined in <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> and shown in Figure 2 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs.</p>
+   <p>Consequently, for each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved).</p>
+   <p>HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.</p>
+   <p>(note this is alternate explanatory text from development team): A Temporal Unit (TU), consists of a temporal delimiter OBU and all OBUs following this and preceding the next temporal delimiter OBU. TUs always follow increasing display order. If scalability is not used, a TU includes exactly one shown frame, i.e. a frame with show_existing_frame equal to 1 or with show_frame equal to 1. If scalability is used, all shown frames from different scalable layers in a TU correspond to the same presentation time. A TU can also include frames with the show_frame flag equal to 0. Such frames are decoded but not immediately displayed. They are used to support frame reordering as described above. Alternatively, an overlay frame can be send, which encodes the difference between a previously decoded frame, called the alternative reference frame (ARF), and the source frame.</p>
+   <center><img src="obu_tu.png"></center>
+   <center><b>Figure 2.</b> Example of OBU_Frame Structure</center>
+   <p>HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.</p>
    <h2 class="heading settled" data-level="3" id="additional-considerations"><span class="secno">3. </span><span class="content">Additional Considerations:</span><a class="self-link" href="#additional-considerations"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="mp4-files-example"><span class="secno">3.1. </span><span class="content">MP4 Files (example)</span><a class="self-link" href="#mp4-files-example"></a></h3>
     To be discussed (such as any requirements on elementary stream data being cloned into containers, since HDR10+ is a video essence technology that is HDR10 there is no "shall" requirement for this. At most "may" be copied etc would be ok if that helps out player applications to indicate) 
@@ -2010,29 +2009,21 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
     To be discussed 
    <h3 class="heading settled" data-level="3.3" id="rtp"><span class="secno">3.3. </span><span class="content">RTP</span><a class="self-link" href="#rtp"></a></h3>
     To be discussed 
-   <h3 class="heading settled" data-level="3.4" id="film-grain-processing"><span class="secno">3.4. </span><span class="content">Film Grain Processing:</span><a class="self-link" href="#film-grain-processing"></a></h3>
-    HDR10+ data is generally advised to be calculated on original content. When film grain synthesis signalling is included in the compressed video care should be taken in the display so that the reconstructed film grain is properly treated with respect to display dynamic range. 
-   <h2 class="heading settled" data-level="4" id="cmaf-branding"><span class="secno">4. </span><span class="content">CMAF Branding</span><a class="self-link" href="#cmaf-branding"></a></h2>
-   <p>The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track format</a> addresses structural constraints on ISOBMFF files defined by CMAF.</p>
-   <p>Notes: (Q: does this abstract away HEVC enough?)</p>
-   <ul>
-    <li data-md>
-     <p>An HDR10+ HEVC CMAF Media Profile and the associated brand are defined in <a data-link-type="biblio" href="#biblio-cta-5001">[CTA-5001]</a></p>
-    <li data-md>
-     <p>Constraints for HDR10+ HEVC elementary streams and CMAF tracks are defined in <a data-link-type="biblio" href="#biblio-scte-215-1-1">[SCTE-215-1-1]</a></p>
-   </ul>
-   <p>The "cdm4" compatible brand information applies to AV1.</p>
-   <p>This document contains the AV1 HDR10+ information.</p>
-   <h3 class="heading settled" data-level="4.1" id="common-encryption-cenc"><span class="secno">4.1. </span><span class="content">Common Encryption (CENC)</span><a class="self-link" href="#common-encryption-cenc"></a></h3>
+   <h2 class="heading settled" data-level="4" id="constraints-on-encryption"><span class="secno">4. </span><span class="content">Constraints on Encryption</span><a class="self-link" href="#constraints-on-encryption"></a></h2>
    <p><a data-link-type="biblio" href="#biblio-av1-isobmff">[AV1-ISOBMFF]</a> indicates that Metadata OBUs may be protected. This specification requires that HDR10 and HDR10+ metadata OBUs be unprotected.</p>
-   <h3 class="heading settled" data-level="4.2" id="cmaf-signalling"><span class="secno">4.2. </span><span class="content">CMAF Signalling</span><a class="self-link" href="#cmaf-signalling"></a></h3>
+   <h2 class="heading settled" data-level="5" id="isobmff-cmaf"><span class="secno">5. </span><span class="content">ISOBMFF/CMAF</span><a class="self-link" href="#isobmff-cmaf"></a></h2>
+   <p>The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track format</a> addresses structural constraints on ISOBMFF files defined by CMAF.</p>
+   <p>In AV1, HDR10+ uses the compatible brand code "cdm4" identified in <a data-link-type="biblio" href="#biblio-cta-5001">[CTA-5001]</a>.</p>
+   <h3 class="heading settled" data-level="5.1" id="isobmff-cmaf-packaging"><span class="secno">5.1. </span><span class="content">ISOBMFF/CMAF Packaging</span><a class="self-link" href="#isobmff-cmaf-packaging"></a></h3>
    <p>This section defines how to package and encode HDR10+ Media Profile information in the CMAF recognized (Video) Media Profile HDR10 (i.e. the CMAF file brand `av01` is contained in the CMAF filetype box `ftyp`) as specified in <a data-link-type="biblio" href="#biblio-cta-5001">[CTA-5001]</a>, Annex B.</p>
-   <h4 class="heading settled" data-level="4.2.1" id="signalling-of-codecs"><span class="secno">4.2.1. </span><span class="content">Signalling of @codecs</span><a class="self-link" href="#signalling-of-codecs"></a></h4>
+   <h4 class="heading settled" data-level="5.1.1" id="signalling-of-codecs"><span class="secno">5.1.1. </span><span class="content">Signalling of @codecs</span><a class="self-link" href="#signalling-of-codecs"></a></h4>
    <p>The values of the codecs parameter in HDR10 streams containing HDR10+ information <b> shall </b> remain unchanged when HDR10+ is included.</p>
-   <h4 class="heading settled" data-level="4.2.2" id="hdr10-compatible-brand"><span class="secno">4.2.2. </span><span class="content">HDR10+ Compatible Brand</span><a class="self-link" href="#hdr10-compatible-brand"></a></h4>
+   <h4 class="heading settled" data-level="5.1.2" id="hdr10-compatible-brand"><span class="secno">5.1.2. </span><span class="content">HDR10+ Compatible Brand</span><a class="self-link" href="#hdr10-compatible-brand"></a></h4>
    <p>ISOBMFF files compliant to this specification should list both brands `av01` and `cdm4` in the list of compatible brands in the `ftyp` box.</p>
-   <h4 class="heading settled" data-level="4.2.3" id="hdr10-compatible-manifests"><span class="secno">4.2.3. </span><span class="content">HDR10+ Compatible Manifests</span><a class="self-link" href="#hdr10-compatible-manifests"></a></h4>
+   <h2 class="heading settled" data-level="6" id="hdr10-compatible-manifests"><span class="secno">6. </span><span class="content">HDR10+ Compatible Manifests</span><a class="self-link" href="#hdr10-compatible-manifests"></a></h2>
    <p><a data-link-type="biblio" href="#biblio-dash">[DASH]</a> Content following <a data-link-type="biblio" href="#biblio-dash-iop">[DASH-IOP]</a> <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.</p>
+   <h2 class="heading settled" data-level="7" id="film-grain-processing"><span class="secno">7. </span><span class="content">Film Grain Processing:</span><a class="self-link" href="#film-grain-processing"></a></h2>
+    (Text to be proposed by Apple) 
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
@@ -2183,10 +2174,6 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
-   <dt id="biblio-2086">[2086]
-   <dd><a href="https://ieeexplore.ieee.org/document/8353899">SMPTE ST 2086:2018</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/8353899">https://ieeexplore.ieee.org/document/8353899</a>
-   <dt id="biblio-2094-40">[2094-40]
-   <dd><a href="https://ieeexplore.ieee.org/document/9095450">SMPTE ST 2094-40:2020</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/9095450">https://ieeexplore.ieee.org/document/9095450</a>
    <dt id="biblio-av1">[AV1]
    <dd><a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">AV1 Bitstream &amp; Decoding Process Specification</a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">https://aomediacodec.github.io/av1-spec/av1-spec.pdf</a>
    <dt id="biblio-av1-isobmff">[AV1-ISOBMFF]
@@ -2197,17 +2184,19 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
    <dd><a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">CTA-5001-C</a>. Standard. URL: <a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">https://shop.cta.tech/products/web-application-video-ecosystem-content-specification</a>
    <dt id="biblio-cta-861">[CTA-861]
    <dd><a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">ANSI/CTA-861-H</a>. Standard. URL: <a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h</a>
+   <dt id="biblio-dash">[DASH]
+   <dd><a href="https://www.iso.org/home.html">Information technology — Dynamic adaptive streaming over HTTP (DASH)</a>. Standard. URL: <a href="https://www.iso.org/home.html">https://www.iso.org/home.html</a>
+   <dt id="biblio-itu-t-t35">[ITU-T-T35]
+   <dd><a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">ITU-T T.35</a>. Standard. URL: <a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">https://www.itu.int/rec/T-REC-T.35-200002-I/en</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
-   <dt id="biblio-scte-215-1-1">[SCTE-215-1-1]
-   <dd><a href="https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf">ANSI/SCTE-215-1-1 2020</a>. Standard. URL: <a href="https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf">https://www.scte.org/pdf-redirect/?url=https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-215-1-1-2020b-1616683883836.pdf</a>
-   <dt id="biblio-t35">[T35]
-   <dd><a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">ITU-T T.35</a>. Standard. URL: <a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">https://www.itu.int/rec/T-REC-T.35-200002-I/en</a>
+   <dt id="biblio-smpte-st-2086">[SMPTE-ST-2086]
+   <dd><a href="https://ieeexplore.ieee.org/document/8353899">SMPTE ST 2086:2018</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/8353899">https://ieeexplore.ieee.org/document/8353899</a>
+   <dt id="biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]
+   <dd><a href="https://ieeexplore.ieee.org/document/9095450">SMPTE ST 2094-40:2020</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/9095450">https://ieeexplore.ieee.org/document/9095450</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-dash">[DASH]
-   <dd><a href="https://www.iso.org/home.html">Information technology — Dynamic adaptive streaming over HTTP (DASH)</a>. Standard. URL: <a href="https://www.iso.org/home.html">https://www.iso.org/home.html</a>
    <dt id="biblio-dash-iop">[DASH-IOP]
    <dd><a href="https://dashif.org/guidelines/">Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.</a>. Standard. URL: <a href="https://dashif.org/guidelines/">https://dashif.org/guidelines/</a>
   </dl>
