@@ -5,7 +5,7 @@ URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
 Editor: Paul Hearty, Samsung
 Abstract: This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
-Date: 2021-07-19
+Date: 2021-08-30
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
@@ -84,9 +84,9 @@ Custom Warning Text: This specification is a draft of a potential new version of
     },
     
   "DASH": {
-  "href": "https://www.iso.org/home.html",
+  "href": "https://www.iso.org/standard/79329.html",
   "id": "DASH",
-  "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH)",
+  "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats",
   "status": "Standard",
   "publisher": "ISO"
     },
@@ -129,14 +129,9 @@ Introduction
 Scope
 -----
 
-This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with [[!AV1]].
+This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
 
 Various tools, services and devices support creation and use of HDR10+ dynamic metadata, [[!SMPTE-ST-2094-40]], which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!ITU-T-T35]], support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
-
-<p>HDR10+ is documented in several standards as listed below</p>
-
-* HDR10+ metadata parameters are specified in [[!SMPTE-ST-2094-40]]
-* HDR10+ metadata syntax is defined in [[!CTA-861]]
 
 
 Acronyms
@@ -219,7 +214,7 @@ A CMAF AV1 track that conforms to this specification (i.e. contains HDR10+ metad
 HDR10+ Compatible Manifests
 ===========================
 
-The values of the <b>codecs</b> parameter in HDR10 streams containing HDR10+ information <b> shall </b> remain unchanged when HDR10+ is included.
+The value of the <b>codecs</b> parameter for AV1 streams defined in [AV1-ISOBMFF] <b> shall </b> remain unchanged when HDR10+ is included.
 
 [[!DASH]] Content following [[DASH-IOP]] <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.
 
