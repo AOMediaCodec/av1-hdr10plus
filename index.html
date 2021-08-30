@@ -12,7 +12,7 @@
  *   - .toc for the Table of Contents (<ol class="toc">)
  *     + <span class="secno"> for the section numbers
  *   - #toc for the Table of Contents (<nav id="toc">)
- *   - ul.index for Indices (<a href="#ref">term</a><span>, in §N.M</span>)
+ *   - ul.index for Indices (<a href="#ref">term</a><span>, in § N.M</span>)
  *   - table.index for Index Tables (e.g. for properties or elements)
  *
  * Structural Markup
@@ -1487,7 +1487,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version bb6b91100, updated Mon Jul 12 16:52:37 2021 -0700" name="generator">
+  <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://AOMediaCodec.github.io/av1-hdr10plus" rel="canonical">
 <style>/* style-autolinks */
 
@@ -1876,7 +1876,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">HDR10+ AV1 Metadata Handling Specification</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Commit Snapshot, <time class="dt-updated" datetime="2021-07-19">19 July 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Commit Snapshot, <time class="dt-updated" datetime="2021-08-30">30 August 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1951,15 +1951,8 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   <main>
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
    <h3 class="heading settled" data-level="1.1" id="scope"><span class="secno">1.1. </span><span class="content">Scope</span><a class="self-link" href="#scope"></a></h3>
-   <p>This document specifies how to use HDR10+ metadata, <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a>.</p>
+   <p>This document specifies how to use HDR10+ metadata, <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, with <a data-link-type="biblio" href="#biblio-av1">[AV1]</a> including when supporting <a data-link-type="biblio" href="#biblio-cmaf">[CMAF]</a>.</p>
    <p>Various tools, services and devices support creation and use of HDR10+ dynamic metadata, <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a>, which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, <a data-link-type="biblio" href="#biblio-itu-t-t35">[ITU-T-T35]</a>, support which is defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a>. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.</p>
-   <p>HDR10+ is documented in several standards as listed below</p>
-   <ul>
-    <li data-md>
-     <p>HDR10+ metadata parameters are specified in <a data-link-type="biblio" href="#biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]</a></p>
-    <li data-md>
-     <p>HDR10+ metadata syntax is defined in <a data-link-type="biblio" href="#biblio-cta-861">[CTA-861]</a></p>
-   </ul>
    <h3 class="heading settled" data-level="1.2" id="acronyms"><span class="secno">1.2. </span><span class="content">Acronyms</span><a class="self-link" href="#acronyms"></a></h3>
    <p>For the purpose of this specification, the following acronyms apply:</p>
    <ul>
@@ -2002,7 +1995,7 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
    <p>The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track format</a> addresses structural constraints on ISOBMFF files defined by CMAF.</p>
    <p>A CMAF AV1 track that conforms to this specification (i.e. contains HDR10+ metadata OBUs) should use the compatible brand code "cdm4" identified in <a data-link-type="biblio" href="#biblio-cta-5001">[CTA-5001]</a> in the `ftyp` box, in addition to the CMAF file brand `av01`.</p>
    <h2 class="heading settled" data-level="6" id="hdr10-compatible-manifests"><span class="secno">6. </span><span class="content">HDR10+ Compatible Manifests</span><a class="self-link" href="#hdr10-compatible-manifests"></a></h2>
-   <p>The values of the <b>codecs</b> parameter in HDR10 streams containing HDR10+ information <b> shall </b> remain unchanged when HDR10+ is included.</p>
+   <p>The value of the <b>codecs</b> parameter for AV1 streams defined in [AV1-ISOBMFF] <b> shall </b> remain unchanged when HDR10+ is included.</p>
    <p><a data-link-type="biblio" href="#biblio-dash">[DASH]</a> Content following <a data-link-type="biblio" href="#biblio-dash-iop">[DASH-IOP]</a> <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.</p>
    <h2 class="heading settled" data-level="7" id="film-grain-processing"><span class="secno">7. </span><span class="content">Film Grain Processing:</span><a class="self-link" href="#film-grain-processing"></a></h2>
     It is possible that some AV1 coded bitstreams may contain both HDR10+ metadata and film grain synthesis information. It is recommended that decoders in such scenarios perform the film grain synthesis prior to any HDR10+ processing. 
@@ -2157,28 +2150,28 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-av1">[AV1]
-   <dd><a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">AV1 Bitstream &amp; Decoding Process Specification</a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">https://aomediacodec.github.io/av1-spec/av1-spec.pdf</a>
+   <dd><a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf"><cite>AV1 Bitstream &amp; Decoding Process Specification</cite></a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-spec/av1-spec.pdf">https://aomediacodec.github.io/av1-spec/av1-spec.pdf</a>
    <dt id="biblio-av1-isobmff">[AV1-ISOBMFF]
-   <dd><a href="https://aomediacodec.github.io/av1-isobmff/">AV1 Codec ISO Media File Format Binding</a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-isobmff/">https://aomediacodec.github.io/av1-isobmff/</a>
+   <dd><a href="https://aomediacodec.github.io/av1-isobmff/"><cite>AV1 Codec ISO Media File Format Binding</cite></a>. Standard. URL: <a href="https://aomediacodec.github.io/av1-isobmff/">https://aomediacodec.github.io/av1-isobmff/</a>
    <dt id="biblio-cmaf">[CMAF]
-   <dd><a href="https://www.iso.org/standard/71975.html">Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.</a>. Standard. URL: <a href="https://www.iso.org/standard/71975.html">https://www.iso.org/standard/71975.html</a>
+   <dd><a href="https://www.iso.org/standard/71975.html"><cite>Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.</cite></a>. Standard. URL: <a href="https://www.iso.org/standard/71975.html">https://www.iso.org/standard/71975.html</a>
    <dt id="biblio-cta-5001">[CTA-5001]
-   <dd><a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">CTA-5001-C</a>. Standard. URL: <a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">https://shop.cta.tech/products/web-application-video-ecosystem-content-specification</a>
+   <dd><a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification"><cite>CTA-5001-C</cite></a>. Standard. URL: <a href="https://shop.cta.tech/products/web-application-video-ecosystem-content-specification">https://shop.cta.tech/products/web-application-video-ecosystem-content-specification</a>
    <dt id="biblio-cta-861">[CTA-861]
-   <dd><a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">ANSI/CTA-861-H</a>. Standard. URL: <a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h</a>
+   <dd><a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h"><cite>ANSI/CTA-861-H</cite></a>. Standard. URL: <a href="https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h">https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h</a>
    <dt id="biblio-dash">[DASH]
-   <dd><a href="https://www.iso.org/home.html">Information technology — Dynamic adaptive streaming over HTTP (DASH)</a>. Standard. URL: <a href="https://www.iso.org/home.html">https://www.iso.org/home.html</a>
+   <dd><a href="https://www.iso.org/standard/79329.html"><cite>Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats</cite></a>. Standard. URL: <a href="https://www.iso.org/standard/79329.html">https://www.iso.org/standard/79329.html</a>
    <dt id="biblio-itu-t-t35">[ITU-T-T35]
-   <dd><a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">ITU-T T.35</a>. Standard. URL: <a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">https://www.itu.int/rec/T-REC-T.35-200002-I/en</a>
+   <dd><a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en"><cite>ITU-T T.35</cite></a>. Standard. URL: <a href="https://www.itu.int/rec/T-REC-T.35-200002-I/en">https://www.itu.int/rec/T-REC-T.35-200002-I/en</a>
    <dt id="biblio-rfc2119">[RFC2119]
-   <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
+   <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-smpte-st-2086">[SMPTE-ST-2086]
-   <dd><a href="https://ieeexplore.ieee.org/document/8353899">SMPTE ST 2086:2018</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/8353899">https://ieeexplore.ieee.org/document/8353899</a>
+   <dd><a href="https://ieeexplore.ieee.org/document/8353899"><cite>SMPTE ST 2086:2018</cite></a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/8353899">https://ieeexplore.ieee.org/document/8353899</a>
    <dt id="biblio-smpte-st-2094-40">[SMPTE-ST-2094-40]
-   <dd><a href="https://ieeexplore.ieee.org/document/9095450">SMPTE ST 2094-40:2020</a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/9095450">https://ieeexplore.ieee.org/document/9095450</a>
+   <dd><a href="https://ieeexplore.ieee.org/document/9095450"><cite>SMPTE ST 2094-40:2020</cite></a>. Standard. URL: <a href="https://ieeexplore.ieee.org/document/9095450">https://ieeexplore.ieee.org/document/9095450</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-dash-iop">[DASH-IOP]
-   <dd><a href="https://dashif.org/guidelines/">Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.</a>. Standard. URL: <a href="https://dashif.org/guidelines/">https://dashif.org/guidelines/</a>
+   <dd><a href="https://dashif.org/guidelines/"><cite>Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.</cite></a>. Standard. URL: <a href="https://dashif.org/guidelines/">https://dashif.org/guidelines/</a>
   </dl>
