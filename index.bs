@@ -138,7 +138,7 @@ Scope
 
 This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
 
-HDR10+ dynamic metadata is used with [[!BT-2100]] Perceptual Quantizer (PQ) System streams generally known as "HDR10". Various tools, services and devices support creation and use of HDR10+ dynamic metadata, [[!SMPTE-ST-2094-40]], which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!ITU-T-T35]], support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
+Various tools, services and devices support creation and use of HDR10+ dynamic metadata, [[!SMPTE-ST-2094-40]], which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!ITU-T-T35]], support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
 
 
 Acronyms
@@ -154,8 +154,14 @@ For the purpose of this specification, the following acronyms apply:
 * <b>TU</b>:  Temporal Unit [[!AV1]]
 
 
-Use of HDR10+ with AV1 T.35 OBUs:
-=================================
+Use of HDR10+ with AV1 T.35 OBUs in HDR10 streams:
+==================================================
+
+HDR10
+-----
+
+HDR10+ dynamic metadata is used with [[!BT-2100]] Perceptual Quantizer (PQ) System streams generally known as "HDR10". 
+
 
 HDR10+ OBU
 ----------
@@ -175,7 +181,7 @@ As defined in [[!AV1]] and shown in Figure 2 an AOM AV1 coded video sequence con
 
 Consequently, for each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved).
 
-HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer. Note that when an AV1 stream is encoded in multiple layers, metadata may apply to a specific layer in which case the OBU header for that Metadata OBU should use the extension header and have the same value as the OBU header of the frame with which it is associated.
+HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer.
 
 
 
@@ -185,10 +191,20 @@ HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered
 HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.
 
 
-Storage and Transport considerations:
-=====================================
+Additional Considerations:
+==========================
 
-For formats that use the AV1CodecConfigurationRecord (e.g. ISOBMFF and MPEG-2 TS), HDR10+ Metadata OBUs shall not be present in the configOBUs field of the record.
+MP4 Files (example)
+-------------------
+To be discussed (such as any requirements on elementary stream data being cloned into containers, since HDR10+ is a video essence technology that is HDR10 there is no "shall" requirement for this. At most "may" be copied etc would be ok if that helps out player applications to indicate)
+
+MPEG-2 Transport
+----------------
+To be discussed
+
+RTP
+---
+To be discussed
 
 
 Constraints on Encryption
@@ -221,7 +237,3 @@ Film Grain Processing:
 ======================
 It is possible that some AV1 coded bitstreams may contain both HDR10+ metadata and film grain synthesis information. It is recommended that decoders in such scenarios perform the film grain synthesis prior to any HDR10+ processing.
 
-
-Example Streams and Tools:
-==========================
-Information on this topic is found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/wiki">Wiki</a> for this project.
