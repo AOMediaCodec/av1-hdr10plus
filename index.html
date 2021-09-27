@@ -1928,7 +1928,13 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
       <li><a href="#hdr10-obu"><span class="secno">2.1</span> <span class="content">HDR10+ OBU</span></a>
       <li><a href="#placement-of-hdr10-obus"><span class="secno">2.2</span> <span class="content">Placement of HDR10+ OBUs</span></a>
      </ol>
-    <li><a href="#storage-and-transport-considerations"><span class="secno">3</span> <span class="content">Storage and Transport considerations:</span></a>
+    <li>
+     <a href="#additional-considerations"><span class="secno">3</span> <span class="content">Additional Considerations:</span></a>
+     <ol class="toc">
+      <li><a href="#mp4-files-example"><span class="secno">3.1</span> <span class="content">MP4 Files (example)</span></a>
+      <li><a href="#mpeg-2-transport"><span class="secno">3.2</span> <span class="content">MPEG-2 Transport</span></a>
+      <li><a href="#rtp"><span class="secno">3.3</span> <span class="content">RTP</span></a>
+     </ol>
     <li><a href="#constraints-on-encryption"><span class="secno">4</span> <span class="content">Constraints on Encryption</span></a>
     <li><a href="#isobmff-cmaf"><span class="secno">5</span> <span class="content">ISOBMFF/CMAF</span></a>
     <li><a href="#hdr10-compatible-manifests"><span class="secno">6</span> <span class="content">HDR10+ Compatible Manifests</span></a>
@@ -1976,8 +1982,13 @@ THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
    <center><img src="obu_tu.png"></center>
    <center><b>Figure 2.</b> Example of OBU_Frame Structure</center>
    <p>HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.</p>
-   <h2 class="heading settled" data-level="3" id="storage-and-transport-considerations"><span class="secno">3. </span><span class="content">Storage and Transport considerations:</span><a class="self-link" href="#storage-and-transport-considerations"></a></h2>
-   <p>For formats that use the AV1CodecConfigurationRecord (e.g. ISOBMFF and MPEG-2 TS), HDR10+ Metadata OBUs shall not be present in the configOBUs field of the record.</p>
+   <h2 class="heading settled" data-level="3" id="additional-considerations"><span class="secno">3. </span><span class="content">Additional Considerations:</span><a class="self-link" href="#additional-considerations"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="mp4-files-example"><span class="secno">3.1. </span><span class="content">MP4 Files (example)</span><a class="self-link" href="#mp4-files-example"></a></h3>
+    To be discussed (such as any requirements on elementary stream data being cloned into containers, since HDR10+ is a video essence technology that is HDR10 there is no "shall" requirement for this. At most "may" be copied etc would be ok if that helps out player applications to indicate) 
+   <h3 class="heading settled" data-level="3.2" id="mpeg-2-transport"><span class="secno">3.2. </span><span class="content">MPEG-2 Transport</span><a class="self-link" href="#mpeg-2-transport"></a></h3>
+    To be discussed 
+   <h3 class="heading settled" data-level="3.3" id="rtp"><span class="secno">3.3. </span><span class="content">RTP</span><a class="self-link" href="#rtp"></a></h3>
+    To be discussed 
    <h2 class="heading settled" data-level="4" id="constraints-on-encryption"><span class="secno">4. </span><span class="content">Constraints on Encryption</span><a class="self-link" href="#constraints-on-encryption"></a></h2>
    <p><a data-link-type="biblio" href="#biblio-av1-isobmff">[AV1-ISOBMFF]</a> indicates that Metadata OBUs may be protected. This specification requires that HDR10 and HDR10+ metadata OBUs be unprotected.</p>
    <h2 class="heading settled" data-level="5" id="isobmff-cmaf"><span class="secno">5. </span><span class="content">ISOBMFF/CMAF</span><a class="self-link" href="#isobmff-cmaf"></a></h2>
