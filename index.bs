@@ -178,20 +178,11 @@ HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered
 HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.
 
 
-Additional Considerations:
-==========================
+Storage and Transport considerations:
+=====================================
 
-MP4 Files (example)
--------------------
-To be discussed (such as any requirements on elementary stream data being cloned into containers, since HDR10+ is a video essence technology that is HDR10 there is no "shall" requirement for this. At most "may" be copied etc would be ok if that helps out player applications to indicate)
+For formats that use the AV1CodecConfigurationRecord (e.g. ISOBMFF and MPEG-2 TS), HDR10+ Metadata OBUs shall not be present in the configOBUs field of the record.
 
-MPEG-2 Transport
-----------------
-To be discussed
-
-RTP
----
-To be discussed
 
 
 Constraints on Encryption
@@ -224,4 +215,7 @@ Film Grain Processing:
 ======================
 It is possible that some AV1 coded bitstreams may contain both HDR10+ metadata and film grain synthesis information. It is recommended that decoders in such scenarios perform the film grain synthesis prior to any HDR10+ processing.
 
+Example Streams and Tools:
+==========================
+Information on this topic is found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/wiki">Wiki</a> for this project.
 
