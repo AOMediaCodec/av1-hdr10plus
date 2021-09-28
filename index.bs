@@ -214,7 +214,7 @@ A CMAF AV1 track that conforms to this specification (i.e. contains HDR10+ metad
 HDR10+ Compatible Manifests
 ===========================
 
-The value of the <b>codecs</b> parameter for AV1 streams defined in [AV1-ISOBMFF] <b> shall </b> remain unchanged when HDR10+ is included.
+The value of the <b>codecs</b> parameter for AV1 streams defined in [[!AV1-ISOBMFF]] <b> shall </b> remain unchanged when HDR10+ is included.
 
 [[!DASH]] Content following [[DASH-IOP]] <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.
 
