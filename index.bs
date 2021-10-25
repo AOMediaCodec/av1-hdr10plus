@@ -133,6 +133,7 @@ This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with 
 
 Various tools, services and devices support creation and use of HDR10+ dynamic metadata, [[!SMPTE-ST-2094-40]], which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!ITU-T-T35]], support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
 
+This is bla bla bla
 
 Acronyms
 --------
