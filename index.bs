@@ -160,7 +160,7 @@ Use of HDR10+ with AV1 T.35 OBUs in HDR10 streams:
 HDR10
 -----
 
-HDR10+ dynamic metadata is used with [[!BT-2100]] Perceptual Quantizer (PQ) System streams generally known as "HDR10". 
+HDR10+ dynamic metadata is used with [[!BT-2100]] Perceptual Quantizer (PQ) System streams generally known as "HDR10". HDR10 streams suitable for incorporating HDR10+ metadata as described in this specification shall use the following values for the AV1 color config: color_primaries = 9 (BT.2020), transfer_characteristics = 16 (ST-2084), matrix_coefficients = 9 (BT.2020) this configuration of stream is generally known as "HDR10".
 
 
 HDR10+ OBU
