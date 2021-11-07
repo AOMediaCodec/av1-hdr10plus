@@ -168,7 +168,7 @@ As defined in [[!AV1]] and shown in Figure 2 an AOM AV1 coded video sequence con
 
 Consequently, for each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved).
 
-HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer. Note that when an AV1 stream is encoded in multiple layers, metadata may apply to a specific layer in which case the OBU header for that Metadata OBU should use the extension header and have the same value as the OBU header of the frame with which it is associated.
+HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For layered streams, there is only one such OBU per TU per layer. Note that when an AV1 stream is encoded in multiple layers, metadata may apply to a specific layer. The details of this are out of scope of this version of the specification.
 
 
 
