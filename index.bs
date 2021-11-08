@@ -199,7 +199,7 @@ The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track fo
 
 A CMAF AV1 track that conforms to this specification (i.e. contains HDR10+ metadata OBUs) should use the compatible brand code "cdm4" identified in [[!CTA-5001]] in the `ftyp` box, in addition to the CMAF file brand `av01`.
 
-
+AV1 Metadata sample group entry `av1M` shall not be used. 
 
 
 HDR10+ Compatible Manifests
