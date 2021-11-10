@@ -49,8 +49,15 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "status": "Standard",
   "publisher": "CTA"
     },
-    
-  
+       
+  "BT-2100": {
+  "href": "https://www.itu.int/rec/R-REC-BT.2100",
+  "id": "BT-2100",
+  "title": "BT.2100",
+  "status": "Standard",
+  "publisher": "ITU"
+    },
+      
   "SMPTE-ST-2094-40": {
   "href": "https://ieeexplore.ieee.org/document/9095450",
   "id": "SMPTE-ST-2094-40",
@@ -149,6 +156,16 @@ For the purpose of this specification, the following acronyms apply:
 
 Use of HDR10+ with AV1 T.35 OBUs:
 =================================
+
+Color Configuration
+-------------------
+
+Streams suitable for incorporating HDR10+ metadata as described in this specification shall use the following values for the AV1 color config:
+* color_primaries = 9 (BT.2020)
+* transfer_characteristics = 16 ([[!ST-2084]] / [[!BT-2100]])
+* matrix_coefficients = 9 (BT.2020)
+
+VideoFullRangeFlag should be set to 0, subsampling_x and subsampling_y should be set to 0, mono_chrome should be 0. chroma_sample_position should be set to 2.
 
 HDR10+ OBU
 ----------
