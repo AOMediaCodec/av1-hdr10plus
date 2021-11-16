@@ -162,7 +162,7 @@ Color Configuration
 
 Streams suitable for incorporating HDR10+ metadata as described in this specification shall use the following values for the AV1 color config:
 * color_primaries = 9 (BT.2020)
-* transfer_characteristics = 16 ([[!ST-2084]] / [[!BT-2100]])
+* transfer_characteristics = 16 ([[!ST-2084]] / [[BT-2100]])
 * matrix_coefficients = 9 (BT.2020)
 
 VideoFullRangeFlag should be set to 0, subsampling_x and subsampling_y should be set to 0, mono_chrome should be 0. chroma_sample_position should be set to 2.
