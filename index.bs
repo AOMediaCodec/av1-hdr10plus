@@ -57,6 +57,14 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "status": "Standard",
   "publisher": "ITU"
     },
+   
+  "BT-2020": {
+  "href": "https://www.itu.int/rec/R-REC-BT.2020",
+  "id": "BT-2020",
+  "title": "BT.2020",
+  "status": "Standard",
+  "publisher": "ITU"
+    },
       
   "SMPTE-ST-2094-40": {
   "href": "https://ieeexplore.ieee.org/document/9095450",
@@ -70,6 +78,14 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "href": "https://ieeexplore.ieee.org/document/8353899",
   "id": "SMPTE-ST-2086",
   "title": "SMPTE ST 2086:2018",
+  "status": "Standard",
+  "publisher": "SMPTE"
+    },
+    
+   "SMPTE-ST-2084": {
+  "href": "https://ieeexplore.ieee.org/document/7291452",
+  "id": "SMPTE-ST-2084",
+  "title": "SMPTE ST 2084:2014",
   "status": "Standard",
   "publisher": "SMPTE"
     },
@@ -161,9 +177,9 @@ Color Configuration
 -------------------
 
 Streams suitable for incorporating HDR10+ metadata as described in this specification shall use the following values for the AV1 color config:
-* color_primaries = 9 (BT.2020)
-* transfer_characteristics = 16 ([[!ST-2084]] / [[BT-2100]])
-* matrix_coefficients = 9 (BT.2020)
+* color_primaries = 9 ([[BT-2020]])
+* transfer_characteristics = 16 ([[SMPTE-ST-2084]] / [[BT-2100]])
+* matrix_coefficients = 9 ([[BT-2020]])
 
 VideoFullRangeFlag should be set to 0, subsampling_x and subsampling_y should be set to 0, mono_chrome should be 0. chroma_sample_position should be set to 2.
 
