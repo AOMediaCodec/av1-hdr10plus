@@ -5,8 +5,10 @@ Title: HDR10+ AV1 Metadata Handling Specification
 URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
 Editor: Paul Hearty, Samsung
-Abstract: This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
-Date: 2021-08-30
+Editor: Bill Mandel, Samsung
+Editor: Cyril Concolato, Netflix
+Abstract: This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] streams, including when carried in [[!CMAF]].
+Date: 2021-12-03
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
@@ -127,111 +129,133 @@ Custom Warning Text: This specification is a draft of a potential new version of
 
 <!-- Terms defined in other specifications -->
 <pre class="anchors">
+url: #biblio-av1; spec: AV1; type: dfn;
+    text: AV1 coded video sequence
+    text: OBU
+    text: TU
+    text: Metadata OBU
+    text: tile group OBUs
+    text: Sequence Header
+    text: Frame Header
+    text: Temporal Delimiter
+    text: ITU-T T.35 Metadata
+
+url: #biblio-av1; spec: AV1; type: dfn;
+    text: color_config
+    text: color_primaries
+    text: transfer_characteristics
+    text: matrix_coefficients
+    text: videofullrangeflag
+    text: subsampling_x
+    text: subsampling_y
+    text: chroma_sample_position
+    text: mono_chrome
+    text: color_range
+    text: show_frame
+    text: show_existing_frame
+
+url: #biblio-av1-isobmff; spec: AV1-ISOBMFF; type: dfn;
+    text: av1codecconfigurationrecord
+    text: configobus
+    text: av1 metadata sample group
+    text: codecs
+    text: av01
+
+url: #biblio-dash; spec: DASH; type: dfn;
+    text: supplemental descriptor
+    text: @schemeuri
+    text: @value
+
+url: #biblio-cta-5001; spec: CTA-5001; type: dfn;
+    text: cdm4
+
+url: #biblio-cta-861; spec: CTA-861; type: dfn;
+    text: MaxCLL
+    text: MaxFALL
+
+url: #biblio-smpte-st-2086; spec: SMPTE-ST-2086; type: dfn;
+    text: MDCV
 </pre>
 
-Introduction
+Introduction {#introduction}
 ============
 
-Scope
------
+This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] streams, including when carried in [[!CMAF]].
 
-This document specifies how to use HDR10+ metadata, [[!SMPTE-ST-2094-40]], with [[!AV1]] including when supporting [[!CMAF]].
+Various tools, services and devices support creation and use of [=HDR10+ metadata=] which can be easily utilized directly in [[AV1]] systems. Carriage of [=HDR10+ metadata=] in [[AV1]] leverages [[!ITU-T-T35]] and [[!CTA-861]]. [=HDR10+ metadata=] is placed in [=metadata OBUs=] of type [=ITU-T T.35 Metadata=]. This document covers details of the placement of these [=OBUs=] in AV1 streams.
 
-Various tools, services and devices support creation and use of HDR10+ dynamic metadata, [[!SMPTE-ST-2094-40]], which can be easily utilized directly in AV1 systems.  Carriage of HDR10+ in AV1 leverages the existing ITU-T T.35, [[!ITU-T-T35]], support which is defined in [[!CTA-861]]. HDR10+ data is placed in AV1 metadata OBUs of metadata type equal to METADATA_TYPE_ITUT_T35. This document covers details of the OBU placement.
-
-
-Acronyms
---------
-
-For the purpose of this specification, the following acronyms apply:
-
-* <b>CMAF</b>:  MPEG Common Media Application Format [[!CMAF]]
-* <b>MDCV</b>:  Mastering Display Color Volume SMPTE ST 2086 [[!SMPTE-ST-2086]]
-* <b>MaxCLL</b>: HDR10 Static Metadata item Maximum Content Light Level [[CTA-861]]
-* <b>MaxFALL</b>: HDR10 Static Metadata item Maximum Frame Average Light Level [[CTA-861]]
-* <b>OBU</b>:  Open Bitstream Units [[!AV1]]
-* <b>TU</b>:  Temporal Unit [[!AV1]]
-
-
-Use of HDR10+ with AV1 T.35 OBUs:
+Use of HDR10+ in AV1 streams {#UsingHDR10plus}
 =================================
 
-Color Configuration
--------------------
-
-Streams suitable for incorporating HDR10+ metadata as described in this specification shall use the following values for the AV1 color config:
-* color_primaries = 9 ([[BT-2020]])
-* transfer_characteristics = 16 ([[SMPTE-ST-2084]] / [[BT-2100]])
-* matrix_coefficients = 9 ([[BT-2020]])
-
-VideoFullRangeFlag should be set to 0, subsampling_x and subsampling_y should be set to 0, mono_chrome should be 0. chroma_sample_position should be set to 2.
-
-HDR10+ OBU
+HDR10+ OBU {#hdr10plus-obus}
 ----------
 
-In this specification, HDR10+ Metadata is defined as data with the semantics defined in [[!SMPTE-ST-2094-40]], using the syntax defined in [[!CTA-861]], as illustrated in Figure 1.
+In this specification, <dfn>HDR10+ Metadata</dfn> is defined as data with the semantics defined in [[!SMPTE-ST-2094-40]], using the syntax defined in [[!CTA-861]]. <dfn>HDR10+ Metadata OBU</dfn> is defined as [=HDR10+ Metadata=] carried in an [=OBU=] of type [=ITU-T T.35 Metadata=] as defined in [[!AV1]] and illustrated in Figure 1. 
 
 <center><img src="T35.png"></center>
 <center><b>Figure 1. </b>METADATA_TYPE_ITUT_T35 OBU Structure</center>
 
-Note: AV1 <a href="https://aomediacodec.github.io/av1-spec/#general-metadata-obu-syntax">defines</a> the general metadata OBU syntax for HDR10 Static Metadata and ITU-T T.35 Metadata.
+NOTE: [[AV1]] defines the general Metadata OBU syntax for [=HDR10 Static Metadata=] and [=ITU-T T.35 Metadata=].
 
+Constraints {#constraints}
+-------------------
 
-Placement of HDR10+ OBUs
----------------
+The following sections define constraints that apply to AV1 streams when carrying [=HDR10+ Metadata=].
 
-As defined in [[!AV1]] and shown in Figure 2 an AOM AV1 coded video sequence consists of one or more TUs. A TU contains a series of OBUs starting from a temporal delimiter, optional sequence headers, optional metadata OBUs, a sequence of one or more frame headers, each followed by zero or more tile group OBUs as well as optional padding OBUs.
+### Color Configuration ### {#color-configuration} 
 
-Consequently, for each frame with show_frame=1 or show_existing_frame=1, there shall be one and only one HDR10+ metadata OBU preceding the frame header for this frame and located after the last OBU of the previous frame (if any) or after the Sequence Header (if any) or after the start of the temporal unit (e.g. after the temporal delimiter, for storage formats where temporal delimiters are preserved).
+Streams suitable for incorporating [=HDR10+ metadata=] as described in this specification shall use the following values for the AV1 [=color_config=]:
+* [=color_primaries=] = 9 ([[BT-2020]])
+* [=transfer_characteristics=] = 16 ([[SMPTE-ST-2084]] / [[BT-2100]])
+* [=matrix_coefficients=] = 9 ([[BT-2020]])
 
-HDR10+ Dynamic Metadata OBUs are not provided when show_frame=0. For non-layered streams, there is only one HDR10+ Dynamic Metadata OBU per TU.  For AV1 streams encoded with multiple layers, HDR10+ Dynamic Metadata may apply to one or more layers but the details are out of scope of this version of the specification.
+Additionally, the following recommendations apply:
+* [=VideoFullRangeFlag=] should be set to 0
+* [=subsampling_x=] and [=subsampling_y=] should be set to 0
+* [=mono_chrome=] should be 0
+* [=chroma_sample_position=] should be set to 2
 
+### Placement of OBUs ### {#placement} 
 
+As defined in [[!AV1]] and shown in Figure 2, an [=AV1 coded video sequence=] consists of one or more [=TUs=]. A [=TU=] contains a series of [=OBUs=] starting from a [=Temporal Delimiter=], optional [=sequence headers=], optional [=metadata OBUs=], a sequence of one or more [=frame headers=], each followed by zero or more [=tile group OBUs=] as well as optional padding [=OBUs=].
+
+Consequently, for each frame with [=show_frame=]=1 or [=show_existing_frame=]=1, there shall be one and only one [=HDR10+ metadata OBU=] preceding the [=Frame Header=] for this frame and located after the last [=OBU=] of the previous frame (if any) or after the [=Sequence Header=] (if any) or after the start of the [=TU=] (e.g. after the [=Temporal Delimiter=], for storage formats where [=Temporal Delimiters=] are preserved).
+
+[=HDR10+ Metadata OBUs=] are not provided when [=show_frame=]=0. For non-layered streams, there is only one [=HDR10+ Metadata OBU=] per [=TU=]. For AV1 streams encoded with multiple layers, [=HDR10+ Metadata=] may apply to one or more layers but the details are out of scope of this version of the specification.
 
 <center><img src="obu_tu.png"></center>
 <center><b>Figure 2.</b>&nbspExample of OBU_Frame Structure</center>
 
-HDR10 Static Metadata (<a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-mastering-display-color-volume-syntax">MDCV</a>, <a   href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxCLL</a> and <a href="https://aomediacodec.github.io/av1-spec/#metadata-high-dynamic-range-content-light-level-syntax">MaxFALL</a>)<b> may </b>be present.
+<dfn>HDR10 Static Metadata</dfn> (defined as [=MDCV=], [=MaxCLL=] and [=MaxFALL=]) may be present.
 
+### Provision for Film Grain Processing ### {#film-grain}
 
-Storage and Transport considerations:
+It is possible that some [[AV1]] coded bitstreams may contain both [=HDR10+ Metadata=] and film grain synthesis information. It is recommended that decoders in such scenarios perform the film grain synthesis prior to any [=HDR10+ Metadata=] processing.
+
+Storage and Transport considerations {#transport}
 =====================================
 
-For formats that use the AV1CodecConfigurationRecord (e.g. ISOBMFF and MPEG-2 TS), HDR10+ Metadata OBUs shall not be present in the configOBUs field of the record.
+Constraints on AV1CodecConfigurationRecord {#codecconfigurationrecord}
+--------------
 
+For formats that use the [=AV1CodecConfigurationRecord=] when storing AV1 streams (e.g. ISOBMFF and MPEG-2 TS), [=HDR10+ Metadata OBUs=] shall not be present in the [=configOBUs=] field of the [=AV1CodecConfigurationRecord=].
 
+ISOBMFF Constraints {#isobmff-constraints}
+--------------
 
-Constraints on Encryption
-=========================
+[=AV1 Metadata sample group=] defined in [[!AV1-ISOBMFF]] shall not be used. 
 
-[[!AV1-ISOBMFF]] indicates that Metadata OBUs may be protected. This specification requires that HDR10 and HDR10+ metadata OBUs be unprotected.
+[[!AV1-ISOBMFF]] indicates that [=Metadata OBUs=] may be protected. This specification requires that [=HDR10 Static Metadata=] and [=HDR10+ Metadata OBUs=] be unprotected.
 
+An ISOBMFF file or CMAF AV1 track as defined in [[!AV1-ISOBMFF]] that also conforms to this specification (i.e. that contains [=HDR10+ metadata OBUs=] and complies to the constraints from this specification) should use the brand <code>[=cdm4=]</code> defined in [[!CTA-5001]] in addition to the brand <code>[=av01=]</code>. If the brand <code>[=cdm4=]</code> is used in conjonction with AV1 streams, the constraints defined in this specification shall be respected.
 
+HTTP Streaming Constraints {#httpstreaming-constraints}
+--------------
 
-ISOBMFF/CMAF
-============
+The value of the [=codecs=] parameter for AV1 streams that is used when using HTTP streaming technologies shall remain unchanged when [=HDR10+ Metadata OBUs=] are included in the AV1 stream.
 
-The <a href="https://aomediacodec.github.io/av1-isobmff/#cmaf">CMAF AV1 track format</a> addresses structural constraints on ISOBMFF files defined by CMAF.
+Additionally, [[!DASH]] content following [[DASH-IOP]] should include a [=Supplemental Descriptor=] with a [=@schemeUri=] set to <code>"http://dashif.org/metadata/hdr"</code> and a [=@value=] set to <code>"SMPTE2094-40"</code> in manifest files to aid players to identify tracks containing [=HDR10+ Metadata OBUs=].
 
-A CMAF AV1 track that conforms to this specification (i.e. contains HDR10+ metadata OBUs) should use the compatible brand code "cdm4" identified in [[!CTA-5001]] in the `ftyp` box, in addition to the CMAF file brand `av01`.
-
-AV1 Metadata sample group entry `av1M` shall not be used. 
-
-
-HDR10+ Compatible Manifests
-===========================
-
-The value of the <b>codecs</b> parameter for AV1 streams defined in [[!AV1-ISOBMFF]] <b> shall </b> remain unchanged when HDR10+ is included.
-
-[[!DASH]] Content following [[DASH-IOP]] <b>should</b> include a Supplemental Descriptor with a @schemeUri set to "http://dashif.org/metadata/hdr" and a @value set to "SMPTE2094-40" in Manifest files to aid players to identify tracks containing HDR10+.
-
-
-
-Film Grain Processing:
-======================
-It is possible that some AV1 coded bitstreams may contain both HDR10+ metadata and film grain synthesis information. It is recommended that decoders in such scenarios perform the film grain synthesis prior to any HDR10+ processing.
-
-Example Streams and Tools:
+Example Streams and Tools {#tools}
 ==========================
 Information on this topic is found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/wiki">Wiki</a> for this project.
-
