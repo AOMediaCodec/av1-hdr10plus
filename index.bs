@@ -111,7 +111,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "DASH": {
   "href": "https://www.iso.org/standard/79329.html",
   "id": "DASH",
-  "title": "Information technology —  adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats",
+  "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats",
   "status": "Standard",
   "publisher": "ISO"
     },
@@ -119,7 +119,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "DASH-IOP": {
   "href": "https://dashif.org/guidelines/",
   "id": "DASH-IOP",
-  "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR  Metadata and other Improvements.",
+  "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.",
   "status": "Standard",
   "publisher": "ISO"
     }
@@ -228,7 +228,7 @@ Consequently, for each frame with [=show_frame=]=1 or [=show_existing_frame=]=1,
 
 <dfn>HDR10 Static Metadata</dfn> (defined as [=MDCV=], [=MaxCLL=] and [=MaxFALL=]) may be present.
 
-### Film Grain Processing ### {#film-grain}
+### Provision for Film Grain Processing ### {#film-grain}
 
 It is possible that some [[AV1]] coded bitstreams may contain both [=HDR10+ Metadata=] and film grain synthesis information. It is recommended that decoders in such scenarios perform the film grain synthesis prior to any [=HDR10+ Metadata=] processing.
 
