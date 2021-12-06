@@ -200,7 +200,7 @@ NOTE: [[AV1]] defines the general Metadata OBU syntax for [=HDR10 Static Metadat
 Constraints {#constraints}
 -------------------
 
-The following sections defines constraints that apply to AV1 streams when carrying [=HDR10+ Metadata=].
+The following sections define constraints that apply to AV1 streams when carrying [=HDR10+ Metadata=].
 
 ### Color Configuration ### {#color-configuration} 
 
