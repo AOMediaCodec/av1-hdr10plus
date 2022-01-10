@@ -1,6 +1,6 @@
 <pre class='metadata'>
 Group: AOM
-Status: WGD
+Status: WGA
 Title: HDR10+ AV1 Metadata Handling Specification
 URL: https://AOMediaCodec.github.io/av1-hdr10plus
 Shortname: av1-hdr10plus
@@ -8,7 +8,7 @@ Editor: Paul Hearty, Samsung
 Editor: Bill Mandel, Samsung
 Editor: Cyril Concolato, Netflix
 Abstract: This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] streams, including when carried in [[!CMAF]].
-Date: 2021-12-03
+Date: 2021-12-08
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
