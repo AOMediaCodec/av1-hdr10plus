@@ -258,4 +258,6 @@ Additionally, <assert>[[!DASH]] content following [[DASH-IOP]] should include a 
 
 Example Streams and Tools {#tools}
 ==========================
-Information on this topic is found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/wiki">Wiki</a> for this project.
+Sample streams can be found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/conformance">conformance</a> directory. This directory contains both valid and invalid files that can be used to verify the implementation of this specification.
+
+Validation of new files can be done using the <a href="https://github.com/gpac/ComplianceWarden/">Compliance Warden</a> tool, which is also availiable as an <a href="https://gpac.github.io/ComplianceWarden-wasm/av1hdr10plus.html">online tool</a>.
