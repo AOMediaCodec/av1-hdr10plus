@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "conformance-tools"
+version = "0.1.0"
+description = ""
+authors = ["Dimitri Podborski"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+generate-report = "conformance_tools.generate_report:main"
+add-files = "conformance_tools.add_files:main"
