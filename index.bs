@@ -226,7 +226,7 @@ Consequently, for each frame with [=show_frame=]=1 or [=show_existing_frame=]=1,
 <center><img src="obu_tu.png"></center>
 <center><b>Figure 2.</b>&nbspExample of OBU_Frame Structure</center>
 
-<dfn>HDR10 Static Metadata</dfn> (defined as [=MDCV=], [=MaxCLL=] and [=MaxFALL=]) may be present.
+<dfn>HDR10 Static Metadata</dfn> (defined as [=MDCV=], [=MaxCLL=] and [=MaxFALL=]) [=MDCV=] shall be present while [=MaxCLL=] and/or [=MaxFALL=] may be present.
 
 ### Provision for Film Grain Processing ### {#film-grain}
 
