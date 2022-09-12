@@ -14,9 +14,6 @@ Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
 Markup Shorthands: css on
-Warning: Custom
-Custom Warning Title: Warning
-Custom Warning Text: This specification is a draft of a potential new version of this specification and should not be referenced other than as a working draft.
 </pre>
 
 <pre class='biblio'>
