@@ -1,0 +1,42 @@
+{
+  "contributor": "Netflix",
+  "description": "",
+  "md5": "56f9223389752b3982917c3acf056c76",
+  "version": 1,
+  "associated_files": [],
+  "notes": "",
+  "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "path": "./sparks_frame1_invalid_color_primaries.obu",
+  "compliance_warden": {
+    "cw_version": "v31-exercized_rules-rev8-g784a919",
+    "input_file": "",
+    "specification": "av1hdr10plus",
+    "spec_name": "HDR10+ AV1 Metadata Handling Specification, 8 December 2021\nhttps://aomediacodec.github.io/av1-hdr10plus/",
+    "dependencies": [
+      "isobmff"
+    ],
+    "validation": [
+      {
+        "specification": "av1hdr10plus",
+        "successful_checks": [
+          0,
+          1,
+          3
+        ],
+        "errors": [],
+        "warnings": [
+          {
+            "rule": "2",
+            "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
+            "description": "color_primaries shall be set as 9 ([BT-2020]), found 1"
+          },
+          {
+            "rule": "2",
+            "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
+            "description": "chroma_sample_position should be set as 2, found 0"
+          }
+        ]
+      }
+    ]
+  }
+}
