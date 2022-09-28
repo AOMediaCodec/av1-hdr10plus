@@ -17,7 +17,6 @@ FILE_ENTRY = {
     'md5': '',
     'version': 1,
     'associated_files': [],
-    'validation': [],  # this will be taken from Compliance Warden tool cw.exe
     'notes': '',
     'license': ''
 }
@@ -26,63 +25,10 @@ FILE_ENTRY = {
 INCLUDELIST = ['.bin', '.mp4', '.obu']
 
 
-def run_compliance_warden(cwexe_path, input_file, hack=False):
+def run_compliance_warden(cwexe_path, input_file):
     """run cw.exe"""
-    # remove this after ComplianceWsrden added the feature
-    json_string = r"""
-    {
-    "validation": [
-            {
-            "spec": "av1hdr10plus",
-            "successful_checks": [],
-            "errors": [],
-            "warnings": [
-                {
-                "rule": "2",
-                "rule_id": "assert-35001c72",
-                "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
-                "description": "chroma_sample_position should be set as 2, found 0"
-                },
-                {
-                "rule": "2",
-                "rule_id": "assert-bb632b17",
-                "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
-                "description": "chroma_sample_position should be set as 2, found 0"
-                },
-                {
-                "rule": "2",
-                "rule_id": "assert-7d098136",
-                "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
-                "description": "chroma_sample_position should be set as 2, found 0"
-                },
-                {
-                "rule": "2",
-                "rule_id": "assert-aaf13658",
-                "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
-                "description": "chroma_sample_position should be set as 2, found 0"
-                },
-                {
-                "rule": "2",
-                "rule_id": "assert-5230c330",
-                "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
-                "description": "chroma_sample_position should be set as 2, found 0"
-                }
-            ]
-            },
-            {
-            "spec": "isobmff",
-            "successful_checks": [],
-            "errors": [],
-            "warnings": []
-            }
-        ]
-    }
-    """
-    if hack:
-        return json.loads(json_string)
-    res = execute_cmd(f'{cwexe_path} av1hdr10plus {input_file}')
-    # fix it when cw.exe is able to return a json
-    return {'validation': res.stdout.decode()}
+    res = execute_cmd(f'{cwexe_path} av1hdr10plus {input_file} json')
+    return json.loads(res.stdout.decode())
 
 
 def process_files(args, output_root, contributor, license_str):
@@ -130,17 +76,17 @@ def process_files(args, output_root, contributor, license_str):
                 if len(new_description) > 0:
                     description = new_description
 
-            cw_out = run_compliance_warden(
-                args.complianceWarden, input_path, args.hack)
+            cw_out = run_compliance_warden(args.complianceWarden, input_path)
             if file_meta is None:
                 file_meta = copy.deepcopy(FILE_ENTRY)
             file_meta['contributor'] = contributor.strip()
+            file_meta['path'] = os.path.join('./', conf_file)
             file_meta['md5'] = md5
             file_meta['description'] = description
             file_meta['notes'] = ''
             file_meta['version'] = version
             file_meta['license'] = license_str
-            file_meta['validation'] = cw_out['validation']
+            file_meta['compliance_warden'] = cw_out
             dump_to_json(json_path, file_meta)
             cnt += 1
     print(f'Processed {cnt} files.')
@@ -156,7 +102,6 @@ def main():
                         help='Path to a .txt file with a license')
     parser.add_argument('-e', '--complianceWarden',
                         help='Path to Compliance Warden executable cw.exe', required=True)
-    parser.add_argument('--hack', action='store_true')
     args = parser.parse_args()
 
     license_str = ''

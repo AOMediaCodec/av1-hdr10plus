@@ -19,18 +19,26 @@ def collect_file_asserts(assert_ids, spec):
 
     # conformance file asserts
     for root, _subdirs, files in os.walk('conformance_files'):
-        for conf_file in files:
-            _input_filename, input_extension = os.path.splitext(conf_file)
+        for conformance_file in files:
+            _input_filename, input_extension = os.path.splitext(conformance_file)
             if input_extension not in ['.json']:
                 continue
-            input_path = os.path.join(root, conf_file)
+            input_path = os.path.join(root, conformance_file)
 
             json = read_json(input_path)
-            for spec_name in json['validation']:
-                if spec_name['spec'] != spec:
+
+            cw_report = json['compliance_warden']
+            if not cw_report:
+                continue
+
+            print('FIXME: ComplianceWarden needs to support bikeshed asserts. Continue after the feature is added.')
+            sys.exit(-1)
+
+            for spec_validation in cw_report['validation']:
+                if spec_validation['specification'] != spec:
                     continue
                 # ok
-                for check in spec_name['successful_checks']:
+                for check in spec_validation['successful_checks']:
                     if check['rule_id'] not in all_asserts:
                         print(
                             f"Error: unknown assert {check['rule_id']} in {input_path}")
@@ -38,7 +46,7 @@ def collect_file_asserts(assert_ids, spec):
                     all_asserts[check['rule_id']
                                 ]['ok'].append(input_path)
                 # warn
-                for check in spec_name['warnings']:
+                for check in spec_validation['warnings']:
                     if check['rule_id'] not in all_asserts:
                         print(
                             f"Error: unknown assert {check['rule_id']} in {input_path}")
@@ -46,7 +54,7 @@ def collect_file_asserts(assert_ids, spec):
                     all_asserts[check['rule_id']
                                 ]['warn'].append(input_path)
                 # err
-                for check in spec_name['errors']:
+                for check in spec_validation['errors']:
                     if check['rule_id'] not in all_asserts:
                         print(
                             f"Error: unknown assert {check['rule_id']} in {input_path}")
