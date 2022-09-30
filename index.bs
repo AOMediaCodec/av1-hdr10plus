@@ -205,9 +205,9 @@ The following sections define constraints that apply to AV1 streams when carryin
 ### Color Configuration ### {#color-configuration} 
 
 Streams suitable for incorporating [=HDR10+ metadata=] as described in this specification shall use the following values for the AV1 [=color_config=]:
-* <assert>[=color_primaries=] = 9 ([[BT-2020]])</assert>
-* <assert>[=transfer_characteristics=] = 16 ([[SMPTE-ST-2084]] / [[BT-2100]])</assert>
-* <assert>[=matrix_coefficients=] = 9 ([[BT-2020]])</assert>
+* <assert>[=color_primaries=] = 9</assert> ([[BT-2020]])
+* <assert>[=transfer_characteristics=] = 16</assert> ([[SMPTE-ST-2084]] / [[BT-2100]])
+* <assert>[=matrix_coefficients=] = 9</assert> ([[BT-2020]])
 
 Additionally, the following recommendations apply:
 * <assert>[=VideoFullRangeFlag=] should be set to 0</assert>
