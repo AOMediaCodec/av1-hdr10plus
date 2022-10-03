@@ -8,7 +8,7 @@
   "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
   "path": "./sparks_frame1_invalid_provider_code.obu",
   "compliance_warden": {
-    "cw_version": "v31-exercized_rules-rev8-g784a919",
+    "cw_version": "v31-exercized_rules-rev9-g7ff147f",
     "input_file": "",
     "specification": "av1hdr10plus",
     "spec_name": "HDR10+ AV1 Metadata Handling Specification, 8 December 2021\nhttps://aomediacodec.github.io/av1-hdr10plus/",
@@ -19,7 +19,10 @@
       {
         "specification": "av1hdr10plus",
         "successful_checks": [
-          0
+          {
+            "rule": "0",
+            "details": "Section 2.1\nAn AV1 stream shall contain at least one OBU"
+          }
         ],
         "errors": [],
         "warnings": [

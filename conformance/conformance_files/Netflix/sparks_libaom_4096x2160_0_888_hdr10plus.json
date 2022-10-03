@@ -8,7 +8,7 @@
   "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
   "path": "./sparks_libaom_4096x2160_0_888_hdr10plus.mp4",
   "compliance_warden": {
-    "cw_version": "v31-exercized_rules-rev8-g784a919",
+    "cw_version": "v31-exercized_rules-rev9-g7ff147f",
     "input_file": "sparks_libaom_4096x2160_0_888_hdr10plus.mp4",
     "specification": "av1hdr10plus",
     "spec_name": "HDR10+ AV1 Metadata Handling Specification, 8 December 2021\nhttps://aomediacodec.github.io/av1-hdr10plus/",
@@ -19,9 +19,18 @@
       {
         "specification": "av1hdr10plus",
         "successful_checks": [
-          0,
-          1,
-          7
+          {
+            "rule": "0",
+            "details": "Section 2.1\nAn AV1 stream shall contain at least one OBU"
+          },
+          {
+            "rule": "1",
+            "details": "Section 2.1\nEach HDR10+ OBU includes an ITU-T T.35 identifier with:\n - itu_t_t35_country_code set as 0xB5\n - itu_t_t35_terminal_provider_code set as 0x003C\n - itu_t_t35_terminal_provider_oriented_code set as 0x0001"
+          },
+          {
+            "rule": "7",
+            "details": "Section 3.3\nAn ISOBMFF file or CMAF AV1 track as defined in [AV1-ISOBMFF] that also conforms\nto this specification should use the brand cdm4\ndefined in [CTA-5001] in addition to the brand av01."
+          }
         ],
         "errors": [],
         "warnings": [
