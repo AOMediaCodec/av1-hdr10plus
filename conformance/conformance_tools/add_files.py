@@ -55,7 +55,7 @@ def process_files(args, output_root, contributor, license_str):
 
             file_meta = None
             version = 1
-            if os.path.exists(json_path):
+            if os.path.exists(json_path) and not args.force:
                 existing_meta = read_json(json_path)
                 if existing_meta['md5'] == md5:
                     print('skip duplicate file.')
@@ -102,6 +102,7 @@ def main():
                         help='Path to a .txt file with a license')
     parser.add_argument('-e', '--complianceWarden',
                         help='Path to Compliance Warden executable cw.exe', required=True)
+    parser.add_argument('--force', help='Force running the script', action='store_true')
     args = parser.parse_args()
 
     license_str = ''
