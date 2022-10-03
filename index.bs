@@ -55,7 +55,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "BT-2100": {
   "href": "https://www.itu.int/rec/R-REC-BT.2100",
   "id": "BT-2100",
-  "title": "BT.2100",
+  "title": "Recommendation ITU-R BT.2100-2 (07/2018), Image parameter values for high dynamic range television for use in production and international programme exchange",
   "status": "Standard",
   "publisher": "ITU"
     },
@@ -63,7 +63,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "BT-2020": {
   "href": "https://www.itu.int/rec/R-REC-BT.2020",
   "id": "BT-2020",
-  "title": "BT.2020",
+  "title": "Recommendation ITU-R BT.2020-2 (10/2015), Parameter values for ultra-high definition television systems for production and international programme exchange",
   "status": "Standard",
   "publisher": "ITU"
     },
@@ -92,10 +92,10 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "publisher": "SMPTE"
     },
     
-  "ITU-T-T35": {
-  "href": "https://www.itu.int/rec/T-REC-T.35-200002-I/en",
-  "id": "ITU-T-T35",
-  "title": "ITU-T T.35",
+  "T35": {
+  "href": "https://www.itu.int/rec/T-REC-T.35-200002-I",
+  "id": "T35",
+  "title": "Recommendation ITU-T T.35 (02/2000), Procedure for the allocation of ITU-T defined codes for non standard facilities",
   "status": "Standard",
   "publisher": "ITU"
     },
@@ -182,7 +182,7 @@ Introduction {#introduction}
 
 This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] streams, including when carried in [[!CMAF]].
 
-Various tools, services and devices support creation and use of [=HDR10+ metadata=] which can be easily utilized directly in [[AV1]] systems. Carriage of [=HDR10+ metadata=] in [[AV1]] leverages [[!ITU-T-T35]] and [[!CTA-861]]. [=HDR10+ metadata=] is placed in [=metadata OBUs=] of type [=ITU-T T.35 Metadata=]. This document covers details of the placement of these [=OBUs=] in AV1 streams.
+Various tools, services and devices support creation and use of [=HDR10+ metadata=] which can be easily utilized directly in [[AV1]] systems. Carriage of [=HDR10+ metadata=] in [[AV1]] leverages [[!T35]] and [[!CTA-861]]. [=HDR10+ metadata=] is placed in [=metadata OBUs=] of type [=ITU-T T.35 Metadata=]. This document covers details of the placement of these [=OBUs=] in AV1 streams.
 
 Use of HDR10+ in AV1 streams {#UsingHDR10plus}
 =================================
