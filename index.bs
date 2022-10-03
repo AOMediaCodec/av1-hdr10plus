@@ -39,7 +39,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "CTA-861": {
   "href":  "https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h",
   "id": "CTA-861",
-  "title": "ANSI/CTA-861-H",
+  "title": "ANSI/CTA-861-H, A DTV Profile for Uncompressed High Speed Digital Interfaces",
   "status": "Standard",
   "publisher": "CTA"
     },
@@ -47,7 +47,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "CTA-5001": {
   "href": "https://shop.cta.tech/products/web-application-video-ecosystem-content-specification",
   "id": "CTA-5001",
-  "title": "CTA-5001-C",
+  "title": "CTA-5001-C, Web Application Video Ecosystem - Content Specification",
   "status": "Standard",
   "publisher": "CTA"
     },
@@ -103,7 +103,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "CMAF": {
   "href": "https://www.iso.org/standard/71975.html",
   "id": "CMAF",
-  "title": "Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.",
+  "title": "ISO/IEC 23000-19, Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.",
   "status": "Standard",
   "publisher": "ISO"
     },
@@ -111,7 +111,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "DASH": {
   "href": "https://www.iso.org/standard/79329.html",
   "id": "DASH",
-  "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats",
+  "title": "ISO/IEC 23009-1, Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats",
   "status": "Standard",
   "publisher": "ISO"
     },
@@ -120,7 +120,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "href": "https://dashif.org/guidelines/",
   "id": "DASH-IOP",
   "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.",
-  "status": "Standard",
+  "status": "Guidelines",
   "publisher": "ISO"
     },
 
