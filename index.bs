@@ -122,6 +122,14 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.",
   "status": "Standard",
   "publisher": "ISO"
+    },
+
+    "CICP": {
+  "href": "https://www.itu.int/rec/T-REC-H.273",
+  "id": "CICP",
+  "title": "Recommendation ITU-T H.273 | ISO/IEC 23091-2, Coding-independent code points for video signal type identification",
+  "status": "Standard",
+  "publisher": "ITU / ISO"
     }
         
 }
@@ -205,9 +213,9 @@ The following sections define constraints that apply to AV1 streams when carryin
 ### Color Configuration ### {#color-configuration} 
 
 Streams suitable for incorporating [=HDR10+ metadata=] as described in this specification shall use the following values for the AV1 [=color_config=]:
-* [=color_primaries=] = 9 ([[BT-2020]])
-* [=transfer_characteristics=] = 16 ([[SMPTE-ST-2084]] / [[BT-2100]])
-* [=matrix_coefficients=] = 9 ([[BT-2020]])
+* [=color_primaries=] = 9 [[CICP]], which corresponds to the ITU-R BT.2020 color primaries [[BT-2020]] [[BT-2100]]
+* [=transfer_characteristics=] = 16 [[CICP]], which corresponds to the PQ transfer characteristics function [[SMPTE-ST-2084]] [[BT-2100]]
+* [=matrix_coefficients=] = 9 [[CICP]], which corresponds to the non-constant luminance Y'CbCr representation [[BT-2020]] [[BT-2100]]
 
 Additionally, the following recommendations apply:
 * [=VideoFullRangeFlag=] should be set to 0
