@@ -161,10 +161,10 @@ url: #biblio-av1; spec: AV1; type: dfn;
     text: show_existing_frame
 
 url: #biblio-av1-isobmff; spec: AV1-ISOBMFF; type: dfn;
-    text: av1codecconfigurationrecord
-    text: configobus
+    text: AV1CodecConfigurationRecord
+    text: configOBUs
     text: av1 metadata sample group
-    text: codecs
+    text: Codecs Parameter String
     text: av01
 
 url: #biblio-dash; spec: DASH; type: dfn;
@@ -258,7 +258,7 @@ An ISOBMFF file or CMAF AV1 track as defined in [[!AV1-ISOBMFF]] that also confo
 HTTP Streaming Constraints {#httpstreaming-constraints}
 --------------
 
-The value of the [=codecs=] parameter for [[!AV1]] streams that is used when using HTTP streaming technologies shall remain unchanged when [=HDR10+ Metadata OBUs=] are included in the [[!AV1]] stream.
+The value of the [=Codecs Parameter String=] for [[!AV1]] bitstreams that is used when using HTTP streaming technologies shall remain unchanged when [=HDR10+ Metadata OBUs=] are included in the [[!AV1]] stream.
 
 Additionally, [[!DASH]] content following [[DASH-IOP]] should include a [=Supplemental Descriptor=] with a [=@schemeUri=] set to <code>"http://dashif.org/metadata/hdr"</code> and a [=@value=] set to <code>"SMPTE2094-40"</code> in manifest files to aid players to identify tracks containing [=HDR10+ Metadata OBUs=].
 
