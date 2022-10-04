@@ -103,7 +103,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "CMAF": {
   "href": "https://www.iso.org/standard/71975.html",
   "id": "CMAF",
-  "title": "ISO/IEC 23000-19, Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media.",
+  "title": "ISO/IEC 23000-19, Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media",
   "status": "Standard",
   "publisher": "ISO"
     },
@@ -119,7 +119,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
   "DASH-IOP": {
   "href": "https://dashif.org",
   "id": "DASH-IOP",
-  "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements.",
+  "title": "Guideline for Implementation: DASH-IF Interoperability Points V4.3: On-Demand and Mixed Services, HDR Dynamic Metadata and other Improvements",
   "status": "Guidelines",
   "publisher": "ISO"
     },
