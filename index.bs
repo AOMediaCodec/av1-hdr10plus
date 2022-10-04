@@ -193,17 +193,17 @@ Various tools, services and devices support creation and use of [=HDR10+ metadat
 Use of HDR10+ in AV1 bitstreams {#UsingHDR10plus}
 =================================
 
-HDR10+ OBU {#hdr10plus-obus}
+HDR10+ Metadata {#hdr10plus-metadata}
 ----------
 
-In this specification, <dfn>HDR10+ Metadata</dfn> is defined as data with the semantics defined in [[!ST-2094-40]], using the syntax defined in [[!CTA-861]]. The <dfn>HDR10+ Metadata OBU</dfn> is defined as [=HDR10+ Metadata=] carried in an [=OBU=] of type [=METADATA_TYPE_ITUT_T35=], as defined in [[!AV1]] and illustrated in Figure 1. 
+In this specification, <dfn>HDR10+ Metadata</dfn> is defined as data with the semantics defined in [[!ST-2094-40]], using the syntax defined in [[!CTA-861]]. The <dfn>HDR10+ Metadata OBU</dfn> is defined as [=HDR10+ Metadata=] carried in a [=Metadata OBU=] of type [=METADATA_TYPE_ITUT_T35=], as defined in [[!AV1]] and illustrated in Figure 1. 
 
 <center><img src="T35.png"></center>
-<center><b>Figure 1.</b> METADATA_TYPE_ITUT_T35 OBU Structure</center>
+<center><b>Figure 1.</b> HDR10+ Metadata OBU</center>
 
 NOTE: [[AV1]] defines the general Metadata OBU syntax for [=HDR10 Static Metadata=] and ITU-T T.35 Metadata.
 
-Constraints {#constraints}
+HDR10+ bitstream constraints {#bitstream-constraints}
 -------------------
 
 The following sections define constraints that apply to [[!AV1]] bitstreams when carrying [=HDR10+ Metadata=].
