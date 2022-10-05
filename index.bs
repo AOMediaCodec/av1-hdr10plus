@@ -142,6 +142,10 @@ url: #biblio-av1; spec: AV1; type: dfn;
     text: OBU
     text: Temporal unit
     text: Metadata OBU
+    text: Metadata ITUT T35
+    text: metadata_type
+    text: itu_t_t35_country_code
+    text: itu_t_t35_payload_bytes
     text: Padding OBU
     text: Tile group OBU
     text: Sequence Header OBU
@@ -178,6 +182,10 @@ url: #biblio-cta-5001; spec: CTA-5001; type: dfn;
 url: #biblio-cta-861; spec: CTA-861; type: dfn;
     text: MaxCLL
     text: MaxFALL
+    text: itu_t_t35_terminal_provider_code
+    text: itu_t_t35_terminal_provider_oriented_code
+    text: application_identifier
+    text: application_mode
 
 url: #biblio-smpte-st-2086; spec: ST-2086; type: dfn;
     text: MDCV
@@ -187,8 +195,11 @@ Introduction {#introduction}
 ============
 
 This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] bitstreams, including when carried in [[!CMAF]].
+[=HDR10+ metadata=] enables devices to optimize rendering of HDR content based on the display capabilities and on a scene-by-scene and frame-by-frame basis.
 
-Various tools, services and devices support creation and use of [=HDR10+ metadata=], which can be easily utilized directly in [[AV1]] systems. Carriage of [=HDR10+ metadata=] in [[AV1]] leverages [[!T35]] and [[!CTA-861]]. [=HDR10+ metadata=] is placed in [=metadata OBUs=] of type [=METADATA_TYPE_ITUT_T35=]. This document covers details of the placement of these [=OBUs=] in [[!AV1]] bitstreams.
+Various tools, services and devices support creation and use of [=HDR10+ metadata=], which can be easily utilized directly in [[AV1]] systems.
+Carriage of [=HDR10+ metadata=] in [[AV1]] leverages mechanisms specified in [[!T35]] and [[!CTA-861]], which metadata is placed in [=metadata OBUs=] of metadata_type equal to [=METADATA_TYPE_ITUT_T35=].
+This document covers details of the placement of these [=OBUs=] in [[!AV1]] bitstreams.
 
 Use of HDR10+ in AV1 bitstreams {#UsingHDR10plus}
 =================================
@@ -196,9 +207,24 @@ Use of HDR10+ in AV1 bitstreams {#UsingHDR10plus}
 HDR10+ Metadata {#hdr10plus-metadata}
 ----------
 
-In this specification, <dfn>HDR10+ Metadata</dfn> is defined as data with the semantics defined in [[!ST-2094-40]], using the syntax defined in [[!CTA-861]]. The <dfn>HDR10+ Metadata OBU</dfn> is defined as [=HDR10+ Metadata=] carried in a [=Metadata OBU=] of type [=METADATA_TYPE_ITUT_T35=], as defined in [[!AV1]] and illustrated in Figure 1. 
+In the context of this specification, the syntax and semantics of the <dfn>HDR10+ Metadata</dfn> are defined in [[!CTA-861]] and [[!ST-2094-40]] respectively.
 
-<center><img src="figures/T35.png"></center>
+
+An <dfn>HDR10+ Metadata OBU</dfn> is defined as [=HDR10+ Metadata=] carried in a [=Metadata OBU=].
+The <code>metadata_type</code> of such [=Metadata OBU=] shall be set to <code>METADATA_TYPE_ITUT_T35</code> and the <code>itu_t_t35_country_code</code> of the corresponding [=Metadata ITUT T35=] element shall be set to <code>0xB5</code>.
+The remaining syntax element of [=Metadata ITUT T35=], <code>itu_t_t35_payload_bytes</code>, shall be interpreted using the syntax defined in Annex S of [[!CTA-861]], starting with the <code>[=itu_t_t35_terminal_provider_code=]</code>, and the semantics defined in [[!ST-2094-40]].
+
+According to the definition of the [=HDR10+ Metadata=], the first 6 bytes of the <code>itu_t_t35_payload_bytes</code> of the [=HDR10+ Metadata OBU=] shall be set as follows:
+
+- <code>0x003C</code>, which corresponds to <code>[=itu_t_t35_terminal_provider_code=]</code> from Annex S of [[!CTA-861]]
+- <code>0x0001</code>, which corresponds to <code>[=itu_t_t35_terminal_provider_oriented_code=]</code> from Annex S of [[!CTA-861]]
+- <code>0x4</code>, which corresponds to <code>[=application_identifier=]</code> from Annex S of [[!CTA-861]]
+- <code>0x1</code>, which corresponds to <code>[=application_mode=]</code> from Annex S of [[!CTA-861]]
+
+All the remaining bytes of the <code>itu_t_t35_payload_bytes</code> identify as the [=HDR10+ Metadata=] and are associated with the syntax elements of the <code>user_data_registered_itu_t_t35</code> structure that is defined in Annex S of [[!CTA-861]].
+For convenience, the structure of the [=HDR10+ Metadata OBU=] is illustrated in Figure 1. 
+
+<center><img width="100%" src="figures/HDR10plus_metadata_OBU.svg"></center>
 <center><b>Figure 1.</b> HDR10+ Metadata OBU</center>
 
 NOTE: [[AV1]] defines the general Metadata OBU syntax for [=HDR10 Static Metadata=] and ITU-T T.35 Metadata.
@@ -223,13 +249,15 @@ Additionally, the following recommendations apply:
 
 ### Placement of OBUs ### {#placement} 
 
-As defined in [[!AV1]] and shown in Figure 2, an [=AV1 coded video sequence=] consists of one or more [=temporal units=]. A [=temporal unit=] contains a series of [=OBUs=] starting from a [=Temporal Delimiter OBU=], optional [=sequence header OBUs=], optional [=metadata OBUs=], a sequence of one or more [=frame header OBUs=], each followed by zero or more [=tile group OBUs=] as well as optional [=padding OBUs=].
+As defined in [[!AV1]], an [=AV1 coded video sequence=] consists of one or more [=temporal units=]. A [=temporal unit=] contains a series of [=OBUs=] starting from a [=Temporal Delimiter OBU=], optional [=Sequence Header OBUs=], optional [=Metadata OBUs=], a sequence of one or more [=Frame Header OBUs=], each followed by zero or more [=Tile Group OBUs=] as well as optional [=Padding OBUs=].
 
 Consequently, for each frame with [=show_frame=]=1 or [=show_existing_frame=]=1, there shall be one and only one [=HDR10+ metadata OBU=] preceding the [=Frame Header OBU=] for this frame and located after the last [=OBU=] of the previous frame (if any) or after the [=Sequence Header OBU=] (if any) or after the start of the [=temporal unit=] (e.g. after the [=Temporal Delimiter OBU=], for storage formats where [=Temporal Delimiter OBUs=] are preserved).
 
 [=HDR10+ Metadata OBUs=] are not provided when [=show_frame=]=0. For non-layered streams, there is only one [=HDR10+ Metadata OBU=] per [=temporal unit=]. For [[!AV1]] bitstreams encoded with multiple layers, [=HDR10+ Metadata=] may apply to one or more layers. However, the details are out of scope of this version of the specification.
 
-<center><img width="100%" src="figures/obu_tu.png"></center>
+Figure 2 shows a simplified example of [=HDR10+ Metadata OBUs=] placement in an AV1 bitstream.
+
+<center><img width="100%" src="figures/Placement.svg"></center>
 <center><b>Figure 2.</b>&nbspExample of placement of HDR10+ Metadata OBUs in an AV1 bitstream</center>
 
 <dfn>HDR10 Static Metadata</dfn> is defined as a combination of three types of HDR related metadata that remain constant for the entire sequence. This includes [=MDCV=], [=MaxCLL=] and [=MaxFALL=]. [=MDCV=] shall be present while [=MaxCLL=] and/or [=MaxFALL=] may be present.
