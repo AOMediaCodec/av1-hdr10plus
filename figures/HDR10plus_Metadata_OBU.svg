@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="236 209 1269 430" width="1269" height="430">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="HDR10+_Metadata_OBU" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+    <title>HDR10plus_Metadata_OBU</title>
+    <rect fill="white" x="236" y="209" width="1269" height="430"/>
+    <g id="HDR10+_Metadata_OBU_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_34">
+        <rect x="236.5" y="249" width="1268" height="389" fill="#ffff80"/>
+        <rect x="236.5" y="249" width="1268" height="389" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="244" y="255" width="192" height="376" fill="#ccc"/>
+        <rect x="244" y="255" width="192" height="376" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(327 595.18994) rotate(-90)" fill="#212529">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="22" fill="#212529" x="0" y="21">METADATA_TYPE_ITUT_T35</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="432.108" y="255" width="248.392" height="376" fill="#ffffc0"/>
+        <rect x="432.108" y="255" width="248.392" height="376" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(437.108 430)" fill="#212529">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="22" fill="#212529" x="92.89912" y="21">0xB5</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="680.5" y="255" width="816" height="376" fill="#ffffc0"/>
+        <rect x="680.5" y="255" width="816" height="376" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_5">
+        <text transform="translate(969.163 214.3302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="22" fill="black" x="0" y="21">itu_t_t35_payload_bytes</tspan>
+        </text>
+      </g>
+      <g id="Graphic_6">
+        <text transform="translate(441.246 214.3302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="22" fill="black" x="0" y="21">itu_t_t35_country_code</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <text transform="translate(266.5 214.3302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="22" fill="black" x="3836931e-19" y="21">metadata_type</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <rect x="714" y="363.855" width="104" height="229.5" fill="white"/>
+        <rect x="714" y="363.855" width="104" height="229.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(719 465.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="22.745" y="21">0x00</tspan>
+        </text>
+      </g>
+      <g id="Graphic_9">
+        <rect x="818" y="363.855" width="104" height="229.5" fill="white"/>
+        <rect x="818" y="363.855" width="104" height="229.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(823 465.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="20.71" y="21">0x3C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <rect x="922" y="363.855" width="104" height="229.5" fill="white"/>
+        <rect x="922" y="363.855" width="104" height="229.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(927 465.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="22.745" y="21">0x00</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <rect x="1026" y="363.855" width="104" height="229.5" fill="white"/>
+        <rect x="1026" y="363.855" width="104" height="229.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1031 465.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="22.745" y="21">0x01</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <rect x="1130" y="363.855" width="104" height="229.5" fill="white"/>
+        <rect x="1130" y="363.855" width="104" height="229.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1135 465.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="22.745" y="21">0x04</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <rect x="1234" y="363.855" width="104" height="229.5" fill="white"/>
+        <rect x="1234" y="363.855" width="104" height="229.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1239 465.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="22.745" y="21">0x01</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <text transform="translate(1392 437.8)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="50" fill="black" x="0" y="48">…</tspan>
+        </text>
+      </g>
+      <g id="Line_21">
+        <line x1="723.9" y1="347.56935" x2="912.1" y2="347.20598" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_22">
+        <text transform="translate(747.2 314.71698)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="1563194e-19" y="10">itu_t_t35_terminal_provider_code</tspan>
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="54.545" y="22.28">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Line_24">
+        <line x1="931.9" y1="347.18686" x2="1120.1" y2="347.18686" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_23">
+        <text transform="translate(935.15 314.71698)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="0" y="10">itu_t_t35_terminal_provider_oriented_code</tspan>
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="75.38" y="22.28">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Line_25">
+        <line x1="1139.9" y1="347.18686" x2="1224.1" y2="347.18686" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_26">
+        <line x1="1243.9" y1="347.18686" x2="1328.1" y2="347.18686" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_27">
+        <text transform="translate(1136.59 314.71698)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="0" y="10">application_identifier</tspan>
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="26.66" y="22.28">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <text transform="translate(1246.97 314.71698)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="7247536e-19" y="10">application_mode</tspan>
+          <tspan font-family="Helvetica Neue" font-size="10" fill="black" x="20.28" y="22.28">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <text transform="translate(1355.015 502)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="58264504e-20" y="13">SMPTE ST 2094-40</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="2.982" y="29.392">Dynamic Metadata</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
