@@ -19,7 +19,7 @@
     <g id="Canvas_1_Layer_1">
       <title>Layer 1</title>
       <g id="Graphic_13">
-        <rect x="-88" y="203.5" width="34.5" height="177.5" fill="#999"/>
+        <rect x="-88" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
         <rect x="-88" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-78.75 366.89844) rotate(-90)" fill="black">
           <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
@@ -120,21 +120,21 @@
         </text>
       </g>
       <g id="Graphic_33">
-        <rect x="284" y="203.5" width="34.5" height="177.5" fill="#999"/>
+        <rect x="284" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
         <rect x="284" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(293.25 366.89844) rotate(-90)" fill="black">
           <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
         </text>
       </g>
       <g id="Graphic_34">
-        <rect x="768.5" y="203.5" width="34.5" height="177.5" fill="#999"/>
+        <rect x="768.5" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
         <rect x="768.5" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(777.75 366.89844) rotate(-90)" fill="black">
           <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
         </text>
       </g>
       <g id="Graphic_35">
-        <rect x="1028" y="203.5" width="34.5" height="177.5" fill="#999"/>
+        <rect x="1028" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
         <rect x="1028" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(1037.25 366.89844) rotate(-90)" fill="black">
           <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
