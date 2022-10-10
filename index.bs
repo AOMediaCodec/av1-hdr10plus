@@ -241,9 +241,9 @@ The following sections define constraints that apply to [[!AV1]] bitstreams when
 ### Color Configuration ### {#color-configuration} 
 
 Streams suitable for incorporating [=HDR10+ metadata=] as described in this specification shall use the following values for the [[!AV1]] <code>[=color_config=]</code>:
-* <code>[=color_primaries=] = 9</code> [[CICP]], which corresponds to the ITU-R BT.2020 color primaries [[BT-2020]] [[BT-2100]],
-* <code>[=transfer_characteristics=] = 16</code> [[CICP]], which corresponds to the PQ transfer characteristics function [[ST-2084]] [[BT-2100]],
-* <code>[=matrix_coefficients=] = 9</code> [[CICP]], which corresponds to the non-constant luminance Y'CbCr representation [[BT-2020]] [[BT-2100]].
+* <code>[=color_primaries=] = 9</code> [[!CICP]], which corresponds to the ITU-R BT.2020 color primaries [[BT-2020]] [[BT-2100]],
+* <code>[=transfer_characteristics=] = 16</code> [[!CICP]], which corresponds to the PQ transfer characteristics function [[ST-2084]] [[BT-2100]],
+* <code>[=matrix_coefficients=] = 9</code> [[!CICP]], which corresponds to the non-constant luminance Y'CbCr representation [[BT-2020]] [[BT-2100]].
 
 Additionally, the following recommendations apply:
 * <code>[=color_range=]</code> should be set to 0,
