@@ -212,10 +212,10 @@ In the context of this specification, the syntax and semantics of the <dfn>HDR10
 
 
 An <dfn>HDR10+ Metadata OBU</dfn> is defined as [=HDR10+ Metadata=] carried in a [=Metadata OBU=].
-The <code>[=metadata_type=]</code> of such [=Metadata OBU=] shall be set to <code>[=METADATA_TYPE_ITUT_T35=]</code> and the <code>[=itu_t_t35_country_code=]</code> of the corresponding [=Metadata ITUT T35=] element shall be set to <code>0xB5</code>.
-The remaining syntax element of [=Metadata ITUT T35=], <code>[=itu_t_t35_payload_bytes=]</code>, shall be interpreted using the syntax defined in Annex S of [[!CTA-861]], starting with the <code>[=itu_t_t35_terminal_provider_code=]</code>, and the semantics defined in [[!ST-2094-40]].
+The <code>[=metadata_type=]</code> of such [=Metadata OBU=] is set to <code>[=METADATA_TYPE_ITUT_T35=]</code> and the <code>[=itu_t_t35_country_code=]</code> of the corresponding [=Metadata ITUT T35=] element is set to <code>0xB5</code>.
+The remaining syntax element of [=Metadata ITUT T35=], <code>[=itu_t_t35_payload_bytes=]</code>, is interpreted using the syntax defined in Annex S of [[!CTA-861]], starting with the <code>[=itu_t_t35_terminal_provider_code=]</code>, and the semantics defined in [[!ST-2094-40]].
 
-According to the definition of the [=HDR10+ Metadata=], the first 6 bytes of the <code>[=itu_t_t35_payload_bytes=]</code> of the [=HDR10+ Metadata OBU=] shall be set as follows:
+According to the definition of the [=HDR10+ Metadata=], the first 6 bytes of the <code>[=itu_t_t35_payload_bytes=]</code> of the [=HDR10+ Metadata OBU=] are set as follows:
 
 - <code>0x003C</code>, which corresponds to <code>[=itu_t_t35_terminal_provider_code=]</code> from Annex S of [[!CTA-861]]
 - <code>0x0001</code>, which corresponds to <code>[=itu_t_t35_terminal_provider_oriented_code=]</code> from Annex S of [[!CTA-861]]
