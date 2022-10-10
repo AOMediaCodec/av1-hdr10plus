@@ -230,7 +230,8 @@ For convenience, the structure of the [=HDR10+ Metadata OBU=] is illustrated in 
 
 NOTE: [[AV1]] defines the general Metadata OBU syntax for [=HDR10 Static Metadata=] and ITU-T T.35 Metadata.
 
-<dfn>HDR10 Static Metadata</dfn> is defined as a combination of three types of HDR related metadata that remain constant for the entire sequence. This includes [=MDCV=], [=MaxCLL=] and [=MaxFALL=]. [=MDCV=] shall be present while [=MaxCLL=] and/or [=MaxFALL=] may be present.
+<dfn>HDR10 Static Metadata</dfn> is defined as a combination of three types of HDR related metadata, including [=MDCV=], [=MaxCLL=] and [=MaxFALL=].
+[=MDCV=] shall be present while [=MaxCLL=] and/or [=MaxFALL=] may be present.
 
 HDR10+ bitstream constraints {#bitstream-constraints}
 -------------------
