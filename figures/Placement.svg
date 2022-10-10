@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-89 143 1152 286" width="1152" height="286">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-89 171 1152 258" width="1152" height="258">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
       <g>
@@ -13,10 +13,10 @@
       </g>
     </marker>
   </defs>
-  <g id="Canvas_1" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+  <g id="Placement" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
     <title>Placement</title>
-    <rect fill="white" x="-89" y="143" width="1152" height="286"/>
-    <g id="Canvas_1_Layer_1">
+    <rect fill="white" x="-89" y="171" width="1152" height="258"/>
+    <g id="Placement_Layer_1">
       <title>Layer 1</title>
       <g id="Graphic_13">
         <rect x="-88" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
@@ -158,11 +158,6 @@
       <g id="Line_40">
         <path d="M 971.75 203.5 L 971.75 171.76956 L 487.25 171.76956 L 487.25 193.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
-      <g id="Graphic_41">
-        <text transform="translate(652.5 148)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="7247536e-19" y="13">show_existing_frame = 1</tspan>
-        </text>
-      </g>
       <g id="Graphic_42">
         <text transform="translate(177.658 347.5)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="5471179e-19" y="13">show_frame = 1</tspan>
@@ -181,6 +176,12 @@
       <g id="Graphic_45">
         <text transform="translate(438.316 347.5)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="5471179e-19" y="13">show_frame = 0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_46">
+        <text transform="translate(922.816 339.304)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="1.4489988" y="13">show_existing_</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="19.396999" y="29.392">frame = 1</tspan>
         </text>
       </g>
     </g>
