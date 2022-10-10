@@ -198,7 +198,8 @@ This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] bitstream
 [=HDR10+ metadata=] enables devices to optimize rendering of HDR content based on the display capabilities and on a scene-by-scene and frame-by-frame basis.
 
 Various tools, services and devices support creation and use of [=HDR10+ metadata=], which can be easily utilized directly in [[AV1]] systems.
-Carriage of [=HDR10+ metadata=] in [[AV1]] leverages mechanisms specified in [[!T35]] and [[!CTA-861]], which metadata is placed in [=metadata OBUs=] of <code>[=metadata_type=]</code> equal to <code>[=METADATA_TYPE_ITUT_T35=]</code>.
+Carriage of [=HDR10+ metadata=] in [[AV1]] leverages mechanisms specified in [[!T35]] and [[!CTA-861]].
+[=HDR10+ metadata=] is placed in [=metadata OBUs=] of <code>[=metadata_type=]</code> equal to <code>[=METADATA_TYPE_ITUT_T35=]</code>.
 This document covers details of the placement of these [=OBUs=] in [[!AV1]] bitstreams.
 
 Use of HDR10+ in AV1 bitstreams {#UsingHDR10plus}
