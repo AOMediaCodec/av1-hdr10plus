@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="236 209 1269 468" width="1269" height="468">
+  <defs/>
+  <g id="HDR10+_Metadata_OBU" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+    <title>HDR10plus_Metadata_OBU</title>
+    <rect fill="white" x="236" y="209" width="1269" height="468"/>
+    <g id="HDR10+_Metadata_OBU_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_34">
+        <rect x="236.5" y="249" width="1268" height="427" fill="#ffff80"/>
+        <rect x="236.5" y="249" width="1268" height="427" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="244" y="255" width="189.108" height="414.521" fill="#ccc"/>
+        <rect x="244" y="255" width="189.108" height="414.521" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(325.554 614.45044) rotate(-90)" fill="#212529">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="22" fill="#212529" x="0" y="21">METADATA_TYPE_ITUT_T35</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="432.108" y="255" width="248.392" height="414.521" fill="#ffffc0"/>
+        <rect x="432.108" y="255" width="248.392" height="414.521" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_4">
+        <rect x="680.5" y="255" width="816" height="414.521" fill="#ffffc0"/>
+        <rect x="680.5" y="255" width="816" height="414.521" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_5">
+        <text transform="translate(969.304 214.3302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="22" fill="black" x="0" y="21">itu_t_t35_payload_bytes</tspan>
+        </text>
+      </g>
+      <g id="Graphic_6">
+        <text transform="translate(441.387 214.3302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="22" fill="black" x="0" y="21">itu_t_t35_country_code</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <text transform="translate(266.641 214.3302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="22" fill="black" x="3836931e-19" y="21">metadata_type</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <rect x="1130" y="308.90625" width="104" height="313.71875" fill="white"/>
+        <rect x="1130" y="308.90625" width="104" height="313.71875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_12">
+        <rect x="1234" y="308.90625" width="104" height="313.71875" fill="white"/>
+        <rect x="1234" y="308.90625" width="104" height="313.71875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_14">
+        <text transform="translate(1392 398.013)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="50" fill="black" x="0" y="48">…</tspan>
+        </text>
+      </g>
+      <g id="Graphic_27">
+        <text transform="translate(1164.58 535.0731) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="7958079e-19" y="14">application_identifier</tspan>
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="39.99" y="31.42">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <text transform="translate(1268.58 525.5031) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="0" y="14">application_mode</tspan>
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="30.42" y="31.42">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <text transform="translate(1355.015 462.213)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="58264504e-20" y="13">SMPTE ST 2094-40</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="2.982" y="29.392">Dynamic Metadata</tspan>
+        </text>
+      </g>
+      <g id="Graphic_38">
+        <rect x="714" y="308.90625" width="208" height="313.71875" fill="white"/>
+        <rect x="714" y="308.90625" width="208" height="313.71875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_41">
+        <line x1="818" y1="308.90625" x2="818" y2="622.625" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_42">
+        <rect x="922" y="308.90625" width="208" height="313.71875" fill="white"/>
+        <rect x="922" y="308.90625" width="208" height="313.71875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_43">
+        <line x1="1026" y1="308.90625" x2="1026" y2="622.625" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_22">
+        <text transform="translate(728.715 576.9006) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="24158453e-20" y="14">itu_t_t35_terminal_provider_code</tspan>
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="81.8175" y="31.42">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Graphic_23">
+        <text transform="translate(939.83 608.1531) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="7105427e-19" y="14">itu_t_t35_terminal_provider_oriented_code</tspan>
+          <tspan font-family="Helvetica Neue" font-size="15" fill="black" x="113.07" y="31.42">CTA-861</tspan>
+        </text>
+      </g>
+      <g id="Graphic_44">
+        <text transform="translate(1157.745 277.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="0" y="21">0x04</tspan>
+        </text>
+      </g>
+      <g id="Graphic_45">
+        <text transform="translate(1261.745 277.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="0" y="21">0x01</tspan>
+        </text>
+      </g>
+      <g id="Graphic_52">
+        <text transform="translate(949.745 277.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="0" y="21">0x00</tspan>
+        </text>
+      </g>
+      <g id="Graphic_51">
+        <text transform="translate(1053.745 277.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="0" y="21">0x01</tspan>
+        </text>
+      </g>
+      <g id="Graphic_54">
+        <text transform="translate(740.985 276.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="0" y="21">0x00</tspan>
+        </text>
+      </g>
+      <g id="Graphic_53">
+        <text transform="translate(842.95 276.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="8739676e-19" y="21">0x3C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_55">
+        <text transform="translate(530.421 276.2681)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="22" fill="black" x="0" y="21">0xB5</tspan>
+        </text>
+      </g>
+      <g id="Graphic_56">
+        <text transform="translate(501.488 448.34563)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" fill="black" x="0" y="17">United States</tspan>
+        </text>
+      </g>
+      <g id="Graphic_57">
+        <text transform="translate(719 627.625)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="23.576" y="15">Samsung Electronics </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="69.664" y="33.448">America</tspan>
+        </text>
+      </g>
+      <g id="Line_58">
+        <line x1="922" y1="622.81746" x2="922" y2="644.21875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_59">
+        <line x1="714" y1="622.81746" x2="714" y2="644.21875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_60">
+        <line x1="1130" y1="622.81746" x2="1130" y2="644.21875" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_61">
+        <line x1="1234" y1="622.625" x2="1234" y2="644.0263" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_62">
+        <line x1="1337.92" y1="621.91754" x2="1337.92" y2="643.3188" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_63">
+        <text transform="translate(984.2 627.625)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">ST 2094-40</tspan>
+        </text>
+      </g>
+      <g id="Graphic_64">
+        <text transform="translate(1156.208 627.81746)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">App #4</tspan>
+        </text>
+      </g>
+      <g id="Graphic_65">
+        <text transform="translate(1253.104 627.625)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="6394885e-19" y="15">Version 1</tspan>
+        </text>
+      </g>
+      <g id="Line_66">
+        <line x1="244" y1="218.8172" x2="244" y2="255" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_67">
+        <line x1="432.108" y1="218.8172" x2="432.108" y2="255" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_68">
+        <line x1="680.5" y1="218.8172" x2="680.5" y2="255" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_69">
+        <line x1="1496.5" y1="218.8172" x2="1496.5" y2="255" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
