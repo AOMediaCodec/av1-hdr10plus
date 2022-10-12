@@ -137,7 +137,7 @@ Custom Warning Text: This specification is a draft of a potential new version of
 
 <!-- Terms defined in other specifications -->
 <pre class="anchors">
-url: #biblio-av1; spec: AV1; type: dfn;
+url: https://aomediacodec.github.io/av1-spec/av1-spec.pdf; spec: AV1; type: dfn;
     text: AV1 coded video sequence
     text: OBU
     text: Temporal unit
@@ -164,22 +164,22 @@ url: #biblio-av1; spec: AV1; type: dfn;
     text: show_frame
     text: show_existing_frame
 
-url: #biblio-av1-isobmff; spec: AV1-ISOBMFF; type: dfn;
+url: https://aomediacodec.github.io/av1-isobmff/; spec: AV1-ISOBMFF; type: dfn;
     text: AV1CodecConfigurationRecord
     text: configOBUs
     text: av1 metadata sample group
     text: Codecs Parameter String
     text: av01
 
-url: #biblio-dash; spec: DASH; type: dfn;
+url: https://www.iso.org/standard/79329.html; spec: DASH; type: dfn;
     text: Supplemental Descriptor
     text: @schemeIdUri
     text: @value
 
-url: #biblio-cta-5001; spec: CTA-5001; type: dfn;
+url: https://shop.cta.tech/products/web-application-video-ecosystem-content-specification; spec: CTA-5001; type: dfn;
     text: cdm4
 
-url: #biblio-cta-861; spec: CTA-861; type: dfn;
+url: https://shop.cta.tech/products/a-dtv-profile-for-uncompressed-high-speed-digital-interfaces-cta-861-h; spec: CTA-861; type: dfn;
     text: MaxCLL
     text: MaxFALL
     text: itu_t_t35_terminal_provider_code
@@ -187,7 +187,7 @@ url: #biblio-cta-861; spec: CTA-861; type: dfn;
     text: application_identifier
     text: application_mode
 
-url: #biblio-smpte-st-2086; spec: ST-2086; type: dfn;
+url: https://ieeexplore.ieee.org/document/8353899; spec: ST-2086; type: dfn;
     text: MDCV
 </pre>
 
