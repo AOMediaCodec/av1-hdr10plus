@@ -225,7 +225,7 @@ According to the definition of the [=HDR10+ Metadata=], the first 6 bytes of the
 All the remaining bytes of the <code>[=itu_t_t35_payload_bytes=]</code> identify as the [=HDR10+ Metadata=] and are associated with the syntax elements of the <code>user_data_registered_itu_t_t35</code> structure that is defined in Annex S of [[!CTA-861]].
 For convenience, the structure of the [=HDR10+ Metadata OBU=] is illustrated in Figure 1. 
 
-<center><img width="100%" src="figures/HDR10plus_metadata_OBU.svg"></center>
+<center><img width="100%" src="figures/HDR10plus_Metadata_OBU.svg"></center>
 <center><b>Figure 1.</b> HDR10+ Metadata OBU</center>
 
 NOTE: [[AV1]] defines the general Metadata OBU syntax for [=HDR10 Static Metadata=] and ITU-T T.35 Metadata.
