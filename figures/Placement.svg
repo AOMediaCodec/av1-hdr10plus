@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-89 171 1152 258" width="1152" height="258">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Placement" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Placement</title>
+    <rect fill="white" x="-89" y="171" width="1152" height="258"/>
+    <g id="Placement_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_13">
+        <rect x="-88" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
+        <rect x="-88" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-78.75 366.89844) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <rect x="-53.5" y="203.5" width="112.5" height="177.5" fill="white"/>
+        <rect x="-53.5" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-48.5 273.25)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="13.457031" y="15">Sequence </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="4.125" y="34">Header OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <rect x="59" y="203.5" width="112.5" height="177.5" fill="#ffffc0"/>
+        <rect x="59" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(64 263.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.347656" y="15">HDR10+ </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="16.574219" y="34">Metadata </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="33.472656" y="53">OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <rect x="171.5" y="203.5" width="112.5" height="177.5" fill="#c0ffc0"/>
+        <rect x="171.5" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(176.5 282.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.566406" y="15">Frame 0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_18">
+        <rect x="318.5" y="203.5" width="112.5" height="177.5" fill="#c0c0ff"/>
+        <rect x="318.5" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(323.5 282.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.566406" y="15">Frame 4</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <rect x="431" y="203.5" width="112.5" height="177.5" fill="#c0c0ff"/>
+        <rect x="431" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(436 282.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.566406" y="15">Frame 2</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="543.5" y="203.5" width="112.5" height="177.5" fill="#ffffc0"/>
+        <rect x="543.5" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(548.5 263.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.347656" y="15">HDR10+ </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="16.574219" y="34">Metadata </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="33.472656" y="53">OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <rect x="656" y="203.5" width="112.5" height="177.5" fill="#c0ffc0"/>
+        <rect x="656" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(661 282.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.566406" y="15">Frame 1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_23">
+        <rect x="803" y="203.5" width="112.5" height="177.5" fill="#ffffc0"/>
+        <rect x="803" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(808 263.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.347656" y="15">HDR10+ </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="16.574219" y="34">Metadata </tspan>
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="33.472656" y="53">OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <rect x="915.5" y="203.5" width="112.5" height="177.5" fill="#ffc0c0"/>
+        <rect x="915.5" y="203.5" width="112.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(920.5 282.75)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="16" fill="black" x="20.566406" y="15">Frame 2</tspan>
+        </text>
+      </g>
+      <g id="Line_26">
+        <line x1="-78.1" y1="424.5" x2="274.1" y2="424.5" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_27">
+        <line x1="293.9" y1="424.5" x2="758.6" y2="424.5" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_28">
+        <line x1="778.4" y1="424.5" x2="1018.1" y2="424.5" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_30">
+        <text transform="translate(48.727 403.108)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Temporal Unit 1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_31">
+        <text transform="translate(476.977 403.108)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Temporal Unit 2</tspan>
+        </text>
+      </g>
+      <g id="Graphic_32">
+        <text transform="translate(848.977 403.108)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Temporal Unit 3</tspan>
+        </text>
+      </g>
+      <g id="Graphic_33">
+        <rect x="284" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
+        <rect x="284" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(293.25 366.89844) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_34">
+        <rect x="768.5" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
+        <rect x="768.5" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(777.75 366.89844) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_35">
+        <rect x="1028" y="203.5" width="34.5" height="177.5" fill="#ccc"/>
+        <rect x="1028" y="203.5" width="34.5" height="177.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1037.25 366.89844) rotate(-90)" fill="black">
+          <tspan font-family="Helvetica" font-weight="bold" font-size="13" fill="black" x="0" y="13">Temporal Delimiter OBU</tspan>
+        </text>
+      </g>
+      <g id="Graphic_36">
+        <text transform="translate(89.574 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Frame 0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_37">
+        <text transform="translate(574.074 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Frame 1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_38">
+        <text transform="translate(833.574 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Frame 2</tspan>
+        </text>
+      </g>
+      <g id="Line_40">
+        <path d="M 971.75 203.5 L 971.75 171.76956 L 487.25 171.76956 L 487.25 193.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_42">
+        <text transform="translate(177.658 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="5471179e-19" y="13">show_frame = 1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_43">
+        <text transform="translate(662.158 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="5471179e-19" y="13">show_frame = 1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_44">
+        <text transform="translate(325.816 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="5471179e-19" y="13">show_frame = 0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_45">
+        <text transform="translate(438.316 347.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="5471179e-19" y="13">show_frame = 0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_46">
+        <text transform="translate(922.816 339.304)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="1.4489988" y="13">show_existing_</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="19.396999" y="29.392">frame = 1</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
