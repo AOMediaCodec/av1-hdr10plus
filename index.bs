@@ -9,7 +9,7 @@ Editor: Paul Hearty, Samsung
 Editor: Bill Mandel, Samsung
 Editor: Cyril Concolato, Netflix
 Abstract: This document specifies how to use [=HDR10+ metadata=] within [[!AV1]] bitstreams, including when carried in [[!CMAF]].
-Date: 2022-09-12
+Date: 2022-12-07
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
