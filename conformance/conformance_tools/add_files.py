@@ -102,7 +102,8 @@ def main():
                         help='Path to a .txt file with a license')
     parser.add_argument('-e', '--complianceWarden',
                         help='Path to Compliance Warden executable cw.exe', required=True)
-    parser.add_argument('--force', help='Force running the script', action='store_true')
+    parser.add_argument(
+        '--force', help='Force running the script even if files already exist.', action='store_true')
     args = parser.parse_args()
 
     license_str = ''

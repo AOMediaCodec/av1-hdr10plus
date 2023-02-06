@@ -8,7 +8,7 @@
   "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
   "path": "./sparks_frame1_invalid_country_code.obu",
   "compliance_warden": {
-    "cw_version": "v31-exercized_rules-rev9-g7ff147f",
+    "cw_version": "v31-exercized-rules_assert-id-rev14-geb021fb",
     "input_file": "",
     "specification": "av1hdr10plus",
     "spec_name": "HDR10+ AV1 Metadata Handling Specification, 8 December 2021\nhttps://aomediacodec.github.io/av1-hdr10plus/",
@@ -24,22 +24,24 @@
             "details": "Section 2.1\nAn AV1 stream shall contain at least one OBU"
           }
         ],
-        "errors": [],
-        "warnings": [
+        "errors": [
           {
             "rule": "1",
             "details": "Section 2.1\nEach HDR10+ OBU includes an ITU-T T.35 identifier with:\n - itu_t_t35_country_code set as 0xB5\n - itu_t_t35_terminal_provider_code set as 0x003C\n - itu_t_t35_terminal_provider_oriented_code set as 0x0001",
             "description": "itu_t_t35_country_code shall be set as 0xB5, found 0xA5"
           },
           {
+            "rule": "3",
+            "id": "assert-45af0987",
+            "details": "Section 2.2.2\nfor each frame with show_frame=1 or show_existing_frame=1, there shall be one\nand only one HDR10+ metadata OBU preceding the frame header for this frame and\nlocated after the last OBU of the previous frame (if any) or after the\nSequence Header (if any) or after the start of the temporal unit (e.g. after the\ntemporal delimiter, for storage formats where temporal delimiters are preserved).",
+            "description": "There shall be one and only one HDR10+ metadata OBU. Found 0 in Temporal Unit #0 (Frame #0)"
+          }
+        ],
+        "warnings": [
+          {
             "rule": "2",
             "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
             "description": "chroma_sample_position should be set as 2, found 0"
-          },
-          {
-            "rule": "3",
-            "details": "Section 2.2.2\nfor each frame with show_frame=1 or show_existing_frame=1, there shall be one\nand only one HDR10+ metadata OBU preceding the frame header for this frame and\nlocated after the last OBU of the previous frame (if any) or after the\nSequence Header (if any) or after the start of the temporal unit (e.g. after the\ntemporal delimiter, for storage formats where temporal delimiters are preserved).",
-            "description": "There shall be one and only one HDR10+ metadata OBU. Found 0 in Temporal Unit #0 (Frame #0)"
           }
         ]
       }
