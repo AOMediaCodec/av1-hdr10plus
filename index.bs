@@ -239,23 +239,23 @@ The following sections define constraints that apply to [[!AV1]] bitstreams when
 ### Color Configuration ### {#color-configuration} 
 
 Streams suitable for incorporating [=HDR10+ metadata=] as described in this specification shall use the following values for the [[!AV1]] <code>[=color_config=]</code>:
-* <code>[=color_primaries=] = 9</code> [[!CICP]], which corresponds to the ITU-R BT.2020 color primaries [[BT-2020]] [[BT-2100]],
-* <code>[=transfer_characteristics=] = 16</code> [[!CICP]], which corresponds to the PQ transfer characteristics function [[ST-2084]] [[BT-2100]],
-* <code>[=matrix_coefficients=] = 9</code> [[!CICP]], which corresponds to the non-constant luminance Y'CbCr representation [[BT-2020]] [[BT-2100]].
+* <assert><code>[=color_primaries=] = 9</code></assert> [[!CICP]], which corresponds to the ITU-R BT.2020 color primaries [[BT-2020]] [[BT-2100]],
+* <assert><code>[=transfer_characteristics=] = 16</code></assert> [[!CICP]], which corresponds to the PQ transfer characteristics function [[ST-2084]] [[BT-2100]],
+* <assert><code>[=matrix_coefficients=] = 9</code></assert> [[!CICP]], which corresponds to the non-constant luminance Y'CbCr representation [[BT-2020]] [[BT-2100]].
 
 Additionally, the following recommendations apply:
-* <code>[=color_range=]</code> should be set to 0,
-* <code>[=subsampling_x=]</code> and <code>[=subsampling_y=]</code> should be set to 0,
-* <code>[=mono_chrome=]</code> should be set to 0,
-* <code>[=chroma_sample_position=]</code> should be set to 2.
+* <assert><code>[=color_range=]</code> should be set to 0</assert>,
+* <assert><code>[=subsampling_x=]</code> and <code>[=subsampling_y=]</code> should be set to 0</assert>,
+* <assert><code>[=mono_chrome=]</code> should be set to 0</assert>,
+* <assert><code>[=chroma_sample_position=]</code> should be set to 2</assert>.
 
 ### Placement of HDR10+ Metadata OBUs ### {#placement} 
 
 As defined in [[!AV1]], an [=AV1 coded video sequence=] consists of one or more [=temporal units=]. A [=temporal unit=] contains a series of [=OBUs=] starting from a [=Temporal Delimiter OBU=], optional [=Sequence Header OBUs=], optional [=Metadata OBUs=], a sequence of one or more [=Frame Header OBUs=], each followed by zero or more [=Tile Group OBUs=] as well as optional [=Padding OBUs=].
 
-Consequently, for each frame with <code>[=show_frame=] = 1</code> or <code>[=show_existing_frame=] = 1</code>, there shall be one and only one [=HDR10+ metadata OBU=] preceding the [=Frame Header OBU=] for this frame and located after the last [=OBU=] of the previous frame (if any) or after the [=Sequence Header OBU=] (if any) or after the start of the [=temporal unit=] (e.g. after the [=Temporal Delimiter OBU=], for storage formats where [=Temporal Delimiter OBUs=] are preserved).
+Consequently, <assert>for each frame with <code>[=show_frame=] = 1</code> or <code>[=show_existing_frame=] = 1</code>, there shall be one and only one [=HDR10+ metadata OBU=] preceding the [=Frame Header OBU=] for this frame and located after the last [=OBU=] of the previous frame (if any) or after the [=Sequence Header OBU=] (if any) or after the start of the [=temporal unit=]</assert> (e.g. after the [=Temporal Delimiter OBU=], for storage formats where [=Temporal Delimiter OBUs=] are preserved).
 
-[=HDR10+ Metadata OBUs=] are not provided when <code>[=show_frame=] = 0</code>. For non-layered streams, there is only one [=HDR10+ Metadata OBU=] per [=temporal unit=]. For [[!AV1]] bitstreams encoded with multiple layers, [=HDR10+ Metadata=] may apply to one or more layers. However, the details are out of scope of this version of the specification.
+<assert>[=HDR10+ Metadata OBUs=] are not provided when <code>[=show_frame=] = 0</code></assert>. <assert>For non-layered streams, there is only one [=HDR10+ Metadata OBU=] per [=temporal unit=]</assert>. For [[!AV1]] bitstreams encoded with multiple layers, [=HDR10+ Metadata=] may apply to one or more layers. However, the details are out of scope of this version of the specification.
 
 Figure 2 shows a simplified example of placement of [=HDR10+ Metadata OBUs=] in an AV1 bitstream.
 
@@ -272,24 +272,24 @@ Storage and Transport considerations {#transport}
 Constraints on AV1CodecConfigurationRecord {#codecconfigurationrecord}
 --------------
 
-For formats that use the <code>[=AV1CodecConfigurationRecord=]</code> when storing [[AV1]] bitstreams (e.g. ISOBMFF and MPEG-2 TS), [=HDR10+ Metadata OBUs=] shall not be present in the <code>[=configOBUs=]</code> field of the <code>[=AV1CodecConfigurationRecord=]</code>.
+<assert>For formats that use the <code>[=AV1CodecConfigurationRecord=]</code> when storing [[AV1]] bitstreams (e.g. ISOBMFF and MPEG-2 TS), [=HDR10+ Metadata OBUs=] shall not be present in the <code>[=configOBUs=]</code> field of the <code>[=AV1CodecConfigurationRecord=]</code></assert>.
 
 ISOBMFF Constraints {#isobmff-constraints}
 --------------
 
-[=AV1 Metadata sample group=] defined in [[!AV1-ISOBMFF]] shall not be used. 
+<assert>[=AV1 Metadata sample group=] defined in [[!AV1-ISOBMFF]] shall not be used.</assert>
 
 [[!AV1-ISOBMFF]] indicates that [=Metadata OBUs=] may be protected.
-This specification requires that [=HDR10 Static Metadata=] and [=HDR10+ Metadata OBUs=] are unprotected.
+This specification requires that <assert>[=HDR10 Static Metadata=] and [=HDR10+ Metadata OBUs=] are unprotected</assert>.
 
-An ISOBMFF file or CMAF AV1 track as defined in [[!AV1-ISOBMFF]] that also conforms to this specification (i.e. that contains [=HDR10+ metadata OBUs=] and complies to the constraints from this specification) should use the brand <code>[=cdm4=]</code> defined in [[!CTA-5001]] in addition to the brand <code>[=av01=]</code>. If the brand <code>[=cdm4=]</code> is used in conjunction with [[!AV1]] bitstreams, the constraints defined in this specification shall be respected.
+<assert>An ISOBMFF file or CMAF AV1 track as defined in [[!AV1-ISOBMFF]] that also conforms to this specification (i.e. that contains [=HDR10+ metadata OBUs=] and complies to the constraints from this specification) should use the brand <code>[=cdm4=]</code> defined in [[!CTA-5001]] in addition to the brand <code>[=av01=]</code></assert>. <assert>If the brand <code>[=cdm4=]</code> is used in conjunction with [[!AV1]] bitstreams, the constraints defined in this specification shall be respected</assert>.
 
 HTTP Streaming Constraints {#httpstreaming-constraints}
 --------------
 
-The value of the [=Codecs Parameter String=] for [[!AV1]] bitstreams that is used when using HTTP streaming technologies shall remain unchanged when [=HDR10+ Metadata OBUs=] are included in the [[!AV1]] stream.
+<assert>The value of the [=Codecs Parameter String=] for [[!AV1]] bitstreams that is used when using HTTP streaming technologies shall remain unchanged when [=HDR10+ Metadata OBUs=] are included in the [[!AV1]] stream</assert>.
 
-Additionally, [[!DASH]] content following [[DASH-IOP]] should include a [=Supplemental Descriptor=] with <code>[=@schemeIdUri=]</code> set to <code>"http://dashif.org/metadata/hdr"</code> and <code>[=@value=]</code> set to <code>"SMPTE2094-40"</code> in manifest files. This can aid players to identify tracks containing [=HDR10+ Metadata OBUs=].
+Additionally, <assert>[[!DASH]] content following [[DASH-IOP]] should include a [=Supplemental Descriptor=] with <code>[=@schemeIdUri=]</code> set to <code>"http://dashif.org/metadata/hdr"</code> and <code>[=@value=]</code> set to <code>"SMPTE2094-40"</code> in manifest files</assert>. This can aid players to identify tracks containing [=HDR10+ Metadata OBUs=].
 
 Example Streams and Tools {#tools}
 ==========================
