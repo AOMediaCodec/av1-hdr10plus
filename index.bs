@@ -13,7 +13,7 @@ Date: 2022-12-07
 Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
-Markup Shorthands: css on
+Markup Shorthands: css no
 </pre>
 
 <pre class='biblio'>
