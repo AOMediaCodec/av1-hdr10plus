@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table,
+td {
+    @apply border-1 border-black;
+}
+
+html,
+body {
+    @apply bg-paper;
+}
