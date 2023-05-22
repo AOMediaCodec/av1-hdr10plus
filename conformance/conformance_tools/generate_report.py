@@ -7,6 +7,8 @@ import os
 from bs4 import BeautifulSoup
 from .utils import dump_to_json, execute_cmd, read_json
 
+SPECIFICATION = 'av1hdr10plus'
+
 
 def get_coverage_data(rules_from_spec, rules_from_files):
     '''
@@ -168,7 +170,7 @@ def main():
         print("Make sure the assert-id's are unique for every rule!")
         return -1
     # get data from file json's for this specification
-    rules_from_files = get_rules_from_files(spec='av1hdr10plus')
+    rules_from_files = get_rules_from_files(spec=SPECIFICATION)
     # build coverage data
     coverage_data = get_coverage_data(rules_from_spec, rules_from_files)
     # store and print
