@@ -59,7 +59,7 @@ const FilePopover = ({ files }) => {
                                             .join("/")}
                                     </span>
                                     <p className="max-w-lg whitespace-normal text-start text-sm font-light">
-                                        {file.description || "Not applicable"}
+                                        {file.description}
                                     </p>
                                 </div>
                                 <FiDownload
