@@ -18,6 +18,7 @@ def get_coverage_data(rules_from_spec, rules_from_files):
         rule_coverage = {
             'id': rule_spec['id'],
             'description': rule_spec['description'],
+            'exclude': False,
             'successful_checks': [],
             'errors': [],
             'warnings': []
