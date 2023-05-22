@@ -4,7 +4,7 @@
 
 table,
 td {
-    @apply border-1 border-black;
+    @apply whitespace-nowrap border-1 border-black px-2;
 }
 
 html,
