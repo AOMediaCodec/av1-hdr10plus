@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table,
+td,
+tbody th {
+    @apply whitespace-nowrap border-1 border-black px-2;
+}
+
+html,
+body {
+    @apply bg-paper;
+}

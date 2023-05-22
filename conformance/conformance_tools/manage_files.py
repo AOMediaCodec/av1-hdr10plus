@@ -1,5 +1,5 @@
 """
-Module to add new files to conformance suite
+Module to manage files of the conformance suite
 """
 import argparse
 import copy
@@ -10,6 +10,8 @@ import sys
 
 from .utils import (compute_file_md5, dump_to_json, execute_cmd,
                     make_dirs_from_path, read_json)
+
+SPECIFICATION = 'av1hdr10plus'
 
 FILE_ENTRY = {
     'contributor': '',
@@ -25,9 +27,27 @@ FILE_ENTRY = {
 INCLUDELIST = ['.bin', '.mp4', '.obu']
 
 
+def update_validation(args):
+    '''
+    Update validation metadata for all files
+    '''
+    for root, _subdirs, files in os.walk('./conformance_files'):
+        for conf_file in files:
+            input_filename, input_extension = os.path.splitext(conf_file)
+            if input_extension not in INCLUDELIST:
+                continue
+            input_path = os.path.join(root, conf_file)
+            prefix, ext = os.path.splitext(input_path)
+            input_json = prefix + '.json'
+            file_meta = read_json(input_json)
+            cw_out = run_compliance_warden(args.complianceWarden, input_path)
+            file_meta['compliance_warden'] = cw_out
+            dump_to_json(input_json, file_meta)
+
+
 def run_compliance_warden(cwexe_path, input_file):
     """run cw.exe"""
-    res = execute_cmd(f'{cwexe_path} av1hdr10plus {input_file} json')
+    res = execute_cmd(f'{cwexe_path} {SPECIFICATION} {input_file} json')
     return json.loads(res.stdout.decode())
 
 
@@ -96,15 +116,24 @@ def main():
     """Entry point"""
     parser = argparse.ArgumentParser(
         description='Contribute new files to the conformance suite')
-    parser.add_argument(
-        '-i', '--input', help='Input directory with new files', required=True)
+    parser.add_argument('-i', '--input',
+                        help='Input directory with new files')
     parser.add_argument('-l', '--license',
                         help='Path to a .txt file with a license')
     parser.add_argument('-e', '--complianceWarden',
-                        help='Path to Compliance Warden executable cw.exe', required=True)
-    parser.add_argument(
-        '--force', help='Force running the script even if files already exist.', action='store_true')
+                        help='Path to Compliance Warden executable cw.exe',
+                        required=True)
+    parser.add_argument('--force',
+                        help='Force run the script if files already exist.',
+                        action='store_true')
+    parser.add_argument('--update',
+                        help='Run cw.exe on all files and update validation.',
+                        action='store_true')
     args = parser.parse_args()
+
+    if args.update:
+        update_validation(args)
+        sys.exit(0)
 
     license_str = ''
     if args.license is None:

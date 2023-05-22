@@ -8,10 +8,10 @@
   "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
   "path": "./invalid_duplicate_metadata.obu",
   "compliance_warden": {
-    "cw_version": "v31-exercized-rules_assert-id-rev14-geb021fb",
-    "input_file": "",
+    "cw_version": "v32-master-rev7-g2f2dc5a",
+    "input_file": "invalid_duplicate_metadata.obu",
     "specification": "av1hdr10plus",
-    "spec_name": "HDR10+ AV1 Metadata Handling Specification, 8 December 2021\nhttps://aomediacodec.github.io/av1-hdr10plus/",
+    "spec_name": "HDR10+ AV1 Metadata Handling Specification, 7 December 2022\nhttps://github.com/AOMediaCodec/av1-hdr10plus/commit/63bacd21bc5f75ea6094fc11a03f0e743366fbdf\nhttps://aomediacodec.github.io/av1-hdr10plus/",
     "dependencies": [
       "isobmff"
     ],
@@ -25,22 +25,100 @@
           },
           {
             "rule": "1",
-            "details": "Section 2.1\nEach HDR10+ OBU includes an ITU-T T.35 identifier with:\n - itu_t_t35_country_code set as 0xB5\n - itu_t_t35_terminal_provider_code set as 0x003C\n - itu_t_t35_terminal_provider_oriented_code set as 0x0001"
+            "details": "Section 2.1\nAn HDR10+ Metadata OBU is defined as HDR10+ Metadata carried in a Metadata OBU.\nThe metadata_type of such Metadata OBU is set to METADATA_TYPE_ITUT_T35 and the\nitu_t_t35_country_code of the corresponding Metadata ITUT T35 element is set to 0xB5.\nThe remaining syntax element of Metadata ITUT T35, itu_t_t35_payload_bytes,\nis interpreted using the syntax defined in Annex S of [CTA-861], starting with\nthe itu_t_t35_terminal_provider_code, and the semantics defined in [ST-2094-40].\nAccording to the definition of the HDR10+ Metadata, the first 6 bytes ofthe itu_t_t35_payload_bytes of the HDR10+ Metadata OBU are set as follows:\n - 0x003C, which corresponds to itu_t_t35_terminal_provider_code from Annex S of [CTA-861]\n - 0x0001, which corresponds to itu_t_t35_terminal_provider_oriented_code from Annex S of [CTA-861]\n - 0x4, which corresponds to application_identifier from Annex S of [CTA-861]\n - 0x1, which corresponds to application_mode from Annex S of [CTA-861]"
+          },
+          {
+            "rule": "2",
+            "id": "assert-2d0cc174",
+            "details": "Section 2.2.1\ncolor_primaries = 9"
+          },
+          {
+            "rule": "3",
+            "id": "assert-0931ac52",
+            "details": "Section 2.2.1\ntransfer_characteristics = 16"
+          },
+          {
+            "rule": "4",
+            "id": "assert-19a71368",
+            "details": "Section 2.2.1\nmatrix_coefficients = 9"
+          },
+          {
+            "rule": "5",
+            "id": "assert-02249407",
+            "details": "Section 2.2.1\ncolor_range should be set to 0"
+          },
+          {
+            "rule": "6",
+            "id": "assert-5230c330",
+            "details": "Section 2.2.1\nsubsampling_x and subsampling_y should be set to 0"
+          },
+          {
+            "rule": "7",
+            "id": "assert-4217c4a7",
+            "details": "Section 2.2.1\nmono_chrome should be set to 0"
           }
         ],
         "errors": [
           {
-            "rule": "3",
+            "rule": "9",
             "id": "assert-45af0987",
-            "details": "Section 2.2.2\nfor each frame with show_frame=1 or show_existing_frame=1, there shall be one\nand only one HDR10+ metadata OBU preceding the frame header for this frame and\nlocated after the last OBU of the previous frame (if any) or after the\nSequence Header (if any) or after the start of the temporal unit (e.g. after the\ntemporal delimiter, for storage formats where temporal delimiters are preserved).",
+            "details": "Section 2.2.2\nfor each frame with show_frame = 1 or show_existing_frame = 1, there shall be one\nand only one HDR10+ metadata OBU preceding the Frame Header OBU for this frame and\nlocated after the last OBU of the previous frame (if any) or after the\nSequence Header OBU (if any) or after the start of the temporal unit",
             "description": "There shall be one and only one HDR10+ metadata OBU. Found 2 in Temporal Unit #0 (Frame #0)"
           }
         ],
         "warnings": [
           {
-            "rule": "2",
-            "details": "Section 2.2.1\nStreams shall use the following values for the AV1 color_config:\n - color_primaries = 9 ([BT-2020])\n - transfer_characteristics = 16 ([SMPTE-ST-2084] / [BT-2100])\n - matrix_coefficients = 9 ([BT-2020])\nAdditionally, the following recommendations apply:\n - VideoFullRangeFlag should be set to 0\n - subsampling_x and subsampling_y should be set to 0\n - mono_chrome should be 0\n - chroma_sample_position should be set to 2",
+            "rule": "8",
+            "id": "assert-5b56cde2",
+            "details": "Section 2.2.1\nchroma_sample_position should be set to 2",
             "description": "chroma_sample_position should be set as 2, found 0"
+          }
+        ],
+        "unchecked": [
+          {
+            "rule": "10",
+            "id": "assert-a575dc54",
+            "details": "Section 2.2.2\nHDR10+ Metadata OBUs are not provided when show_frame = 0"
+          },
+          {
+            "rule": "11",
+            "id": "assert-797eb19e",
+            "details": "Section 2.2.2\nFor non-layered streams, there is only one HDR10+ Metadata OBU per temporal unit"
+          },
+          {
+            "rule": "12",
+            "id": "assert-aa071f33",
+            "details": "Section 3.1\nFor formats that use the AV1CodecConfigurationRecord when storing\n[AV1] bitstreams (e.g. ISOBMFF and MPEG-2 TS), HDR10+ Metadata OBUs\nshall not be present in the configOBUs field of\nthe AV1CodecConfigurationRecord"
+          },
+          {
+            "rule": "13",
+            "id": "assert-398f68cd",
+            "details": "Section 3.2\nAV1 Metadata sample group defined in [AV1-ISOBMFF] shall not be used."
+          },
+          {
+            "rule": "14",
+            "id": "assert-d451561e",
+            "details": "Section 3.2\nHDR10 Static Metadata and HDR10+ Metadata OBUs are unprotected"
+          },
+          {
+            "rule": "15",
+            "id": "assert-c56194aa",
+            "details": "Section meta 3.2\nAn ISOBMFF file or CMAF AV1 track as defined in [AV1-ISOBMFF] that also\nconforms to this specification (i.e. that contains HDR10+ metadata OBUs and\ncomplies to the constraints from this specification) should use the brand cdm4\ndefined in [CTA-5001] in addition to the brand av01"
+          },
+          {
+            "rule": "16",
+            "id": "assert-3a8897d6",
+            "details": "Section 3.2\nIf the brand cdm4 is used in conjunction with [AV1] bitstreams, the constraints\ndefined in this specification shall be respected"
+          },
+          {
+            "rule": "17",
+            "id": "assert-622a560f",
+            "details": "Section 3.3\n[DASH] content following [DASH-IOP] should include a Supplemental Descriptor\nwith @schemeIdUri set to http://dashif.org/metadata/hdr and @value set to\nSMPTE2094-40 in manifest files"
+          },
+          {
+            "rule": "18",
+            "id": "assert-91363c5f",
+            "details": "Section 3.3\nThe value of the Codecs Parameter String for [AV1] bitstreams that is used when\nusing HTTP streaming technologies shall remain unchanged\nwhen HDR10+ Metadata OBUs are included in the [AV1] stream"
           }
         ]
       }
