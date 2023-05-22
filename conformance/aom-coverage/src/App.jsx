@@ -67,7 +67,7 @@ export default function App() {
     return (
         <div className="flex w-full flex-col gap-6 p-8">
             <h1 className="text-4xl font-thin tracking-tight">
-                AOM Coverage Report
+                HDR10+ AV1 Metadata Handling Specification Coverage Report
             </h1>
             <h2 className="text-2xl font-bold">
                 {(coverage.covered.percentage * 100).toFixed(2)}% covered

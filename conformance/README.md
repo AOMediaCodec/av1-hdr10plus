@@ -20,8 +20,5 @@ This command sets up Git LFS hooks and filters for the repository.
 
 ## TODO:
 
-- add links to spec text using #assert-id
-- split successful checks into two tables
 - add links to files
-- add a warning to the page that the files are still under review
 - finish automation
