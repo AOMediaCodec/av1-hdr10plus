@@ -1,5 +1,5 @@
 import { useMemo } from "preact/hooks";
-import coverage_raw from "../../conformance/coverage.json";
+import coverage_raw from "../../coverage.json";
 
 export default function App() {
     const coverage = useMemo(() => {
