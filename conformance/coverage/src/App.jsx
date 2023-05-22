@@ -17,8 +17,17 @@ export default function App() {
             percentage: 0,
         };
         const not_covered = [];
+        const excluded = [];
 
         for (const assert of coverage_raw) {
+            if (assert.exclude) {
+                excluded.push({
+                    id: assert.id,
+                    description: assert.description,
+                });
+                continue;
+            }
+
             if (assert.successful_checks.length > 0) {
                 covered.successful.push({
                     id: assert.id,
@@ -61,6 +70,7 @@ export default function App() {
         return {
             covered,
             not_covered,
+            excluded,
         };
     }, []);
 
@@ -205,42 +215,82 @@ export default function App() {
                         </tbody>
                     </table>
                 </div>
-                <table className="flex-[1] border-1">
-                    <thead>
-                        <tr>
-                            <th colSpan={2}>
-                                <h3 className="bg-black text-xl font-bold text-white">
-                                    Not Covered
-                                </h3>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="bg-neutral-400">
-                            <td>
-                                <th>Assert ID</th>
-                            </td>
-                            <td>
-                                <th>Description</th>
-                            </td>
-                        </tr>
-                        {coverage.not_covered.map((item) => (
-                            <tr key={item.id}>
-                                <td className="text-center">
-                                    <a
-                                        className="text-blue-600 hover:text-blue-500"
-                                        href={`${BASE_URL}#${item.id}`}
-                                    >
-                                        {item.id}
-                                    </a>
+                <div className="flex flex-[1] flex-col items-stretch justify-center gap-6">
+                    <table className="flex-[1] border-1">
+                        <thead>
+                            <tr>
+                                <th colSpan={2}>
+                                    <h3 className="bg-black text-xl font-bold text-white">
+                                        Not Covered
+                                    </h3>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="bg-neutral-400">
+                                <td>
+                                    <th>Assert ID</th>
                                 </td>
-                                <td className="whitespace-normal">
-                                    {item.description}
+                                <td>
+                                    <th>Description</th>
                                 </td>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                            {coverage.not_covered.map((item) => (
+                                <tr key={item.id}>
+                                    <td className="text-center">
+                                        <a
+                                            className="text-blue-600 hover:text-blue-500"
+                                            href={`${BASE_URL}#${item.id}`}
+                                        >
+                                            {item.id}
+                                        </a>
+                                    </td>
+                                    <td className="whitespace-normal">
+                                        {item.description}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {coverage.excluded.length > 0 && (
+                        <table className="flex-[1] border-1">
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}>
+                                        <h3 className="bg-black text-xl font-bold text-white">
+                                            Excluded
+                                        </h3>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="bg-neutral-400">
+                                    <td>
+                                        <th>Assert ID</th>
+                                    </td>
+                                    <td>
+                                        <th>Description</th>
+                                    </td>
+                                </tr>
+                                {coverage.excluded.map((item) => (
+                                    <tr key={item.id}>
+                                        <td className="text-center">
+                                            <a
+                                                className="text-blue-600 hover:text-blue-500"
+                                                href={`${BASE_URL}#${item.id}`}
+                                            >
+                                                {item.id}
+                                            </a>
+                                        </td>
+                                        <td className="whitespace-normal">
+                                            {item.description}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
             </div>
         </div>
     );
