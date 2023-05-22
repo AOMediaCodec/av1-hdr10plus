@@ -8,6 +8,10 @@ from bs4 import BeautifulSoup
 from .utils import dump_to_json, execute_cmd, read_json
 
 SPECIFICATION = 'av1hdr10plus'
+EXCLUDED_RULES = [
+    "assert-622a560f",
+    "assert-91363c5f"
+]
 
 
 def get_coverage_data(rules_from_spec, rules_from_files):
@@ -20,7 +24,7 @@ def get_coverage_data(rules_from_spec, rules_from_files):
         rule_coverage = {
             'id': rule_spec['id'],
             'description': rule_spec['description'],
-            'exclude': False,
+            'exclude': rule_spec['id'] in EXCLUDED_RULES,
             'successful_checks': [],
             'errors': [],
             'warnings': []
@@ -28,12 +32,17 @@ def get_coverage_data(rules_from_spec, rules_from_files):
 
         for rule_file in rules_from_files:
             for check_type in ['successful_checks', 'errors', 'warnings']:
+                found_files = set()
                 for check in rule_file[check_type]:
                     if check['id'] == rule_spec['id']:
+                        if rule_file['file_path'] in found_files:
+                            print(f"WARNING: Duplicate file found for {check['id']} within {rule_file['file_path']}")
+                            continue
                         rule_coverage[check_type].append({
                             'file_path': rule_file['file_path'],
                             'description': check['description']
                         })
+                        found_files.add(rule_file['file_path'])
 
         coverage_data.append(rule_coverage)
     return coverage_data
@@ -82,6 +91,26 @@ def duplicate_spec_rules_found(rules):
 
     return duplicates_found
 
+def duplicate_cw_versions_found():
+    '''
+    Check if conformance files contain more than one cw version
+    '''
+    cw_versions = set()
+    for root, _subdirs, files in os.walk('conformance_files'):
+        for conf_file in files:
+            _input_filename, input_extension = os.path.splitext(conf_file)
+            if input_extension not in ['.json']:
+                continue
+            input_path = os.path.join(root, conf_file)
+
+            json_string = read_json(input_path)
+
+            cw_versions.add(json_string['compliance_warden']['cw_version'])
+
+    if len(cw_versions) > 1:
+        return True, None
+    return False, cw_versions.pop()
+
 
 def get_rules_from_spec():
     '''
@@ -119,6 +148,7 @@ def get_rules_from_files(spec):
             input_path = os.path.join(root, conf_file)
 
             json_string = read_json(input_path)
+            conformance_path = os.path.relpath(os.path.join(root, json_string["path"]))
 
             cw_report = json_string['compliance_warden']
             if not cw_report:
@@ -128,7 +158,7 @@ def get_rules_from_files(spec):
                 if spec_validation['specification'] != spec:
                     continue
                 spec_validation = filter_validation_entries(spec_validation)
-                spec_validation['file_path'] = input_path
+                spec_validation['file_path'] = conformance_path
                 rules_from_files.append(spec_validation)
     return rules_from_files
 
@@ -158,7 +188,7 @@ def print_coverage_stats(coverage_data):
 
         print("\n")
 
-    print(f'Overall coverage: {(covered_rules/total_rules)*100}%')
+    print(f'Overall coverage (w/o exclusions): {(covered_rules/total_rules)*100}%')
     print(f'Uncovered rules: {uncovered_rules}')
 
 
@@ -169,10 +199,19 @@ def main():
     if duplicate_spec_rules_found(rules_from_spec):
         print("Make sure the assert-id's are unique for every rule!")
         return -1
+    # Abort if there are more than one cw version
+    duplicate_cw, cw_version = duplicate_cw_versions_found()
+    if duplicate_cw:
+        print("Make sure there is only one version of Compliance Warden!")
+        return -1
     # get data from file json's for this specification
     rules_from_files = get_rules_from_files(spec=SPECIFICATION)
     # build coverage data
     coverage_data = get_coverage_data(rules_from_spec, rules_from_files)
+    coverage_data = {
+        'cw_version': cw_version,
+        'rules': coverage_data
+    }
     # store and print
-    print_coverage_stats(coverage_data)
+    print_coverage_stats(coverage_data["rules"])
     dump_to_json('coverage.json', coverage_data)

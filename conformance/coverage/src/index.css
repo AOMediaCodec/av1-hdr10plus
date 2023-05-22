@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 table,
-td {
+td,
+tbody th {
     @apply whitespace-nowrap border-1 border-black px-2;
 }
 
