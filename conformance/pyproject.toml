@@ -18,4 +18,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 generate-report = "conformance_tools.generate_report:main"
-add-files = "conformance_tools.add_files:main"
+manage-files = "conformance_tools.manage_files:main"

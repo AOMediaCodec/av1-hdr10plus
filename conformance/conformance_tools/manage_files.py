@@ -1,5 +1,5 @@
 """
-Module to add new files to conformance suite
+Module to manage files of the conformance suite
 """
 import argparse
 import copy
