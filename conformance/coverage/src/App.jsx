@@ -18,6 +18,8 @@ const FilePopover = ({ files }) => {
         window.open(`${GIT_REPO}/${file.file_path}`);
     };
 
+    if (files.length === 0) return <span>0</span>;
+
     return (
         <>
             <button
@@ -28,13 +30,13 @@ const FilePopover = ({ files }) => {
             </button>
             <div
                 className={clsx(
-                    "fixed left-0 top-0 z-20 h-screen w-screen items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm backdrop-filter",
+                    "fixed left-0 top-0 z-20 h-screen w-screen items-center justify-center bg-black bg-opacity-60 p-8 backdrop-blur-sm backdrop-filter",
                     open ? "flex" : "hidden"
                 )}
             >
                 <div
                     ref={ref}
-                    className="relative max-h-[50%] rounded-lg bg-white p-8 flex"
+                    className="relative flex max-h-[50%] rounded-lg bg-white p-8 max-md:w-full"
                 >
                     <div className="absolute -top-2 left-0 flex w-full -translate-y-full flex-row items-center justify-between px-4">
                         <h1 className="text-4xl text-white">
@@ -49,23 +51,25 @@ const FilePopover = ({ files }) => {
                         {files.map((file) => (
                             <div
                                 key={file.file_path}
-                                className="flex flex-row items-center justify-between gap-4 border-l-4 border-yellow-400 px-2"
+                                className="flex w-full flex-row items-center justify-between gap-4 border-l-4 border-yellow-400 px-2"
                             >
-                                <div className="flex flex-col items-start">
-                                    <span className="text-xl">
+                                <div className="flex min-w-0 flex-col items-start justify-start">
+                                    <span className="w-full min-w-0 truncate text-start text-xl">
                                         {file.file_path
                                             .split("/")
                                             .slice(1)
                                             .join("/")}
                                     </span>
-                                    <p className="max-w-lg whitespace-normal text-start text-sm font-light">
-                                        {file.description || "Not applicable"}
+                                    <p className="w-full min-w-0 max-w-lg truncate whitespace-normal text-start text-sm font-light">
+                                        {file.description}
                                     </p>
                                 </div>
-                                <FiDownload
-                                    onClick={() => download(file)}
-                                    className="cursor-pointer text-2xl duration-100 hover:text-blue-500"
-                                />
+                                <span className="flex h-full w-fit items-center">
+                                    <FiDownload
+                                        onClick={() => download(file)}
+                                        className="cursor-pointer text-2xl duration-100 hover:text-blue-500"
+                                    />
+                                </span>
                             </div>
                         ))}
                     </div>
@@ -95,6 +99,15 @@ export default function App() {
                 continue;
             }
 
+            if (assert.successful_checks.length === 0) {
+                not_covered.push({
+                    id: assert.id,
+                    description: assert.description,
+                    files: assert.errors.concat(assert.warnings),
+                });
+                continue;
+            }
+
             if (assert.successful_checks.length > 0) {
                 covered.successful.push({
                     id: assert.id,
@@ -118,18 +131,6 @@ export default function App() {
                     files: assert.warnings,
                 });
             }
-
-            if (
-                assert.successful_checks.length === 0 &&
-                assert.errors.length === 0 &&
-                assert.warnings.length === 0
-            ) {
-                not_covered.push({
-                    id: assert.id,
-                    description: assert.description,
-                    files: [],
-                });
-            }
         }
 
         covered.percentage =
@@ -144,7 +145,7 @@ export default function App() {
 
     return (
         <div className="container mx-auto flex w-full flex-col gap-6 p-8">
-            <div className="flex flex-row justify-between gap-12">
+            <div className="flex flex-row flex-wrap justify-between xl:gap-12">
                 <div className="flex flex-col gap-4">
                     <h1 className="text-4xl font-thin tracking-tight">
                         HDR10+ AV1 Metadata Handling Specification Coverage
@@ -168,7 +169,7 @@ export default function App() {
                     {(coverage.covered.percentage * 100).toFixed(2)}%
                 </h2>
             </div>
-            <div className="flex flex-row items-start justify-between gap-6">
+            <div className="flex flex-row flex-wrap items-start justify-between gap-6">
                 <div className="flex flex-[1] flex-col items-stretch justify-center gap-6">
                     <table className="border-1">
                         <thead>
@@ -209,102 +210,125 @@ export default function App() {
                             ))}
                         </tbody>
                     </table>
-                    <table className="border-1">
-                        <thead>
-                            <tr>
-                                <th colSpan={3}>
-                                    <h3 className="bg-black text-xl font-bold text-white">
-                                        Covered (invalid files on purpose)
-                                    </h3>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="bg-red-400">
-                                <th colSpan={3}>Successful</th>
-                            </tr>
-                            <tr className="bg-red-400">
-                                <th># of files</th>
-                                <th>Assert ID</th>
-                                <th>Description</th>
-                            </tr>
-                            {coverage.covered.error.map((item) => (
-                                <tr key={item.id}>
-                                    <td className="text-center">
-                                        <FilePopover files={item.files} />
-                                    </td>
-                                    <td className="text-center">
-                                        <a
-                                            className="text-blue-600 hover:text-blue-500 hover:underline"
-                                            href={`${BASE_URL}#${item.id}`}
-                                        >
-                                            {item.id}
-                                        </a>
-                                    </td>
-                                    <td className="whitespace-normal">
-                                        {item.description}
-                                    </td>
+                    {(coverage.covered.error.length > 0 ||
+                        coverage.covered.warning.length > 0) && (
+                        <table className="border-1">
+                            <thead>
+                                <tr>
+                                    <th colSpan={3}>
+                                        <h3 className="bg-black text-xl font-bold text-white">
+                                            Covered (invalid files on purpose)
+                                        </h3>
+                                    </th>
                                 </tr>
-                            ))}
-                            <tr className="bg-yellow-400">
-                                <th colSpan={3}>Warning</th>
-                            </tr>
-                            {coverage.covered.warning.map((item) => (
-                                <tr key={item.id}>
-                                    <td className="text-center">
-                                        <FilePopover files={item.files} />
-                                    </td>
-                                    <td className="text-center">
-                                        <a
-                                            className="text-blue-600 hover:text-blue-500 hover:underline"
-                                            href={`${BASE_URL}#${item.id}`}
-                                        >
-                                            {item.id}
-                                        </a>
-                                    </td>
-                                    <td className="whitespace-normal">
-                                        {item.description}
-                                    </td>
+                            </thead>
+                            <tbody>
+                                <tr className="bg-red-400">
+                                    <th># of files</th>
+                                    <th>Assert ID</th>
+                                    <th>Description</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                                {coverage.covered.error.length > 0 && (
+                                    <>
+                                        <tr className="bg-red-400">
+                                            <th colSpan={3}>Error</th>
+                                        </tr>
+                                        {coverage.covered.error.map((item) => (
+                                            <tr key={item.id}>
+                                                <td className="text-center">
+                                                    <FilePopover
+                                                        files={item.files}
+                                                    />
+                                                </td>
+                                                <td className="text-center">
+                                                    <a
+                                                        className="text-blue-600 hover:text-blue-500 hover:underline"
+                                                        href={`${BASE_URL}#${item.id}`}
+                                                    >
+                                                        {item.id}
+                                                    </a>
+                                                </td>
+                                                <td className="whitespace-normal">
+                                                    {item.description}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </>
+                                )}
+                                {coverage.covered.warning.length > 0 && (
+                                    <>
+                                        <tr className="bg-yellow-400">
+                                            <th colSpan={3}>Warning</th>
+                                        </tr>
+                                        {coverage.covered.warning.map(
+                                            (item) => (
+                                                <tr key={item.id}>
+                                                    <td className="text-center">
+                                                        <FilePopover
+                                                            files={item.files}
+                                                        />
+                                                    </td>
+                                                    <td className="text-center">
+                                                        <a
+                                                            className="text-blue-600 hover:text-blue-500 hover:underline"
+                                                            href={`${BASE_URL}#${item.id}`}
+                                                        >
+                                                            {item.id}
+                                                        </a>
+                                                    </td>
+                                                    <td className="whitespace-normal">
+                                                        {item.description}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        )}
+                                    </>
+                                )}
+                            </tbody>
+                        </table>
+                    )}
                 </div>
                 <div className="flex flex-[1] flex-col items-stretch justify-center gap-6">
-                    <table className="flex-[1] border-1">
-                        <thead>
-                            <tr>
-                                <th colSpan={2}>
-                                    <h3 className="bg-black text-xl font-bold text-white">
-                                        Not Covered
-                                    </h3>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="bg-neutral-400">
-                                <th>Assert ID</th>
-                                <th>Description</th>
-                            </tr>
-                            {coverage.not_covered.map((item) => (
-                                <tr key={item.id}>
-                                    <td className="text-center">
-                                        <a
-                                            className="text-blue-600 hover:text-blue-500 hover:underline"
-                                            href={`${BASE_URL}#${item.id}`}
-                                        >
-                                            {item.id}
-                                        </a>
-                                    </td>
-                                    <td className="whitespace-normal">
-                                        {item.description}
-                                    </td>
+                    {coverage.not_covered.length > 0 && (
+                        <table className="border-1">
+                            <thead>
+                                <tr>
+                                    <th colSpan={3}>
+                                        <h3 className="bg-black text-xl font-bold text-white">
+                                            Not Covered
+                                        </h3>
+                                    </th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <tr className="bg-neutral-400">
+                                    <th># of files</th>
+                                    <th>Assert ID</th>
+                                    <th>Description</th>
+                                </tr>
+                                {coverage.not_covered.map((item) => (
+                                    <tr key={item.id}>
+                                        <td className="text-center">
+                                            <FilePopover files={item.files} />
+                                        </td>
+                                        <td className="text-center">
+                                            <a
+                                                className="text-blue-600 hover:text-blue-500 hover:underline"
+                                                href={`${BASE_URL}#${item.id}`}
+                                            >
+                                                {item.id}
+                                            </a>
+                                        </td>
+                                        <td className="whitespace-normal">
+                                            {item.description}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
                     {coverage.excluded.length > 0 && (
-                        <table className="flex-[1] border-1 opacity-40">
+                        <table className="border-1 opacity-40">
                             <thead>
                                 <tr>
                                     <th colSpan={2}>
