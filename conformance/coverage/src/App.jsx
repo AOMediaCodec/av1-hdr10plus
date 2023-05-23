@@ -203,7 +203,7 @@ export default function App() {
                                             {item.id}
                                         </a>
                                     </td>
-                                    <td className="whitespace-normal">
+                                    <td className="hyphens-auto whitespace-normal break-words break-all">
                                         {item.description}
                                     </td>
                                 </tr>
@@ -248,7 +248,7 @@ export default function App() {
                                                         {item.id}
                                                     </a>
                                                 </td>
-                                                <td className="whitespace-normal">
+                                                <td className="hyphens-auto whitespace-normal break-words break-all">
                                                     {item.description}
                                                 </td>
                                             </tr>
@@ -276,7 +276,7 @@ export default function App() {
                                                             {item.id}
                                                         </a>
                                                     </td>
-                                                    <td className="whitespace-normal">
+                                                    <td className="hyphens-auto whitespace-normal break-words break-all">
                                                         {item.description}
                                                     </td>
                                                 </tr>
@@ -319,7 +319,7 @@ export default function App() {
                                                 {item.id}
                                             </a>
                                         </td>
-                                        <td className="whitespace-normal">
+                                        <td className="hyphens-auto whitespace-normal break-words break-all">
                                             {item.description}
                                         </td>
                                     </tr>
@@ -353,7 +353,7 @@ export default function App() {
                                                 {item.id}
                                             </a>
                                         </td>
-                                        <td className="whitespace-normal">
+                                        <td className="hyphens-auto whitespace-normal break-words break-all">
                                             {item.description}
                                         </td>
                                     </tr>
