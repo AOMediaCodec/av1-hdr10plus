@@ -49,7 +49,7 @@ jobs:
 
       - name: Build conformance page
         run: |
-          cd conformance/coverage
+          cd conformance/conformance_page
           npm ci
           npm run build
 
@@ -59,8 +59,8 @@ jobs:
           mkdir dist
           cp index.html dist
           cp -r figures dist
-          mkdir dist/coverage
-          cp -r conformance/coverage/dist/* dist/coverage
+          mkdir dist/conformance
+          cp -r conformance/conformance_page/dist/* dist/conformance
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

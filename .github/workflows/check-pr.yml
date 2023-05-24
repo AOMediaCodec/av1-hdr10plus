@@ -38,7 +38,7 @@ jobs:
 
       - name: Build conformance page
         run: |
-          cd conformance/coverage
+          cd conformance/conformance_page
           npm ci
           npm run build
 
