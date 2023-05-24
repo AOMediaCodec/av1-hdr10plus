@@ -15,20 +15,18 @@ concurrency:
 
 jobs:
   main:
-    name: Deploy to GitHub pages
+    name: Compile and deploy
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
-      # Install and configure Poetry
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
@@ -51,7 +49,7 @@ jobs:
 
       - name: Build conformance page
         run: |
-          cd conformance/coverage
+          cd conformance/conformance_page
           npm ci
           npm run build
 
@@ -61,8 +59,8 @@ jobs:
           mkdir dist
           cp index.html dist
           cp -r figures dist
-          mkdir dist/coverage
-          cp -r conformance/coverage/dist/* dist/coverage
+          mkdir dist/conformance
+          cp -r conformance/conformance_page/dist/* dist/conformance
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
