@@ -24,8 +24,8 @@ This command sets up Git LFS hooks and filters for the repository.
 
 At the moment we don't run automatic metadata extraction on the files that are contributed. This will be done in the future version of the software but currently if you want to contribute files you have to follow the following steps. 
 
-Let's assume you have files sored in the local folder named `./MyCompamy` and you want to contribute the files inside that directory.
-If you have a license associated with your files, you can provide it in a form of a text file e.g. `licence.txt`. The contents of this file will be copied to every metadata json file for each file in `./MyCompamy` directory.
+Let's assume you have files sored in the local folder named `./MyCompany` and you want to contribute the files inside that directory.
+If you have a license associated with your files, you can provide it in a form of a text file e.g. `licence.txt`. The contents of this file will be copied to every metadata json file for each file in `./MyCompany` directory.
 
 Follow these steps to contribute new files:
 
@@ -38,10 +38,10 @@ Follow these steps to contribute new files:
     ```
 3. Run the following command to add your files to the conformance suite:    
     ```sh
-    poetry run manage-files -i MyCompamy -l licence.txt -e path/to/bin/cw.exe
+    poetry run manage-files -i MyCompany -l licence.txt -e path/to/bin/cw.exe
     ```
     With `path/to/bin/cw.exe` being a path to the Compliance Warden executable which you compiled in step 2.
 
-This script will ask you a couple of questions for each file and will run the `cw.exe` on every file found in `./MyCompamy` directory.
+This script will ask you a couple of questions for each file and will run the `cw.exe` on every file found in `./MyCompany` directory.
 It will then copy your conformance files to the `conformance/conformance_files` directory with all the metadata associated to it.
 After that you can open a new pull request to the repository.
