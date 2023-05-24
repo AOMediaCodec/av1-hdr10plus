@@ -15,20 +15,18 @@ concurrency:
 
 jobs:
   main:
-    name: Deploy to GitHub pages
+    name: Compile and deploy
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
-      # Install and configure Poetry
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
