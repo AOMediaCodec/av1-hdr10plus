@@ -1,0 +1,10 @@
+<GPACDRM type="CENC AES-CBC Pattern">
+<DRMInfo type="pssh" version="1">
+<BS ID128="1077efecc0b24d02ace33c1e52e2fb4b"/>
+<BS value="1" bits="32"/>
+<BS ID128="0000000004926e4d0000000000000000"/>
+</DRMInfo>
+<CrypTrack trackID="1" IsEncrypted="1" constant_IV_size="16" constant_IV="0x000000000000000000000000499602D2" saiSavedBox="senc">
+<key KID="0x0000000004926e4d0000000000000000" value="0x79deeb0115d4156b7299ae0d8c00e9fb"/>
+</CrypTrack>
+</GPACDRM>

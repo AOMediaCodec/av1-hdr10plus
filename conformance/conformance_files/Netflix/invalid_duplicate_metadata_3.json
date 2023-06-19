@@ -1,11 +1,11 @@
 {
   "contributor": "Netflix",
-  "description": "",
+  "description": "Invalid file. The second temporal unit (5 inter-predicted frames) contains 2 HDR10+ Metadata OBUs, 1 associated with the show_frame frame and 1 with a non-show_frame",
   "md5": "c791dbaf39bb6269912dc46e0fb84711",
   "version": 1,
   "associated_files": [],
   "notes": "",
-  "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "license": "Copyright (C)  NETFLIX INC.  2015 \n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
   "path": "./invalid_duplicate_metadata_3.obu",
   "compliance_warden": {
     "cw_version": "v32-master-rev7-g2f2dc5a",
