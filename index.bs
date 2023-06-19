@@ -295,3 +295,15 @@ Example Streams and Tools {#tools}
 ==========================
 
 Information on this topic is found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/wiki">Wiki</a> for this project.
+
+<script>
+if (window.location.hash) {
+  const highlight_span = document.querySelector(window.location.hash);
+  if (highlight_span) {
+    highlight_span.parentNode.style.backgroundColor = "#F4EA565A";
+    setTimeout(() => {
+      highlight_span.parentNode.style.backgroundColor = "";
+    }, 5000);
+  }
+}
+</script>
