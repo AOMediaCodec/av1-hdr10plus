@@ -79,6 +79,28 @@ const FilePopover = ({ files }) => {
     );
 };
 
+const FileTable = ({ children, files }) => {
+    return (
+        <div className="flex-[33%]">
+            <div className="flex w-full flex-col items-center bg-black text-white">
+                {children}
+            </div>
+            <table className="w-full">
+                <tbody>
+                    {files.sort().map((file) => (
+                        <tr>
+                            <td className="word-wrap-custom xl:text-sm">
+                                <b>{file.split("/")[1]}</b>/
+                                {file.split("/").slice(2).join("/")}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
 const Table = ({ children, title, color, data, noFileCount, faded }) => {
     if (data.length === 0) return null;
     if (!noFileCount) data.sort((a, b) => b.files.length - a.files.length);
@@ -133,7 +155,7 @@ const Table = ({ children, title, color, data, noFileCount, faded }) => {
             <div className="flex w-full flex-col items-center bg-black text-white">
                 {children}
             </div>
-            <table>
+            <table className="w-full">
                 <thead>
                     <tr>
                         <th colSpan={noFileCount ? 2 : 3}>
@@ -211,6 +233,7 @@ const Table = ({ children, title, color, data, noFileCount, faded }) => {
 
 export default function App() {
     const coverage = useMemo(() => {
+        const files = [];
         const covered = {
             valid: [],
             invalid: [],
@@ -238,15 +261,18 @@ export default function App() {
                 description: assert.description,
                 files: assert.successful_checks.filter((file) => !file.invalid),
             });
+            files.push(
+                ...assert.successful_checks.map((file) => file.file_path)
+            );
 
             // Filter files and add for invalid
+            const invalid_files = assert.warnings.concat(assert.errors);
             covered.invalid.push({
                 id: assert.id,
                 description: assert.description,
-                files: assert.warnings
-                    .concat(assert.errors)
-                    .filter((file) => file.invalid),
+                files: invalid_files.filter((file) => file.invalid),
             });
+            files.push(...invalid_files.map((file) => file.file_path));
 
             // Add to not covered
             if (
@@ -272,6 +298,7 @@ export default function App() {
             (covered.valid_percentage + covered.invalid_percentage) / 2;
 
         return {
+            files: [...new Set(files)],
             covered,
             not_covered,
             excluded,
@@ -301,7 +328,7 @@ export default function App() {
                     </span>
                 </div>
             </div>
-            <div className="flex flex-col flex-wrap items-start justify-center gap-6 xl:flex-row">
+            <div className="flex flex-col flex-wrap items-stretch justify-center gap-6 xl:flex-row">
                 <Table
                     title={
                         <>
@@ -331,6 +358,9 @@ export default function App() {
                         Files that <u>do not</u> sucessfully execute the rule
                     </p>
                 </Table>
+                <FileTable files={coverage.files}>
+                    Files used to create the coverage
+                </FileTable>
                 <Table
                     title="Excluded from Coverage"
                     color="bg-neutral-400"
