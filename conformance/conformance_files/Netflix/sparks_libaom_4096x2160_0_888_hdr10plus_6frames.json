@@ -1,11 +1,11 @@
 {
   "contributor": "Netflix",
-  "description": "",
+  "description": "Valid OBU file demonstrating use of HDR10+",
   "md5": "5b5aea203c8b50878d22afcd4c9296e6",
   "version": 1,
   "associated_files": [],
   "notes": "",
-  "license": "ElFuente digital video content\nCopyright (C)  NETFLIX INC.  2015 \n\n3840x2160p, 10-bit, YCbCr 4:2:0, BT.709, 59.94 fps\n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "license": "Copyright (C)  NETFLIX INC.  2015 \n\nCOPYRIGHT AND LICENSE INFORMATION\nDecember, 2015\n\nNETFLIX INC.\n100 Winchester Circle, Los Gatos, CA 95032, USA\n\nThe video sequences provided above and all intellectual property rights therein \nremain the property of Netflix Inc. This video sequence is licensed under the \nCreative Commons Attribution-NonCommercial-NoDerivatives 4.0 International \nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-nd/4.0/",
   "path": "./sparks_libaom_4096x2160_0_888_hdr10plus_6frames.obu",
   "compliance_warden": {
     "cw_version": "v32-master-rev7-g2f2dc5a",
