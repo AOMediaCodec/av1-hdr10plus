@@ -303,7 +303,7 @@ A conformance suite for this specification is available at the following URL:
 Changes since v1.0.0 release {#changelist}
 ==========================================
 - <a href="https://github.com/AOMediaCodec/av1-hdr10plus/pull/64">Transform redundant statement as a note</a>
-- <a href="https://github.com/AOMediaCodec/av1-hdr10plus/pull/55">Add pointer to conformance suite</a>
+- <a href="https://github.com/AOMediaCodec/av1-hdr10plus/pull/66">Add pointer to conformance suite</a>
 
 <script>
 if (window.location.hash) {
