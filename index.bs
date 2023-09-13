@@ -14,6 +14,7 @@ Repository: AOMediaCodec/av1-hdr10plus
 Inline Github Issues: full
 Boilerplate: property-index no, issues-index no, copyright yes
 Markup Shorthands: css no
+Test Suite: https://aomediacodec.github.io/av1-hdr10plus/conformance/
 !Previously approved version: <a href="v1.0.0.html">v1.0.0</a>
 </pre>
 
@@ -294,14 +295,15 @@ HTTP Streaming Constraints {#httpstreaming-constraints}
 
 Additionally, <assert>[[!DASH]] content following [[DASH-IOP]] should include a [=Supplemental Descriptor=] with <code>[=@schemeIdUri=]</code> set to <code>"http://dashif.org/metadata/hdr"</code> and <code>[=@value=]</code> set to <code>"SMPTE2094-40"</code> in manifest files</assert>. This can aid players to identify tracks containing [=HDR10+ Metadata OBUs=].
 
-Example Streams and Tools {#tools}
+Conformance Suite {#conformance}
 ==========================
-
-Information on this topic is found in the <a href="https://github.com/AOMediaCodec/av1-hdr10plus/wiki">Wiki</a> for this project.
+A conformance suite for this specification is available at the following URL: 
+> <a href="https://aomediacodec.github.io/av1-hdr10plus/conformance/">https://aomediacodec.github.io/av1-hdr10plus/conformance/</a>
 
 Changes since v1.0.0 release {#changelist}
 ==========================================
-- 
+- <a href="https://github.com/AOMediaCodec/av1-hdr10plus/pull/64">Transform redundant statement as a note</a>
+- <a href="https://github.com/AOMediaCodec/av1-hdr10plus/pull/66">Add pointer to conformance suite</a>
 
 <script>
 if (window.location.hash) {
