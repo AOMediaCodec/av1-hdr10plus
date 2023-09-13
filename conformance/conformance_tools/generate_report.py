@@ -40,6 +40,7 @@ def get_coverage_data(rules_from_spec, rules_from_files):
                             continue
                         rule_coverage[check_type].append({
                             'file_path': rule_file['file_path'],
+                            'invalid': rule_file['invalid'],
                             'description': check['description']
                         })
                         found_files.add(rule_file['file_path'])
@@ -159,6 +160,7 @@ def get_rules_from_files(spec):
                     continue
                 spec_validation = filter_validation_entries(spec_validation)
                 spec_validation['file_path'] = conformance_path
+                spec_validation['invalid'] = len(spec_validation['errors']) > 0
                 rules_from_files.append(spec_validation)
     return rules_from_files
 
