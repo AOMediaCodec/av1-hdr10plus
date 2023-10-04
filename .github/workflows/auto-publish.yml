@@ -57,7 +57,7 @@ jobs:
         run: |
           bikeshed spec
           mkdir dist
-          cp index.html dist
+          cp *.html dist
           cp -r figures dist
           mkdir dist/conformance
           cp -r conformance/conformance_page/dist/* dist/conformance
