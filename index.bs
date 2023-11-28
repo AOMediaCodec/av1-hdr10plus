@@ -284,7 +284,7 @@ ISOBMFF Constraints {#isobmff-constraints}
 <assert>[=AV1 Metadata sample group=] defined in [[!AV1-ISOBMFF]] shall not be used.</assert>
 
 [[!AV1-ISOBMFF]] indicates that [=Metadata OBUs=] may be protected.
-This specification requires that <assert>[=HDR10 Static Metadata=] and [=HDR10+ Metadata OBUs=] are unprotected</assert>.
+<assert>This specification requires that [=HDR10 Static Metadata=] and [=HDR10+ Metadata OBUs=] are unprotected</assert>.
 
 <assert>An ISOBMFF file or CMAF AV1 track as defined in [[!AV1-ISOBMFF]] that also conforms to this specification (i.e. that contains [=HDR10+ metadata OBUs=] and complies to the constraints from this specification) should use the brand <code>[=cdm4=]</code> defined in [[!CTA-5001]] in addition to the brand <code>[=av01=]</code></assert>. <assert>If the brand <code>[=cdm4=]</code> is used in conjunction with [[!AV1]] bitstreams, the constraints defined in this specification shall be respected</assert>.
 
